@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarifs — Léman Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo">Léman<span>.</span>Studio</a>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="index.html#process">Méthode</a></li>
+    <li><a href="portfolio.html">Réalisations</a></li>
+    <li><a href="index.html#testimonials">Avis</a></li>
+    <li><a href="tarifs.html">Tarifs</a></li>
+    <li><a href="contact.html" class="nav-cta">Démarrer un projet</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <span class="mobile-nav-logo">Léman.Studio</span>
+  <a href="services.html" class="mobile-link">Services</a>
+  <a href="index.html#process" class="mobile-link">Méthode</a>
+  <a href="portfolio.html" class="mobile-link">Réalisations</a>
+  <a href="index.html#testimonials" class="mobile-link">Avis clients</a>
+  <a href="tarifs.html" class="mobile-link">Tarifs</a>
+  <a href="contact.html" class="mobile-link mob-cta">Démarrer un projet</a>
+</div>
+
+<section class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="section-label">Nos offres</div>
+  <h1>Des tarifs <em>transparents</em><br>sans mauvaise surprise</h1>
+</section>
+
+<!-- ===== TARIFS ===== -->
+<section id="tarifs">
+  <div class="pricing-intro">
+    <p>Chaque projet est unique. Ces offres sont des points de départ — nous adaptons selon vos besoins.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="price-plan">Essentiel</div>
+      <div class="price-amount">dès 990€</div>
+      <div class="price-sub">Site vitrine 1–5 pages</div>
+      <div class="price-hr"></div>
+      <ul class="price-list">
+        <li>Design sur-mesure</li>
+        <li>Jusqu'à 5 pages</li>
+        <li>Optimisation mobile</li>
+        <li>SEO de base</li>
+        <li>Formation incluse</li>
+        <li>Livraison en 7 jours</li>
+      </ul>
+      <a href="contact.html" class="price-btn">Démarrer</a>
+    </div>
+    <div class="pricing-card featured">
+      <span class="price-badge">Le plus populaire</span>
+      <div class="price-plan">Pro</div>
+      <div class="price-amount">dès 2 490€</div>
+      <div class="price-sub">Site professionnel complet</div>
+      <div class="price-hr"></div>
+      <ul class="price-list">
+        <li>Jusqu'à 15 pages</li>
+        <li>Blog / actualités</li>
+        <li>SEO avancé</li>
+        <li>Formulaires &amp; CRM</li>
+        <li>Analytics intégré</li>
+        <li>1 an de maintenance</li>
+      </ul>
+      <a href="contact.html" class="price-btn price-btn-dark">Démarrer</a>
+    </div>
+    <div class="pricing-card">
+      <div class="price-plan">E-commerce</div>
+      <div class="price-amount">dès 3 990€</div>
+      <div class="price-sub">Boutique en ligne complète</div>
+      <div class="price-hr"></div>
+      <ul class="price-list">
+        <li>Shopify / WooCommerce</li>
+        <li>Jusqu'à 200 produits</li>
+        <li>Paiement sécurisé</li>
+        <li>Tunnel de vente optimisé</li>
+        <li>Gestion stocks &amp; commandes</li>
+        <li>Formation complète</li>
+      </ul>
+      <a href="contact.html" class="price-btn">Démarrer</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="section-label">Questions fréquentes</div>
+  <h2>Tout ce que vous<br><em>voulez savoir</em></h2>
+  <div class="faq-layout">
+    <div class="faq-left">
+      <p>Des questions sur notre façon de travailler, les délais, les tarifs ou la technique ? On répond à tout ici. Une question non listée ? Contactez-nous directement, nous répondons en moins de 24h.</p>
+      <div class="faq-cta-box">
+        <p>Préférez-vous en parler directement ?</p>
+        <a href="contact.html" class="btn-primary" style="font-size:.85rem;padding:.85rem 2rem;">Prendre rendez-vous</a>
+      </div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)">Combien de temps pour livrer mon site ?<div class="faq-icon">+</div></div>
+        <div class="faq-a">En moyenne 7 à 14 jours selon la complexité du projet. Un site vitrine simple est livré en 5 jours, un e-commerce en 2 à 3 semaines. On s'engage sur un délai précis avant de démarrer.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Vais-je pouvoir modifier le contenu moi-même ?<div class="faq-icon">+</div></div>
+        <div class="faq-a">Oui, absolument. Tous nos sites sont livrés avec une interface de gestion simple et une formation personnalisée. Vous serez autonome dès le premier jour.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Mon site sera-t-il bien référencé sur Google ?<div class="faq-icon">+</div></div>
+        <div class="faq-a">Chaque site est optimisé pour le SEO technique dès sa création : vitesse, balises, structure sémantique. Pour aller plus loin, nous proposons des stratégies SEO complètes.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Quelles sont les modalités de paiement ?<div class="faq-icon">+</div></div>
+        <div class="faq-a">50% à la signature du devis, 50% à la livraison. Paiement par virement bancaire (CHF ou EUR). Pour les projets importants, des échéances peuvent être aménagées.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Proposez-vous un hébergement ?<div class="faq-icon">+</div></div>
+        <div class="faq-a">Oui. Hébergement performant en Europe inclus dans nos offres de maintenance, ou nous vous guidons vers votre propre hébergeur. Nom de domaine fourni si besoin.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Travaillez-vous avec les clients à distance ?<div class="faq-icon">+</div></div>
+        <div class="faq-a">Oui, on travaille avec des clients dans toute la France et en Suisse. Notre processus est 100% digital et structuré pour que la distance ne soit jamais un obstacle.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Léman<span>.</span>Studio</a>
+      <p>Agence web spécialisée en création et refonte de sites internet. Basés au bord du lac Léman, nous travaillons avec des clients partout en France et en Suisse.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html">Site vitrine</a></li>
+        <li><a href="services.html">Refonte web</a></li>
+        <li><a href="services.html">E-commerce</a></li>
+        <li><a href="services.html">SEO</a></li>
+        <li><a href="services.html">Maintenance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Agence</h4>
+      <ul>
+        <li><a href="index.html#process">Notre méthode</a></li>
+        <li><a href="portfolio.html">Réalisations</a></li>
+        <li><a href="index.html#testimonials">Avis clients</a></li>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li><a href="tarifs.html#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:bonjour@lemanstudio.fr">bonjour@lemanstudio.fr</a></li>
+        <li><a href="contact.html">Demander un devis</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Léman Studio — Tous droits réservés · <a href="#">Mentions légales</a> · <a href="#">CGV</a></p>
+    <div class="social-links">
+      <a href="#" class="social-link">in</a>
+      <a href="#" class="social-link">ig</a>
+      <a href="#" class="social-link">fb</a>
+    </div>
+  </div>
+</footer>
+
+<a href="contact.html" class="floating-cta" id="floatingCta">Devis gratuit</a>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
