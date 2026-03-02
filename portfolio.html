@@ -8,6 +8,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <style>
+    /* ── Portfolio iframe tiles ── */
+    .pi-iframe-wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: inherit;
+    }
+    .pi-iframe-wrap iframe {
+      width: 160%;
+      height: 160%;
+      transform: scale(0.625);
+      transform-origin: top left;
+      border: none;
+      pointer-events: none;
+    }
+    .portfolio-item:hover .pi-iframe-wrap iframe {
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
@@ -50,25 +72,46 @@
         <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 8h18M12 2l6 6-6 6" /></svg>
       </a>
     </div>
+
     <div class="portfolio-grid">
+
+      <!-- TILE 1 — Plombier Genève (iframe) -->
       <div class="portfolio-item">
-        <div class="pi-bg pi-1"></div>
-        <div class="pi-mockup"><div class="pi-bar"></div><div class="pi-bar"></div><div class="pi-bar"></div><div class="pi-square"></div></div>
+        <div class="pi-iframe-wrap">
+          <iframe
+            src="https://www.lemanstudio.ch/demos/plombier-geneve/"
+            title="Plombier Genève"
+            loading="lazy"
+            scrolling="no"
+            tabindex="-1"
+          ></iframe>
+        </div>
         <div class="portfolio-overlay">
-          <div class="pi-cat">E-commerce · Mode</div>
-          <div class="pi-title">Maison Élégance</div>
-          <a href="#" class="pi-link">Voir le projet →</a>
+          <div class="pi-cat">Site vitrine · Artisan</div>
+          <div class="pi-title">Plombier Genève</div>
+          <a href="https://www.lemanstudio.ch/demos/plombier-geneve/" target="_blank" class="pi-link">Voir le projet →</a>
         </div>
       </div>
+
+      <!-- TILE 2 — Serrurier Genève (iframe) -->
       <div class="portfolio-item">
-        <div class="pi-bg pi-2"></div>
-        <div class="pi-mockup"><div class="pi-bar"></div><div class="pi-bar"></div><div class="pi-square"></div></div>
+        <div class="pi-iframe-wrap">
+          <iframe
+            src="https://www.lemanstudio.ch/demos/serrurier-geneve/"
+            title="Serrurier Genève"
+            loading="lazy"
+            scrolling="no"
+            tabindex="-1"
+          ></iframe>
+        </div>
         <div class="portfolio-overlay">
-          <div class="pi-cat">Site vitrine · Restaurant</div>
-          <div class="pi-title">Le Terroir</div>
-          <a href="#" class="pi-link">Voir le projet →</a>
+          <div class="pi-cat">Site vitrine · Artisan</div>
+          <div class="pi-title">Serrurier Genève</div>
+          <a href="https://www.lemanstudio.ch/demos/serrurier-geneve/" target="_blank" class="pi-link">Voir le projet →</a>
         </div>
       </div>
+
+      <!-- TILE 3 — Placeholder -->
       <div class="portfolio-item">
         <div class="pi-bg pi-3"></div>
         <div class="pi-mockup"><div class="pi-bar"></div><div class="pi-bar"></div><div class="pi-square"></div></div>
@@ -78,6 +121,8 @@
           <a href="#" class="pi-link">Voir le projet →</a>
         </div>
       </div>
+
+      <!-- TILE 4 — Placeholder -->
       <div class="portfolio-item">
         <div class="pi-bg pi-4"></div>
         <div class="pi-mockup"><div class="pi-bar"></div><div class="pi-bar"></div><div class="pi-bar"></div><div class="pi-square"></div></div>
@@ -87,6 +132,7 @@
           <a href="#" class="pi-link">Voir le projet →</a>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -140,4 +186,3 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-
