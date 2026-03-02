@@ -83,7 +83,15 @@ nav.scrolled {
 .nav-cta::after { display: none; }
 .nav-cta:hover { background: var(--gold-light); }
 
-.hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; padding: 4px; }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px; /* zone de tap confortable sur mobile */
+}
 .hamburger span { width: 26px; height: 1.5px; background: var(--white); transition: all .3s; transform-origin: center; }
 .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
