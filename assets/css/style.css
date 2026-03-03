@@ -545,6 +545,9 @@ footer{
 
 /* ===== ARTICLE (single) ===== */
 .article-section{background:var(--white);color:var(--ink);}
+.article-section .article-wrap,
+.article-section .article-body,
+.article-section .article-faq{color:var(--ink);}
 .article-wrap{max-width:720px;margin:0 auto;}
 .article-meta{display:flex;flex-wrap:wrap;gap:1rem 2rem;margin-bottom:2rem;font-size:.8rem;color:var(--stone);}
 .article-meta time{font-weight:500;}
@@ -556,12 +559,22 @@ footer{
 .article-body li{margin-bottom:.5rem;}
 .article-body a{color:var(--accent);text-decoration:underline;}
 .article-body a:hover{color:var(--gold);}
-.article-body img{max-width:100%;height:auto;border-radius:8px;margin:1.5rem 0;display:block;box-shadow:0 4px 20px rgba(0,0,0,.06);}
-.article-faq{margin-top:3rem;padding-top:2.5rem;border-top:1px solid rgba(42,74,62,.12);}
-.article-faq h2{font-size:1.5rem;margin-bottom:1.25rem;}
+.article-body figure{margin:1.5rem 0;}
+.article-body img{max-width:100%;height:auto;border-radius:8px;margin:0;display:block;box-shadow:0 4px 20px rgba(0,0,0,.08);}
+.article-img-caption{font-size:.85rem;color:var(--stone);margin-top:.6rem;font-style:italic;}
+/* FAQ article blog : fond clair obligatoire (éviter héritage body sombre) */
+.article-faq{
+  margin-top:3rem;padding:2.5rem;
+  background:var(--cream);
+  color:var(--ink);
+  border-radius:8px;
+  border:1px solid rgba(42,74,62,.1);
+  border-top:2px solid var(--accent);
+}
+.article-faq h2{font-size:1.5rem;margin-bottom:1.25rem;color:var(--ink);}
 .faq-item{margin-bottom:1.25rem;}
-.faq-item h3{font-size:1.1rem;margin:0 0 .5rem;font-weight:600;}
-.faq-item p{margin:0;font-size:1rem;}
+.faq-item h3{font-size:1.1rem;margin:0 0 .5rem;font-weight:600;color:var(--ink);}
+.faq-item p{margin:0;font-size:1rem;color:var(--stone);line-height:1.7;}
 .article-back{margin-top:3rem;display:inline-block;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;}
 .article-back:hover{color:var(--accent);}
 
