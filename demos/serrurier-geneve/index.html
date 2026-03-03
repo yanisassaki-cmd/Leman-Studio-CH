@@ -6,7 +6,6 @@
   <title>Serrurerie Atlas Genève — Dépannage Urgent 24/7</title>
   <meta name="description" content="Serrurerie Atlas Genève — Dépannage urgent 24/7. Porte claquée, serrure bloquée, cylindre cassé. Intervention rapide sur Genève et communes." />
 
-  <!-- Fonts (DIFFÉRENTES DE L'HÔTEL) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -18,16 +17,12 @@
       --ink: #0e1a2b;
       --muted: rgba(14,26,43,.72);
       --line: rgba(14,26,43,.12);
-
       --blue: #1f6fff;
       --blue2:#0b4fd6;
-
-      --urgent: #e11d48;     /* rouge urgence */
+      --urgent: #e11d48;
       --urgent2:#be123c;
-
       --shadow: 0 18px 60px rgba(14,26,43,.12);
       --shadow2: 0 10px 30px rgba(14,26,43,.10);
-
       --radius: 18px;
       --radius2: 26px;
       --max: 1180px;
@@ -50,7 +45,6 @@
     button, input, select{ font:inherit; }
     img{ max-width:100%; display:block; }
 
-    /* Quick utility */
     .wrap{ max-width: var(--max); margin:0 auto; padding: 0 18px; }
     .btn{
       border: 1px solid var(--line);
@@ -108,6 +102,7 @@
       background: var(--urgent);
       box-shadow: 0 0 0 0 rgba(225,29,72,.35);
       animation: pulse 1.6s infinite;
+      flex-shrink: 0;
     }
     @keyframes pulse{
       0%{ box-shadow: 0 0 0 0 rgba(225,29,72,.35); transform: scale(1); }
@@ -115,13 +110,14 @@
       100%{ box-shadow: 0 0 0 0 rgba(225,29,72,0); transform: scale(1); }
     }
 
-    /* Navbar */
+    /* ── Navbar ── */
     header{
       position:sticky;
       top:0;
       z-index:1000;
-      background: rgba(246,248,252,.72);
+      background: rgba(246,248,252,.82);
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(14,26,43,.10);
     }
     .nav{
@@ -149,6 +145,7 @@
       box-shadow: var(--shadow2);
       position:relative;
       overflow:hidden;
+      flex-shrink: 0;
     }
     .logo::after{
       content:"";
@@ -169,6 +166,8 @@
       font-weight: 700;
       color: var(--blue2);
       letter-spacing:-.02em;
+      position: relative;
+      z-index: 1;
     }
     .brand .title{
       display:flex;
@@ -233,15 +232,15 @@
       text-transform:uppercase;
     }
 
-    /* Hero */
+    /* ── Hero ── */
     .hero{
-      padding: 44px 0 26px;
+      padding: 52px 0 32px; /* espace suffisant sous le header sticky */
     }
     .hero-grid{
       display:grid;
       grid-template-columns: 1.1fr .9fr;
       gap: 18px;
-      align-items:stretch;
+      align-items:start; /* start pour éviter l'étirement qui cause des superpositions */
     }
     .hero-card{
       background: var(--surface);
@@ -252,7 +251,7 @@
       position:relative;
     }
     .hero-left{
-      padding: 22px 22px;
+      padding: 28px 28px;
       position:relative;
       overflow:hidden;
     }
@@ -268,11 +267,17 @@
     }
     .hero-left > *{ position:relative; z-index:1; }
 
+    /* Badge séparé du h1 */
+    .hero-left .badge{
+      display: inline-flex;
+      margin-bottom: 16px;
+    }
+
     h1{
       font-family: "Space Grotesk", sans-serif;
       font-size: clamp(34px, 4vw, 54px);
       line-height:1.02;
-      margin: 14px 0 10px;
+      margin: 0 0 12px; /* supprimé margin-top pour éviter superposition avec badge */
       letter-spacing:-.03em;
     }
     .lead{
@@ -316,6 +321,7 @@
       background: rgba(31,111,255,.9);
       border-radius: 999px;
       box-shadow: 0 0 0 5px rgba(31,111,255,.14);
+      flex-shrink: 0;
     }
 
     .hero-right{
@@ -502,6 +508,7 @@
       display:grid;
       place-items:center;
       font-family:"Space Grotesk", sans-serif;
+      flex-shrink: 0;
     }
     .step b{
       display:block;
@@ -860,14 +867,14 @@
 
             <div style="margin-top:14px;" class="notice">
               <b>Urgence :</b> si vous êtes bloqué dehors, gardez votre téléphone chargé et restez dans une zone éclairée.
-              Nous vous guidons au téléphone en attendant l’arrivée.
+              Nous vous guidons au téléphone en attendant l'arrivée.
             </div>
           </div>
 
           <aside class="hero-card hero-right" aria-label="Devis rapide">
             <div class="urgent-box">
               <div>
-                <strong>Devis urgent (fictif)</strong><br>
+                <strong>Devis rapide</strong><br>
                 <span>Réponse immédiate + confirmation</span>
               </div>
               <a class="btn btn-urgent" href="tel:+41225553190"><span class="pulse"></span> Appeler</a>
@@ -912,12 +919,11 @@
 
               <div class="field">
                 <label for="details">Détails</label>
-                <textarea id="details" placeholder="Ex: porte blindée, clé à l’intérieur, étage, interphone…"></textarea>
+                <textarea id="details" placeholder="Ex: porte blindée, clé à l'intérieur, étage, interphone…"></textarea>
               </div>
 
               <div class="form-actions">
                 <button class="btn btn-blue" id="quoteBtn" type="button">Calculer un devis →</button>
-                <button class="btn" id="fillBtn" type="button">Remplir exemple</button>
               </div>
 
               <div class="notice" id="quoteStatus">
@@ -933,9 +939,9 @@
     <div class="wrap">
       <section id="services">
         <div class="section-head">
-          <h2>Services d’urgence &amp; sécurisation</h2>
+          <h2>Services d'urgence &amp; sécurisation</h2>
           <p class="sub">
-            Solutions rapides, propres et adaptées : ouverture sans dégâts quand c’est possible, remplacement immédiat si nécessaire.
+            Solutions rapides, propres et adaptées : ouverture sans dégâts quand c'est possible, remplacement immédiat si nécessaire.
           </p>
         </div>
 
@@ -946,7 +952,7 @@
               <div class="tag">24/7</div>
             </div>
             <h3>Ouverture de porte</h3>
-            <p>Porte claquée, serrure bloquée, clé à l’intérieur. Intervention rapide avec méthode adaptée.</p>
+            <p>Porte claquée, serrure bloquée, clé à l'intérieur. Intervention rapide avec méthode adaptée.</p>
           </div>
 
           <div class="card">
@@ -1000,7 +1006,7 @@
       <section id="process">
         <div class="section-head">
           <h2>Comment ça marche</h2>
-          <p class="sub">Simple, rapide, sans surprise : on annonce le prix avant d’intervenir.</p>
+          <p class="sub">Simple, rapide, sans surprise : on annonce le prix avant d'intervenir.</p>
         </div>
 
         <div class="steps">
@@ -1078,23 +1084,23 @@
       <section id="avis">
         <div class="section-head">
           <h2>Avis clients</h2>
-          <p class="sub">Rapidité, clarté, efficacité — c’est ce qu’on vise à chaque intervention.</p>
+          <p class="sub">Rapidité, clarté, efficacité — c'est ce qu'on vise à chaque intervention.</p>
         </div>
 
         <div class="reviews">
           <div class="review">
             <div class="stars">★★★★★</div>
-            <p>“Porte claquée à 23h. Réponse immédiate, devis clair, intervention rapide. Très pro.”</p>
+            <p>"Porte claquée à 23h. Réponse immédiate, devis clair, intervention rapide. Très pro."</p>
             <div class="who"><span><b>Claire B.</b> — Eaux-Vives</span><span>Nuit</span></div>
           </div>
           <div class="review">
             <div class="stars">★★★★★</div>
-            <p>“Clé cassée dans la serrure. Extraction + cylindre changé sur place. Nickel.”</p>
+            <p>"Clé cassée dans la serrure. Extraction + cylindre changé sur place. Nickel."</p>
             <div class="who"><span><b>Hugo M.</b> — Plainpalais</span><span>Urgence</span></div>
           </div>
           <div class="review">
             <div class="stars">★★★★★</div>
-            <p>“Après effraction, ils ont sécurisé immédiatement et expliqué les options sans pousser à l’achat.”</p>
+            <p>"Après effraction, ils ont sécurisé immédiatement et expliqué les options sans pousser à l'achat."</p>
             <div class="who"><span><b>Nora S.</b> — Carouge</span><span>Sécurisation</span></div>
           </div>
         </div>
@@ -1103,13 +1109,13 @@
       <!-- ZONE -->
       <section id="zone">
         <div class="section-head">
-          <h2>Zone d’intervention</h2>
+          <h2>Zone d'intervention</h2>
           <p class="sub">Genève + communes : centre, rive gauche, rive droite, zones résidentielles et axes principaux.</p>
         </div>
 
         <div class="map">
           <iframe
-            title="Carte — Zone d’intervention Serrurerie Atlas Genève"
+            title="Carte — Zone d'intervention Serrurerie Atlas Genève"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps?q=Gen%C3%A8ve%20Suisse&output=embed">
@@ -1126,8 +1132,8 @@
       <!-- DEVIS -->
       <section id="devis">
         <div class="section-head">
-          <h2>Devis express (fictif)</h2>
-          <p class="sub">Ce formulaire simule une demande et valide instantanément. Parfait pour ton portfolio.</p>
+          <h2>Devis express</h2>
+          <p class="sub">Remplissez le formulaire, obtenez une estimation immédiate. Un technicien vous rappelle pour confirmer.</p>
         </div>
 
         <div class="hero-card" style="padding:18px;">
@@ -1135,15 +1141,15 @@
             <div class="step" style="align-items:flex-start;">
               <div class="num">⚡</div>
               <div>
-                <b>Validation instantanée</b>
-                <span>On simule une estimation + une confirmation de prise en charge (sans backend).</span>
+                <b>Estimation instantanée</b>
+                <span>Fourchette de prix calculée selon votre situation, confirmée avant intervention.</span>
               </div>
             </div>
             <div class="step" style="align-items:flex-start;">
               <div class="num">📍</div>
               <div>
                 <b>Priorité aux urgences</b>
-                <span>Si vous êtes bloqué dehors, le bouton rouge déclenche une modale d’urgence.</span>
+                <span>Si vous êtes bloqué dehors, le bouton rouge vous met en contact direct.</span>
               </div>
             </div>
           </div>
@@ -1166,7 +1172,7 @@
               <label for="bf_time">Quand ?</label>
               <select id="bf_time">
                 <option>Tout de suite</option>
-                <option>Dans l’heure</option>
+                <option>Dans l'heure</option>
                 <option>Ce soir</option>
                 <option>Demain</option>
               </select>
@@ -1184,13 +1190,13 @@
 
             <div class="field" style="grid-column: 1 / -1;">
               <label for="bf_msg">Message</label>
-              <textarea id="bf_msg" placeholder="Ex: porte blindée, clé à l’intérieur, interphone…"></textarea>
+              <textarea id="bf_msg" placeholder="Ex: porte blindée, clé à l'intérieur, interphone…"></textarea>
             </div>
 
             <div class="form-actions" style="grid-column: 1 / -1;">
-              <button class="btn btn-blue" type="submit" id="submitBtn">Envoyer &amp; obtenir l’estimation →</button>
+              <button class="btn btn-blue" type="submit" id="submitBtn">Envoyer &amp; obtenir l'estimation →</button>
               <button class="btn btn-urgent" type="button" id="urgentBtn"><span class="pulse"></span> Urgence : appeler</button>
-              <span class="notice" id="formStatus"><b>Note :</b> ceci est une simulation portfolio.</span>
+              <span class="notice" id="formStatus"></span>
             </div>
           </form>
         </div>
@@ -1250,7 +1256,7 @@
       </div>
       <div class="m-body">
         <h3 id="mTitle">Demande prise en charge.</h3>
-        <p>Votre demande a été enregistrée. Un technicien vous recontacte rapidement pour confirmer l’intervention.</p>
+        <p>Votre demande a été enregistrée. Un technicien vous recontacte rapidement pour confirmer l'intervention.</p>
         <div class="note" id="modalDetails">—</div>
 
         <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
@@ -1262,24 +1268,16 @@
   </div>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Small form quote simulation (hero side)
     const quoteBtn = document.getElementById('quoteBtn');
-    const fillBtn = document.getElementById('fillBtn');
     const quoteStatus = document.getElementById('quoteStatus');
-
     const issue = document.getElementById('issue');
     const district = document.getElementById('district');
-    const name = document.getElementById('name');
-    const phone = document.getElementById('phone');
-    const details = document.getElementById('details');
 
     function rand(min, max){ return Math.floor(Math.random() * (max - min + 1)) + min; }
 
     function estimate(issueValue){
-      // Devis indicatif fictif cohérent
       const base = {
         "Porte claquée": [120, 190],
         "Clé cassée": [140, 230],
@@ -1287,7 +1285,6 @@
         "Cylindre à remplacer": [220, 420],
         "Après effraction": [280, 650]
       }[issueValue] || [140, 260];
-
       const low = base[0] + rand(0, 20);
       const high = base[1] + rand(10, 30);
       return [Math.round(low/10)*10, Math.round(high/10)*10];
@@ -1310,17 +1307,6 @@
       quoteStatus.innerHTML = `<b>Estimation :</b> CHF ${a}–${b} • <b>${issue.value}</b> • ${district.value} — Devis confirmé au téléphone.`;
     });
 
-    fillBtn.addEventListener('click', () => {
-      issue.value = "Porte claquée";
-      district.value = "Pâquis";
-      name.value = "Yanis";
-      phone.value = "+41 79 123 45 67";
-      details.value = "Porte d’appartement, clé restée à l’intérieur, interphone OK, 4e étage.";
-      quoteStatus.innerHTML = `<b>Info :</b> exemple rempli. Clique “Calculer un devis”.`;
-      document.getElementById('services').scrollIntoView({behavior:'smooth', block:'start'});
-    });
-
-    // Big form + modal (portfolio simulation)
     const bigForm = document.getElementById('bigForm');
     const modal = document.getElementById('modal');
     const closeModal = document.getElementById('closeModal');
@@ -1368,20 +1354,17 @@
         `Quand : ${bf_time.value}`,
         `Quartier : ${bf_area.value || "Genève"}`,
         `Téléphone : ${bf_phone.value || "—"}`,
-        `Estimation fictive : CHF ${a}–${b}`,
+        `Estimation : CHF ${a}–${b}`,
         `Message : ${bf_msg.value || "—"}`
       ].join(" • ");
 
-      formStatus.innerHTML = `<b>Envoyé :</b> estimation CHF ${a}–${b}. Confirmation affichée.`;
+      formStatus.innerHTML = `<b>Envoyé :</b> estimation CHF ${a}–${b}. Un technicien vous recontacte.`;
       openModal(detailsText);
     });
 
     urgentBtn.addEventListener('click', () => {
-      openModal("Urgence : appelez le +41 22 555 31 90. Un technicien vous guide immédiatement et confirme l’intervention.");
+      openModal("Urgence : appelez le +41 22 555 31 90. Un technicien vous guide immédiatement et confirme l'intervention.");
     });
-
-    // Floating CTA (mobile)
-    // (simple anchor + tel)
   </script>
 
   <!-- Floating urgent CTA for mobile -->
