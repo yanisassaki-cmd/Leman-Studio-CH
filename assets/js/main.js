@@ -105,20 +105,56 @@ document.addEventListener('click', e => {
   if (!wasOpen) item.classList.add('open');
 });
 
-// ===== FORM FEEDBACK =====
+// ===== FORM SUBMIT VIA FORMSPREE (pas de redirection, message sur la page) =====
 function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('.btn-submit');
-  if (!btn) return;
-  const original = btn.textContent;
-  btn.textContent = '✓ Message envoyé !';
-  btn.style.background = '#1a3a2e';
-  btn.style.color = '#fff';
-  setTimeout(() => {
-    btn.textContent = original;
+  const form = e.target;
+  const btn = form.querySelector('.btn-submit');
+  const successEl = form.querySelector('#form-success-message');
+  if (!form || !btn) return;
+
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours...';
+
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { Accept: 'application/json' }
+  })
+    .then(function (res) {
+      if (res.ok) {
+        form.reset();
+        if (successEl) {
+          successEl.style.display = 'block';
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        btn.textContent = '✓ Envoyé !';
+        btn.style.background = '#1a3a2e';
+        btn.style.color = '#fff';
+      } else {
+        throw new Error('Erreur envoi');
+      }
+    })
+    .catch(function () {
+      btn.textContent = 'Erreur — réessayez';
+      btn.style.background = '#8b2a2a';
+      btn.style.color = '#fff';
+      setTimeout(function () {
+        btn.textContent = originalText;
+        btn.style.background = '';
+        btn.style.color = '';
+        btn.disabled = false;
+      }, 3000);
+      return;
+    });
+
+  setTimeout(function () {
+    btn.textContent = originalText;
     btn.style.background = '';
     btn.style.color = '';
-  }, 3000);
+    btn.disabled = false;
+  }, 4000);
 }
 window.handleSubmit = handleSubmit;
 

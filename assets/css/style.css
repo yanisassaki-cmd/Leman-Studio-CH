@@ -450,6 +450,13 @@ textarea{resize:vertical;min-height:120px;}
   letter-spacing:.09em;text-transform:uppercase;cursor:pointer;
 }
 .btn-submit:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-submit:disabled{opacity:.85;cursor:wait;}
+.form-success-message{
+  margin-top:1rem;padding:1.25rem 1.5rem;
+  background:var(--white);border:1px solid rgba(255,255,255,.3);
+  color:var(--ink);font-size:1rem;line-height:1.6;border-radius:6px;
+}
+#contact .form-success-message{color:var(--ink);}
 
 /* ===== FOOTER ===== */
 footer{

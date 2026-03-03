@@ -101,25 +101,30 @@
           </div>
         </div>
       </div>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
+      <form class="contact-form" method="POST" action="https://formspree.io/f/xgoljqza" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="_replyto" value="contact@lemanstudio.ch" />
+        <input type="hidden" name="_autoresponse" value="Bonjour, merci pour votre message ! Nous l'avons bien reçu et vous répondrons dans les 24h. — L'équipe Léman Studio" />
         <div class="form-row">
-          <div class="form-group"><label>Prénom</label><input type="text" placeholder="Votre prénom" required /></div>
-          <div class="form-group"><label>Nom</label><input type="text" placeholder="Votre nom" required /></div>
+          <div class="form-group"><label for="demo-prenom">Prénom</label><input id="demo-prenom" type="text" name="prenom" placeholder="Votre prénom" required /></div>
+          <div class="form-group"><label for="demo-nom">Nom</label><input id="demo-nom" type="text" name="nom" placeholder="Votre nom" required /></div>
         </div>
-        <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="+33 7 50 22 51 48" required /></div>
-        <div class="form-group"><label>Email</label><input type="email" placeholder="votre@email.ch" /></div>
+        <div class="form-group"><label for="demo-telephone">Téléphone</label><input id="demo-telephone" type="tel" name="telephone" placeholder="+33 7 50 22 51 48" required /></div>
+        <div class="form-group"><label for="demo-email">Email</label><input id="demo-email" type="email" name="email" placeholder="votre@email.ch" /></div>
         <div class="form-group">
-          <label>Type de demande</label>
-          <select>
+          <label for="demo-type">Type de demande</label>
+          <select id="demo-type" name="type_demande">
             <option value="">Sélectionner...</option>
-            <option>Ouverture de porte</option>
-            <option>Remplacement de serrure</option>
-            <option>Mise en sécurité</option>
-            <option>Autre</option>
+            <option value="Ouverture de porte">Ouverture de porte</option>
+            <option value="Remplacement de serrure">Remplacement de serrure</option>
+            <option value="Mise en sécurité">Mise en sécurité</option>
+            <option value="Autre">Autre</option>
           </select>
         </div>
-        <div class="form-group"><label>Message</label><textarea placeholder="Décrivez votre besoin..."></textarea></div>
+        <div class="form-group"><label for="demo-message">Message</label><textarea id="demo-message" name="message" placeholder="Décrivez votre besoin..."></textarea></div>
         <button type="submit" class="btn-submit">Envoyer la demande →</button>
+        <div id="form-success-message" class="form-success-message" role="alert" aria-live="polite" style="display: none;">
+          Votre message a bien été envoyé, nous vous répondons sous 24h.
+        </div>
       </form>
     </div>
   </section>
