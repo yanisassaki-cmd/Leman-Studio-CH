@@ -1,155 +1,1393 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="https://raw.githubusercontent.com/yanisassaki-cmd/Leman-Studio-CH/refs/heads/main/favicon.ico" type="image/x-icon" />
-  <title>Serrurier Genève — Ouverture &amp; Sécurisation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Serrurerie Atlas Genève — Dépannage Urgent 24/7</title>
+  <meta name="description" content="Serrurerie Atlas Genève — Dépannage urgent 24/7. Porte claquée, serrure bloquée, cylindre cassé. Intervention rapide sur Genève et communes." />
+
+  <!-- Fonts (DIFFÉRENTES DE L'HÔTEL) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #f6f8fc;
+      --surface: #ffffff;
+      --ink: #0e1a2b;
+      --muted: rgba(14,26,43,.72);
+      --line: rgba(14,26,43,.12);
+
+      --blue: #1f6fff;
+      --blue2:#0b4fd6;
+
+      --urgent: #e11d48;     /* rouge urgence */
+      --urgent2:#be123c;
+
+      --shadow: 0 18px 60px rgba(14,26,43,.12);
+      --shadow2: 0 10px 30px rgba(14,26,43,.10);
+
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1180px;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 520px at 12% 8%, rgba(31,111,255,.10), transparent 60%),
+        radial-gradient(900px 520px at 88% 10%, rgba(225,29,72,.08), transparent 60%),
+        linear-gradient(180deg, #f6f8fc 0%, #f2f6ff 45%, #f6f8fc 100%);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    button, input, select{ font:inherit; }
+    img{ max-width:100%; display:block; }
+
+    /* Quick utility */
+    .wrap{ max-width: var(--max); margin:0 auto; padding: 0 18px; }
+    .btn{
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      padding: 12px 16px;
+      border-radius: 14px;
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .18s ease, background .18s ease, border .18s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); border-color: rgba(14,26,43,.18); }
+    .btn:active{ transform: translateY(0px); }
+
+    .btn-blue{
+      border-color: rgba(31,111,255,.30);
+      background: linear-gradient(180deg, rgba(31,111,255,.12), rgba(31,111,255,.06));
+    }
+    .btn-blue:hover{
+      border-color: rgba(31,111,255,.42);
+      background: linear-gradient(180deg, rgba(31,111,255,.16), rgba(31,111,255,.08));
+    }
+
+    .btn-urgent{
+      border-color: rgba(225,29,72,.30);
+      background: linear-gradient(180deg, rgba(225,29,72,.16), rgba(225,29,72,.10));
+      color: #1a0a10;
+    }
+    .btn-urgent:hover{
+      border-color: rgba(225,29,72,.45);
+      background: linear-gradient(180deg, rgba(225,29,72,.22), rgba(225,29,72,.12));
+      box-shadow: 0 18px 45px rgba(225,29,72,.18);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(31,111,255,.08);
+      border: 1px solid rgba(31,111,255,.18);
+      color: rgba(14,26,43,.84);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .pulse{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--urgent);
+      box-shadow: 0 0 0 0 rgba(225,29,72,.35);
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse{
+      0%{ box-shadow: 0 0 0 0 rgba(225,29,72,.35); transform: scale(1); }
+      60%{ box-shadow: 0 0 0 14px rgba(225,29,72,0); transform: scale(1.03); }
+      100%{ box-shadow: 0 0 0 0 rgba(225,29,72,0); transform: scale(1); }
+    }
+
+    /* Navbar */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background: rgba(246,248,252,.72);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(14,26,43,.10);
+    }
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 240px;
+    }
+    .logo{
+      width:40px; height:40px;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(31,111,255,.22), rgba(31,111,255,.10)),
+        linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.7));
+      border: 1px solid rgba(31,111,255,.20);
+      display:grid;
+      place-items:center;
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo::after{
+      content:"";
+      position:absolute;
+      inset:-60%;
+      background: linear-gradient(90deg, transparent, rgba(31,111,255,.25), transparent);
+      transform: rotate(25deg);
+      animation: sheen 3.5s infinite;
+    }
+    @keyframes sheen{
+      0%{ transform: translateX(-40%) rotate(25deg); opacity:0; }
+      20%{ opacity:1; }
+      55%{ transform: translateX(55%) rotate(25deg); opacity:.9; }
+      100%{ transform: translateX(80%) rotate(25deg); opacity:0; }
+    }
+    .logo span{
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      color: var(--blue2);
+      letter-spacing:-.02em;
+    }
+    .brand .title{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+    .brand strong{
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -.01em;
+    }
+    .brand small{
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      font-size: 11px;
+    }
+
+    .navlinks{
+      display:flex;
+      gap: 8px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .navlinks a{
+      font-size: 13px;
+      color: rgba(14,26,43,.78);
+      padding: 10px 10px;
+      border-radius: 999px;
+      transition: background .18s ease;
+      font-weight: 700;
+    }
+    .navlinks a:hover{
+      background: rgba(31,111,255,.08);
+    }
+
+    .navcta{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      justify-content:flex-end;
+      min-width: 290px;
+    }
+    .hotline{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+      margin-right: 6px;
+      text-align:right;
+    }
+    .hotline b{
+      font-size: 14px;
+      letter-spacing:-.01em;
+    }
+    .hotline span{
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 44px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items:stretch;
+    }
+    .hero-card{
+      background: var(--surface);
+      border: 1px solid rgba(14,26,43,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-left{
+      padding: 22px 22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-left::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:
+        radial-gradient(900px 520px at 20% 0%, rgba(31,111,255,.16), transparent 60%),
+        radial-gradient(900px 520px at 100% 0%, rgba(225,29,72,.12), transparent 60%);
+      pointer-events:none;
+      opacity:.7;
+    }
+    .hero-left > *{ position:relative; z-index:1; }
+
+    h1{
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height:1.02;
+      margin: 14px 0 10px;
+      letter-spacing:-.03em;
+    }
+    .lead{
+      margin: 0 0 16px;
+      color: rgba(14,26,43,.74);
+      font-size: 15px;
+      line-height:1.7;
+      max-width: 58ch;
+      font-weight: 600;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+      align-items:center;
+    }
+
+    .trust{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .chip{
+      background: rgba(14,26,43,.03);
+      border: 1px solid rgba(14,26,43,.10);
+      border-radius: 999px;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: rgba(14,26,43,.78);
+      font-weight: 700;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .chip i{
+      font-style:normal;
+      width: 8px; height: 8px;
+      background: rgba(31,111,255,.9);
+      border-radius: 999px;
+      box-shadow: 0 0 0 5px rgba(31,111,255,.14);
+    }
+
+    .hero-right{
+      display:grid;
+      grid-template-rows: auto 1fr;
+    }
+    .urgent-box{
+      padding: 18px 18px;
+      border-bottom: 1px solid rgba(14,26,43,.10);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      background: linear-gradient(180deg, rgba(225,29,72,.08), rgba(225,29,72,.03));
+    }
+    .urgent-box strong{
+      font-family:"Space Grotesk", sans-serif;
+      font-size: 15px;
+      letter-spacing:-.01em;
+    }
+    .urgent-box span{
+      color: rgba(14,26,43,.70);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .mini-form{
+      padding: 18px;
+      display:grid;
+      gap: 12px;
+    }
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    label{
+      font-size: 12px;
+      color: rgba(14,26,43,.70);
+      font-weight: 800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    input, select, textarea{
+      border-radius: 14px;
+      border: 1px solid rgba(14,26,43,.14);
+      padding: 12px 12px;
+      outline:none;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 650;
+      transition: border .18s ease, box-shadow .18s ease;
+    }
+    textarea{ min-height: 88px; resize: vertical; font-weight:600; }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(31,111,255,.45);
+      box-shadow: 0 0 0 4px rgba(31,111,255,.12);
+    }
+
+    .form-actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top: 2px;
+    }
+
+    .notice{
+      font-size: 12px;
+      color: rgba(14,26,43,.66);
+      line-height:1.55;
+      font-weight: 650;
+    }
+    .notice b{ color: rgba(14,26,43,.86); }
+
+    /* Sections */
+    section{ padding: 54px 0; }
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:14px;
+      margin-bottom: 16px;
+    }
+    h2{
+      font-family:"Space Grotesk", sans-serif;
+      margin:0;
+      font-size: clamp(22px, 2.4vw, 34px);
+      letter-spacing:-.02em;
+      line-height:1.1;
+    }
+    .sub{
+      margin:0;
+      color: rgba(14,26,43,.72);
+      max-width: 70ch;
+      line-height:1.7;
+      font-weight: 650;
+      font-size: 14px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      background: var(--surface);
+      border: 1px solid rgba(14,26,43,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      padding: 16px 16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      transition: transform .14s ease;
+      box-shadow: var(--shadow);
+    }
+    .card .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 10px;
+    }
+    .card .icon{
+      width: 42px; height: 42px;
+      border-radius: 16px;
+      background: rgba(31,111,255,.10);
+      border: 1px solid rgba(31,111,255,.18);
+      display:grid;
+      place-items:center;
+      font-size: 18px;
+    }
+    .card h3{
+      margin: 0 0 6px;
+      font-size: 16px;
+      letter-spacing:-.01em;
+      font-family:"Space Grotesk", sans-serif;
+    }
+    .card p{
+      margin:0;
+      color: rgba(14,26,43,.72);
+      line-height:1.7;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .card .tag{
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color: rgba(14,26,43,.62);
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(14,26,43,.04);
+      border:1px solid rgba(14,26,43,.10);
+      white-space:nowrap;
+    }
+
+    /* Steps */
+    .steps{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items:start;
+    }
+    .step{
+      display:flex;
+      gap: 12px;
+      padding: 16px;
+      border-radius: var(--radius2);
+      background: var(--surface);
+      border:1px solid rgba(14,26,43,.10);
+      box-shadow: var(--shadow2);
+    }
+    .num{
+      width: 40px; height: 40px;
+      border-radius: 16px;
+      background: rgba(225,29,72,.08);
+      border: 1px solid rgba(225,29,72,.18);
+      color: rgba(14,26,43,.90);
+      font-weight: 900;
+      display:grid;
+      place-items:center;
+      font-family:"Space Grotesk", sans-serif;
+    }
+    .step b{
+      display:block;
+      margin-bottom: 6px;
+      font-family:"Space Grotesk", sans-serif;
+    }
+    .step span{
+      display:block;
+      color: rgba(14,26,43,.72);
+      line-height:1.7;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* Pricing */
+    .pricing{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items:stretch;
+    }
+    .price-card{
+      background: var(--surface);
+      border: 1px solid rgba(14,26,43,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .price-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(800px 420px at 20% 0%, rgba(31,111,255,.16), transparent 60%);
+      opacity:.7;
+      pointer-events:none;
+    }
+    .price-card > *{ position:relative; z-index:1; }
+    .price-card h3{
+      margin:0 0 6px;
+      font-family:"Space Grotesk", sans-serif;
+      letter-spacing:-.01em;
+    }
+    .price-card p{
+      margin:0 0 14px;
+      color: rgba(14,26,43,.72);
+      font-weight: 650;
+      line-height:1.7;
+      font-size: 13px;
+    }
+    .price-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .line{
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(14,26,43,.03);
+      border:1px solid rgba(14,26,43,.10);
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      font-weight: 750;
+      font-size: 13px;
+    }
+    .line i{ font-style:normal; color: rgba(14,26,43,.62); font-weight:800; }
+    .line b{ font-family:"Space Grotesk", sans-serif; letter-spacing:-.01em; }
+
+    /* Reviews */
+    .reviews{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .review{
+      background: var(--surface);
+      border: 1px solid rgba(14,26,43,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      padding: 16px;
+    }
+    .stars{
+      color: rgba(31,111,255,.95);
+      letter-spacing:.12em;
+      font-weight: 900;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .review p{
+      margin:0 0 12px;
+      color: rgba(14,26,43,.74);
+      line-height:1.7;
+      font-weight: 650;
+      font-size: 13px;
+    }
+    .review .who{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      font-size: 12px;
+      color: rgba(14,26,43,.62);
+      font-weight: 800;
+    }
+
+    /* Map + footer */
+    .map{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(14,26,43,.10);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      background: var(--surface);
+    }
+    .map iframe{
+      width:100%;
+      height: 340px;
+      border:0;
+      filter: grayscale(.15) contrast(1.05) saturate(1.05);
+    }
+    footer{
+      padding: 34px 0 28px;
+      border-top: 1px solid rgba(14,26,43,.10);
+      background: rgba(255,255,255,.65);
+      backdrop-filter: blur(12px);
+    }
+    .foot{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items:start;
+    }
+    .foot p{
+      margin: 10px 0 0;
+      color: rgba(14,26,43,.72);
+      line-height:1.7;
+      font-weight: 650;
+      font-size: 13px;
+    }
+    .cols{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .col{
+      background: var(--surface);
+      border: 1px solid rgba(14,26,43,.10);
+      border-radius: 22px;
+      padding: 14px;
+      box-shadow: var(--shadow2);
+    }
+    .col strong{
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color: rgba(14,26,43,.72);
+      display:block;
+      margin-bottom: 10px;
+    }
+    .col a, .col div{
+      display:block;
+      margin: 8px 0;
+      color: rgba(14,26,43,.76);
+      font-weight: 750;
+      font-size: 13px;
+    }
+    .subline{
+      margin-top: 14px;
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+      color: rgba(14,26,43,.58);
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    /* Modal */
+    .modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      place-items:center;
+      z-index:2000;
+      background: rgba(14,26,43,.55);
+      backdrop-filter: blur(10px);
+      padding: 18px;
+    }
+    .modal.open{ display:grid; }
+    .modal-card{
+      width:min(720px, 100%);
+      background: #fff;
+      border-radius: 28px;
+      border: 1px solid rgba(14,26,43,.12);
+      box-shadow: 0 30px 120px rgba(0,0,0,.25);
+      overflow:hidden;
+      position:relative;
+    }
+    .modal-card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:
+        radial-gradient(900px 520px at 15% 0%, rgba(31,111,255,.14), transparent 60%),
+        radial-gradient(900px 520px at 100% 0%, rgba(225,29,72,.12), transparent 60%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .modal-card > *{ position:relative; z-index:1; }
+    .m-top{
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(14,26,43,.10);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .m-top strong{
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color: rgba(14,26,43,.72);
+    }
+    .x{
+      width: 40px; height: 40px;
+      border-radius: 14px;
+      border: 1px solid rgba(14,26,43,.12);
+      background: rgba(14,26,43,.03);
+      cursor:pointer;
+      font-weight: 900;
+    }
+    .m-body{
+      padding: 16px;
+    }
+    .m-body h3{
+      margin: 0 0 8px;
+      font-family:"Space Grotesk", sans-serif;
+      letter-spacing:-.02em;
+    }
+    .m-body p{
+      margin:0 0 12px;
+      color: rgba(14,26,43,.72);
+      line-height:1.7;
+      font-weight: 650;
+      font-size: 13px;
+    }
+    .note{
+      padding: 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(14,26,43,.10);
+      background: rgba(14,26,43,.03);
+      color: rgba(14,26,43,.72);
+      line-height:1.65;
+      font-weight: 650;
+      font-size: 13px;
+    }
+
+    /* Floating urgent CTA (mobile) */
+    .float-cta{
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 1500;
+      display:none;
+      gap: 10px;
+    }
+    .float-cta a{
+      flex:1;
+      justify-content:center;
+      border-radius: 16px;
+      padding: 14px 14px;
+      font-weight: 900;
+    }
+
+    @media (max-width: 980px){
+      .navlinks{ display:none; }
+      .navcta{ min-width: 0; }
+      .hotline{ display:none; }
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .steps{ grid-template-columns: 1fr; }
+      .pricing{ grid-template-columns: 1fr; }
+      .reviews{ grid-template-columns: 1fr; }
+      .float-cta{ display:flex; }
+    }
+  </style>
 </head>
+
 <body>
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
-  <nav id="nav" class="scrolled">
-    <a href="#" class="logo">Serrurier<span>.</span>Genève</a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-  </nav>
-
-  <div class="mobile-nav" id="mobileNav">
-    <span class="mobile-nav-logo">Serrurier.Genève</span>
-    <a href="#services" class="mobile-link">Services</a>
-    <a href="#contact" class="mobile-link mob-cta">Devis gratuit</a>
-  </div>
-
-  <section id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-lines"></div>
-    <div class="hero-content">
-      <div class="hero-tag">Serrurier · Genève &amp; canton</div>
-      <h1 class="hero-title">
-        Porte bloquée<br />
-        <em>clé perdue</em><br />
-        <span class="outline">on arrive.</span>
-      </h1>
-      <p class="hero-subtitle">Ouverture de porte sans casse, remplacement de serrure et sécurisation de votre logement. Intervention rapide 24h/24 — devis clair avant chaque intervention.</p>
-      <div class="hero-btns">
-        <a href="tel:+33750225148" class="btn-primary">Appeler maintenant</a>
-        <a href="#contact" class="btn-secondary">
-          Demander un devis
-          <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 8h18M12 2l6 6-6 6" /></svg>
+  <!-- HEADER -->
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Retour en haut">
+          <div class="logo" aria-hidden="true"><span>A</span></div>
+          <div class="title">
+            <strong>Serrurerie Atlas Genève</strong>
+            <small>Urgence 24/7 • Intervention rapide</small>
+          </div>
         </a>
-      </div>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">24h</div><div class="stat-label">Sur appel</div></div>
-      <div class="stat"><div class="stat-num">30min</div><div class="stat-label">Arrivée moyenne</div></div>
-    </div>
-  </section>
 
-  <section id="services">
-    <div class="services-header">
-      <div class="section-label">Nos prestations</div>
-      <h2>Serrurerie <em>d'urgence</em><br />et sécurisation à Genève</h2>
-      <p>Nous intervenons pour les ouvertures de portes, les serrures forcées, les clés perdues et la mise en sécurité après effraction.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M2 21v-3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v3"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></div>
-        <div class="service-title">Ouverture de porte</div>
-        <div class="service-desc">Porte claquée ou verrouillée, nous l'ouvrons proprement, de préférence sans dégât sur la serrure.</div>
-        <div class="service-tags"><span class="tag">24h/24</span><span class="tag">Sans casse</span></div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 11a4 4 0 1 1 8 0v3"/><path d="M10 17h4"/></svg></div>
-        <div class="service-title">Remplacement de serrure</div>
-        <div class="service-desc">Serrure abîmée, vétuste ou fracturée : remplacement rapide avec des modèles plus sûrs et certifiés.</div>
-        <div class="service-tags"><span class="tag">Sécurité</span><span class="tag">Normes</span></div>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M4 11V5a2 2 0 0 1 2-2h12l2 3v12a2 2 0 0 1-2 2H8"/><circle cx="8" cy="17" r="3"/><path d="M8 16v2l1 1"/></svg></div>
-        <div class="service-title">Mise en sécurité</div>
-        <div class="service-desc">Après une tentative d'effraction, nous consolidons portes et serrures pour vous permettre de dormir sereinement.</div>
-        <div class="service-tags"><span class="tag">Après effraction</span><span class="tag">Renforts</span></div>
-      </div>
-    </div>
-  </section>
+        <nav class="navlinks" aria-label="Navigation">
+          <a href="#services">Services</a>
+          <a href="#process">Comment ça marche</a>
+          <a href="#tarifs">Tarifs</a>
+          <a href="#avis">Avis</a>
+          <a href="#zone">Zone</a>
+          <a href="#devis">Devis</a>
+        </nav>
 
-  <section id="contact">
-    <div class="contact-wrap">
-      <div class="contact-intro">
-        <div class="section-label">Nous contacter</div>
-        <h2>Urgence ou <em>devis</em> ?<br />Appelez-nous.</h2>
-        <p>Disponibles 24h/24 et 7j/7 pour les urgences. Un devis clair vous est communiqué avant toute intervention.</p>
-        <div class="contact-details">
-          <div class="contact-detail">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.4 2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 17z"/></svg>
-            +33 7 50 22 51 48
+        <div class="navcta">
+          <div class="hotline">
+            <span>Urgence 24/7</span>
+            <b>+41 22 555 31 90</b>
           </div>
-          <div class="contact-detail">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Genève &amp; canton
-          </div>
+          <a class="btn btn-blue" href="#devis">Demander un devis</a>
+          <a class="btn btn-urgent" href="tel:+41225553190">
+            <span class="pulse" aria-hidden="true"></span>
+            Appel urgence
+          </a>
         </div>
       </div>
-      <form class="contact-form" method="POST" action="https://formspree.io/f/xgoljqza" onsubmit="handleSubmit(event)">
-        <input type="hidden" name="_replyto" value="contact@lemanstudio.ch" />
-        <input type="hidden" name="_autoresponse" value="Bonjour, merci pour votre message ! Nous l'avons bien reçu et vous répondrons dans les 24h. — L'équipe Léman Studio" />
-        <div class="form-row">
-          <div class="form-group"><label for="demo-prenom">Prénom</label><input id="demo-prenom" type="text" name="prenom" placeholder="Votre prénom" required /></div>
-          <div class="form-group"><label for="demo-nom">Nom</label><input id="demo-nom" type="text" name="nom" placeholder="Votre nom" required /></div>
-        </div>
-        <div class="form-group"><label for="demo-telephone">Téléphone</label><input id="demo-telephone" type="tel" name="telephone" placeholder="+33 7 50 22 51 48" required /></div>
-        <div class="form-group"><label for="demo-email">Email</label><input id="demo-email" type="email" name="email" placeholder="votre@email.ch" /></div>
-        <div class="form-group">
-          <label for="demo-type">Type de demande</label>
-          <select id="demo-type" name="type_demande">
-            <option value="">Sélectionner...</option>
-            <option value="Ouverture de porte">Ouverture de porte</option>
-            <option value="Remplacement de serrure">Remplacement de serrure</option>
-            <option value="Mise en sécurité">Mise en sécurité</option>
-            <option value="Autre">Autre</option>
-          </select>
-        </div>
-        <div class="form-group"><label for="demo-message">Message</label><textarea id="demo-message" name="message" placeholder="Décrivez votre besoin..."></textarea></div>
-        <button type="submit" class="btn-submit">Envoyer la demande →</button>
-        <div id="form-success-message" class="form-success-message" role="alert" aria-live="polite" style="display: none;">
-          Votre message a bien été envoyé, nous vous répondons sous 24h.
-        </div>
-      </form>
     </div>
-  </section>
+  </header>
 
+  <!-- HERO -->
+  <main id="top">
+    <div class="wrap">
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-card hero-left">
+            <div class="badge"><span class="pulse"></span> Dépannage 24/7 • Genève &amp; communes</div>
+            <h1>Porte claquée ? Serrure bloquée ? <span style="color:var(--urgent);">On intervient maintenant.</span></h1>
+            <p class="lead">
+              Dépannage serrurier à Genève, 24h/24 et 7j/7. Ouverture de porte, remplacement de cylindre, sécurisation après effraction.
+              Devis clair avant intervention.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-urgent" href="tel:+41225553190">
+                <span class="pulse" aria-hidden="true"></span>
+                Appeler maintenant • +41 22 555 31 90
+              </a>
+              <a class="btn btn-blue" href="#devis">Devis express en 30 sec →</a>
+              <a class="btn" href="#services">Voir les services</a>
+            </div>
+
+            <div class="trust">
+              <div class="chip"><i></i> Intervention rapide • Genève centre</div>
+              <div class="chip"><i></i> Devis annoncé avant déplacement</div>
+              <div class="chip"><i></i> Paiement carte / TWINT</div>
+            </div>
+
+            <div style="margin-top:14px;" class="notice">
+              <b>Urgence :</b> si vous êtes bloqué dehors, gardez votre téléphone chargé et restez dans une zone éclairée.
+              Nous vous guidons au téléphone en attendant l’arrivée.
+            </div>
+          </div>
+
+          <aside class="hero-card hero-right" aria-label="Devis rapide">
+            <div class="urgent-box">
+              <div>
+                <strong>Devis urgent (fictif)</strong><br>
+                <span>Réponse immédiate + confirmation</span>
+              </div>
+              <a class="btn btn-urgent" href="tel:+41225553190"><span class="pulse"></span> Appeler</a>
+            </div>
+
+            <div class="mini-form">
+              <div class="field">
+                <label for="issue">Problème</label>
+                <select id="issue">
+                  <option value="Porte claquée">Porte claquée</option>
+                  <option value="Clé cassée">Clé cassée / coincée</option>
+                  <option value="Serrure bloquée">Serrure bloquée</option>
+                  <option value="Cylindre à remplacer">Cylindre à remplacer</option>
+                  <option value="Après effraction">Sécurisation après effraction</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="district">Zone (Genève)</label>
+                <select id="district">
+                  <option>Pâquis</option>
+                  <option>Plainpalais</option>
+                  <option>Eaux-Vives</option>
+                  <option>Carouge</option>
+                  <option>Jonction</option>
+                  <option>Champel</option>
+                  <option>Chêne-Bourg</option>
+                  <option>Vernier</option>
+                  <option>Meyrin</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="name">Nom</label>
+                <input id="name" placeholder="Votre nom" />
+              </div>
+
+              <div class="field">
+                <label for="phone">Téléphone</label>
+                <input id="phone" placeholder="+41 7X XXX XX XX" />
+              </div>
+
+              <div class="field">
+                <label for="details">Détails</label>
+                <textarea id="details" placeholder="Ex: porte blindée, clé à l’intérieur, étage, interphone…"></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-blue" id="quoteBtn" type="button">Calculer un devis →</button>
+                <button class="btn" id="fillBtn" type="button">Remplir exemple</button>
+              </div>
+
+              <div class="notice" id="quoteStatus">
+                <b>Info :</b> devis indicatif, confirmé au téléphone avant intervention.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="wrap">
+      <section id="services">
+        <div class="section-head">
+          <h2>Services d’urgence &amp; sécurisation</h2>
+          <p class="sub">
+            Solutions rapides, propres et adaptées : ouverture sans dégâts quand c’est possible, remplacement immédiat si nécessaire.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="top">
+              <div class="icon">🔓</div>
+              <div class="tag">24/7</div>
+            </div>
+            <h3>Ouverture de porte</h3>
+            <p>Porte claquée, serrure bloquée, clé à l’intérieur. Intervention rapide avec méthode adaptée.</p>
+          </div>
+
+          <div class="card">
+            <div class="top">
+              <div class="icon">🧩</div>
+              <div class="tag">Sur place</div>
+            </div>
+            <h3>Remplacement cylindre</h3>
+            <p>Cylindre cassé, clé perdue, sécurisation. Large stock de cylindres standards &amp; sécurité.</p>
+          </div>
+
+          <div class="card">
+            <div class="top">
+              <div class="icon">🛡️</div>
+              <div class="tag">Après effraction</div>
+            </div>
+            <h3>Sécurisation immédiate</h3>
+            <p>Pose provisoire, renfort, remplacement serrure/cylindre. Priorité aux urgences sécurité.</p>
+          </div>
+
+          <div class="card">
+            <div class="top">
+              <div class="icon">🚪</div>
+              <div class="tag">Options</div>
+            </div>
+            <h3>Blindage &amp; renforts</h3>
+            <p>Renfort de porte, cornière anti-pince, serrure multipoints. Recommandations claires.</p>
+          </div>
+
+          <div class="card">
+            <div class="top">
+              <div class="icon">🏢</div>
+              <div class="tag">Pro</div>
+            </div>
+            <h3>Intervention commerces</h3>
+            <p>Rideaux métalliques, portes techniques, accès locaux. Interventions rapides en horaires étendus.</p>
+          </div>
+
+          <div class="card">
+            <div class="top">
+              <div class="icon">🔑</div>
+              <div class="tag">Prévention</div>
+            </div>
+            <h3>Changement préventif</h3>
+            <p>Clés qui tournent mal, cylindre usé, serrure ancienne. Remplacement avant la panne.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS -->
+      <section id="process">
+        <div class="section-head">
+          <h2>Comment ça marche</h2>
+          <p class="sub">Simple, rapide, sans surprise : on annonce le prix avant d’intervenir.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <div>
+              <b>Appel / message</b>
+              <span>Vous décrivez la situation (porte, serrure, cylindre). On vous pose 2–3 questions utiles.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <div>
+              <b>Devis clair</b>
+              <span>On annonce une fourchette et on confirme avant de commencer. Pas de surprise.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <div>
+              <b>Intervention</b>
+              <span>Ouverture propre si possible. Sinon remplacement immédiat du cylindre / serrure.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">4</div>
+            <div>
+              <b>Facture &amp; conseils</b>
+              <span>Facture détaillée et recommandations simples pour éviter que ça se reproduise.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <section id="tarifs">
+        <div class="section-head">
+          <h2>Tarifs indicatifs (transparents)</h2>
+          <p class="sub">Exemples de fourchettes. Le tarif exact dépend du type de porte et de serrure.</p>
+        </div>
+
+        <div class="pricing">
+          <div class="price-card">
+            <h3>Dépannage urgence</h3>
+            <p>Ouverture de porte, extraction de clé, déblocage. Devis confirmé avant intervention.</p>
+            <div class="price-grid">
+              <div class="line"><i>Porte claquée</i><b>CHF 120–190</b></div>
+              <div class="line"><i>Serrure bloquée</i><b>CHF 160–260</b></div>
+              <div class="line"><i>Clé cassée</i><b>CHF 140–230</b></div>
+              <div class="line"><i>Nuit / week-end</i><b>Sur majoration</b></div>
+            </div>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn btn-urgent" href="tel:+41225553190"><span class="pulse"></span> Urgence : appeler</a>
+              <a class="btn btn-blue" href="#devis">Devis express</a>
+            </div>
+          </div>
+
+          <div class="price-card">
+            <h3>Sécurisation &amp; remplacement</h3>
+            <p>Remplacement cylindre, serrure, renforts anti-effraction. Stock sur place.</p>
+            <div class="price-grid">
+              <div class="line"><i>Cylindre standard</i><b>CHF 90–160</b></div>
+              <div class="line"><i>Cylindre sécurité</i><b>CHF 160–320</b></div>
+              <div class="line"><i>Serrure 1 point</i><b>CHF 180–360</b></div>
+              <div class="line"><i>Multipoints</i><b>Sur devis</b></div>
+            </div>
+            <div style="margin-top:12px;" class="note">
+              Astuce : après perte de clés, le changement de cylindre est souvent la solution la plus simple et efficace.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REVIEWS -->
+      <section id="avis">
+        <div class="section-head">
+          <h2>Avis clients</h2>
+          <p class="sub">Rapidité, clarté, efficacité — c’est ce qu’on vise à chaque intervention.</p>
+        </div>
+
+        <div class="reviews">
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>“Porte claquée à 23h. Réponse immédiate, devis clair, intervention rapide. Très pro.”</p>
+            <div class="who"><span><b>Claire B.</b> — Eaux-Vives</span><span>Nuit</span></div>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>“Clé cassée dans la serrure. Extraction + cylindre changé sur place. Nickel.”</p>
+            <div class="who"><span><b>Hugo M.</b> — Plainpalais</span><span>Urgence</span></div>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>“Après effraction, ils ont sécurisé immédiatement et expliqué les options sans pousser à l’achat.”</p>
+            <div class="who"><span><b>Nora S.</b> — Carouge</span><span>Sécurisation</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ZONE -->
+      <section id="zone">
+        <div class="section-head">
+          <h2>Zone d’intervention</h2>
+          <p class="sub">Genève + communes : centre, rive gauche, rive droite, zones résidentielles et axes principaux.</p>
+        </div>
+
+        <div class="map">
+          <iframe
+            title="Carte — Zone d’intervention Serrurerie Atlas Genève"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Gen%C3%A8ve%20Suisse&output=embed">
+          </iframe>
+        </div>
+
+        <div style="margin-top:14px;" class="grid-3">
+          <div class="card"><h3>Genève centre</h3><p>Pâquis, Cornavin, Jonction, Eaux-Vives, Champel, Plainpalais.</p></div>
+          <div class="card"><h3>Communes</h3><p>Carouge, Lancy, Vernier, Meyrin, Chêne-Bourg, Thônex.</p></div>
+          <div class="card"><h3>Pro &amp; commerces</h3><p>Accès locaux, portes techniques, dépannages en horaires étendus.</p></div>
+        </div>
+      </section>
+
+      <!-- DEVIS -->
+      <section id="devis">
+        <div class="section-head">
+          <h2>Devis express (fictif)</h2>
+          <p class="sub">Ce formulaire simule une demande et valide instantanément. Parfait pour ton portfolio.</p>
+        </div>
+
+        <div class="hero-card" style="padding:18px;">
+          <div class="steps" style="grid-template-columns:1fr 1fr;">
+            <div class="step" style="align-items:flex-start;">
+              <div class="num">⚡</div>
+              <div>
+                <b>Validation instantanée</b>
+                <span>On simule une estimation + une confirmation de prise en charge (sans backend).</span>
+              </div>
+            </div>
+            <div class="step" style="align-items:flex-start;">
+              <div class="num">📍</div>
+              <div>
+                <b>Priorité aux urgences</b>
+                <span>Si vous êtes bloqué dehors, le bouton rouge déclenche une modale d’urgence.</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:12px;"></div>
+
+          <form id="bigForm" class="steps" style="grid-template-columns: 1fr 1fr; gap:14px;">
+            <div class="field">
+              <label for="bf_issue">Problème</label>
+              <select id="bf_issue">
+                <option>Porte claquée</option>
+                <option>Clé perdue</option>
+                <option>Clé cassée / coincée</option>
+                <option>Serrure bloquée</option>
+                <option>Après effraction</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="bf_time">Quand ?</label>
+              <select id="bf_time">
+                <option>Tout de suite</option>
+                <option>Dans l’heure</option>
+                <option>Ce soir</option>
+                <option>Demain</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="bf_area">Quartier</label>
+              <input id="bf_area" placeholder="Ex: Pâquis / Carouge / Meyrin…" />
+            </div>
+
+            <div class="field">
+              <label for="bf_phone">Téléphone</label>
+              <input id="bf_phone" placeholder="+41 7X XXX XX XX" />
+            </div>
+
+            <div class="field" style="grid-column: 1 / -1;">
+              <label for="bf_msg">Message</label>
+              <textarea id="bf_msg" placeholder="Ex: porte blindée, clé à l’intérieur, interphone…"></textarea>
+            </div>
+
+            <div class="form-actions" style="grid-column: 1 / -1;">
+              <button class="btn btn-blue" type="submit" id="submitBtn">Envoyer &amp; obtenir l’estimation →</button>
+              <button class="btn btn-urgent" type="button" id="urgentBtn"><span class="pulse"></span> Urgence : appeler</button>
+              <span class="notice" id="formStatus"><b>Note :</b> ceci est une simulation portfolio.</span>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="#" class="logo">Serrurier<span>.</span>Genève</a>
-        <p>Serrurier à Genève pour les urgences et la sécurisation de votre logement. Intervention rapide, prestations transparentes.</p>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <div class="brand" style="min-width:auto;">
+            <div class="logo" aria-hidden="true"><span>A</span></div>
+            <div class="title">
+              <strong>Serrurerie Atlas Genève</strong>
+              <small>Urgence 24/7 • Dépannage • Sécurisation</small>
+            </div>
+          </div>
+          <p>
+            Serrurier à Genève : ouverture de porte, remplacement de cylindre, sécurisation après effraction.
+            Devis clair avant intervention.
+          </p>
+        </div>
+
+        <div class="cols">
+          <div class="col">
+            <strong>Contact</strong>
+            <div>Rue du Rhône 35, 1204 Genève</div>
+            <a href="tel:+41225553190">+41 22 555 31 90</a>
+            <a href="mailto:contact@serrurerie-atlas-geneve.ch">contact@serrurerie-atlas-geneve.ch</a>
+            <div>Disponible 24h/24 • 7j/7</div>
+          </div>
+          <div class="col">
+            <strong>Services</strong>
+            <a href="#services">Ouverture de porte</a>
+            <a href="#services">Cylindre &amp; serrure</a>
+            <a href="#services">Après effraction</a>
+            <a href="#tarifs">Tarifs indicatifs</a>
+          </div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="tel:+33750225148">+33 7 50 22 51 48</a></li>
-          <li><a href="#contact">Demander un devis</a></li>
-        </ul>
+
+      <div class="subline">
+        <span>© <span id="year"></span> Serrurerie Atlas Genève. Tous droits réservés.</span>
+        <span>Conditions • Confidentialité • Mentions légales</span>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 Serrurier Genève · Exemple de réalisation <a href="../../index.html" style="color: var(--gold);">Léman Studio</a></p>
     </div>
   </footer>
 
-  <script src="../../assets/js/main.js"></script>
+  <!-- MODAL -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="modal-card">
+      <div class="m-top">
+        <strong>Confirmation</strong>
+        <button class="x" id="closeModal" aria-label="Fermer">✕</button>
+      </div>
+      <div class="m-body">
+        <h3 id="mTitle">Demande prise en charge.</h3>
+        <p>Votre demande a été enregistrée. Un technicien vous recontacte rapidement pour confirmer l’intervention.</p>
+        <div class="note" id="modalDetails">—</div>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-blue" id="modalOk">OK →</button>
+          <a class="btn btn-urgent" href="tel:+41225553190"><span class="pulse"></span> Appeler en urgence</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Small form quote simulation (hero side)
+    const quoteBtn = document.getElementById('quoteBtn');
+    const fillBtn = document.getElementById('fillBtn');
+    const quoteStatus = document.getElementById('quoteStatus');
+
+    const issue = document.getElementById('issue');
+    const district = document.getElementById('district');
+    const name = document.getElementById('name');
+    const phone = document.getElementById('phone');
+    const details = document.getElementById('details');
+
+    function rand(min, max){ return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+    function estimate(issueValue){
+      // Devis indicatif fictif cohérent
+      const base = {
+        "Porte claquée": [120, 190],
+        "Clé cassée": [140, 230],
+        "Serrure bloquée": [160, 260],
+        "Cylindre à remplacer": [220, 420],
+        "Après effraction": [280, 650]
+      }[issueValue] || [140, 260];
+
+      const low = base[0] + rand(0, 20);
+      const high = base[1] + rand(10, 30);
+      return [Math.round(low/10)*10, Math.round(high/10)*10];
+    }
+
+    function fakeLoading(el, ms=1400){
+      el.disabled = true;
+      const old = el.textContent;
+      el.textContent = "Calcul en cours…";
+      return new Promise(res => setTimeout(() => {
+        el.disabled = false;
+        el.textContent = old;
+        res();
+      }, ms));
+    }
+
+    quoteBtn.addEventListener('click', async () => {
+      await fakeLoading(quoteBtn, 1100);
+      const [a,b] = estimate(issue.value);
+      quoteStatus.innerHTML = `<b>Estimation :</b> CHF ${a}–${b} • <b>${issue.value}</b> • ${district.value} — Devis confirmé au téléphone.`;
+    });
+
+    fillBtn.addEventListener('click', () => {
+      issue.value = "Porte claquée";
+      district.value = "Pâquis";
+      name.value = "Yanis";
+      phone.value = "+41 79 123 45 67";
+      details.value = "Porte d’appartement, clé restée à l’intérieur, interphone OK, 4e étage.";
+      quoteStatus.innerHTML = `<b>Info :</b> exemple rempli. Clique “Calculer un devis”.`;
+      document.getElementById('services').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    // Big form + modal (portfolio simulation)
+    const bigForm = document.getElementById('bigForm');
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+    const modalOk = document.getElementById('modalOk');
+    const modalDetails = document.getElementById('modalDetails');
+    const urgentBtn = document.getElementById('urgentBtn');
+    const formStatus = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+
+    const bf_issue = document.getElementById('bf_issue');
+    const bf_time = document.getElementById('bf_time');
+    const bf_area = document.getElementById('bf_area');
+    const bf_phone = document.getElementById('bf_phone');
+    const bf_msg = document.getElementById('bf_msg');
+
+    function openModal(text){
+      modalDetails.textContent = text;
+      modal.classList.add('open');
+      document.body.style.overflow = "hidden";
+    }
+    function close(){
+      modal.classList.remove('open');
+      document.body.style.overflow = "";
+    }
+    closeModal.addEventListener('click', close);
+    modalOk.addEventListener('click', close);
+    modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === "Escape" && modal.classList.contains('open')) close();
+    });
+
+    bigForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      await fakeLoading(submitBtn, 1300);
+
+      const [a,b] = estimate(
+        bf_issue.value.includes("Porte") ? "Porte claquée"
+        : bf_issue.value.includes("effraction") ? "Après effraction"
+        : bf_issue.value.includes("cassée") ? "Clé cassée"
+        : "Serrure bloquée"
+      );
+
+      const detailsText = [
+        `Problème : ${bf_issue.value}`,
+        `Quand : ${bf_time.value}`,
+        `Quartier : ${bf_area.value || "Genève"}`,
+        `Téléphone : ${bf_phone.value || "—"}`,
+        `Estimation fictive : CHF ${a}–${b}`,
+        `Message : ${bf_msg.value || "—"}`
+      ].join(" • ");
+
+      formStatus.innerHTML = `<b>Envoyé :</b> estimation CHF ${a}–${b}. Confirmation affichée.`;
+      openModal(detailsText);
+    });
+
+    urgentBtn.addEventListener('click', () => {
+      openModal("Urgence : appelez le +41 22 555 31 90. Un technicien vous guide immédiatement et confirme l’intervention.");
+    });
+
+    // Floating CTA (mobile)
+    // (simple anchor + tel)
+  </script>
+
+  <!-- Floating urgent CTA for mobile -->
+  <div class="float-cta" aria-hidden="false">
+    <a class="btn btn-urgent" href="tel:+41225553190"><span class="pulse"></span> Appel urgence</a>
+    <a class="btn btn-blue" href="#devis">Devis express</a>
+  </div>
 </body>
 </html>
-
