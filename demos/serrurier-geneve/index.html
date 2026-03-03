@@ -3,799 +3,147 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SecurLock Genève – Serrurier 24/7</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    :root {
-      --primary: #1a1a2e;
-      --accent: #e63946;
-      --accent2: #f4a261;
-      --gold: #ffd60a;
-      --light: #f8f9fa;
-      --dark: #0d0d1a;
-      --glass: rgba(255,255,255,0.06);
-      --glass-border: rgba(255,255,255,0.12);
-      --text-muted: #a0aec0;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--dark);
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 1000;
-      background: rgba(13,13,26,0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--glass-border);
-      padding: 0 5%;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 70px;
-    }
-
-    .logo {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px;
-    }
-    .logo span { color: var(--accent); }
-    .logo-icon {
-      width: 38px; height: 38px;
-      background: linear-gradient(135deg, var(--accent), #c1121f);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-    }
-
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      color: rgba(255,255,255,0.75); text-decoration: none;
-      font-size: 0.88rem; font-weight: 500;
-      transition: color 0.25s;
-    }
-    .nav-links a:hover { color: #fff; }
-
-    .nav-cta {
-      background: var(--accent);
-      color: #fff !important; font-weight: 700 !important;
-      padding: 8px 20px; border-radius: 50px;
-      transition: background 0.25s, transform 0.2s !important;
-    }
-    .nav-cta:hover { background: #c1121f; transform: scale(1.04) !important; }
-
-    .urgence-badge {
-      display: flex; align-items: center; gap: 6px;
-      background: rgba(230,57,70,0.15);
-      border: 1px solid rgba(230,57,70,0.4);
-      border-radius: 50px;
-      padding: 5px 14px;
-      font-size: 0.78rem; font-weight: 600; color: var(--accent);
-      animation: pulse-badge 2s infinite;
-    }
-    .urgence-badge .dot {
-      width: 8px; height: 8px;
-      background: var(--accent); border-radius: 50%;
-      animation: blink 1s infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
-    @keyframes pulse-badge {
-      0%,100% { box-shadow: 0 0 0 0 rgba(230,57,70,0.3); }
-      50% { box-shadow: 0 0 0 6px rgba(230,57,70,0); }
-    }
-
-    /* ─── HERO ─── */
-    #hero {
-      min-height: 100vh;
-      background: radial-gradient(ellipse at 70% 40%, rgba(230,57,70,0.18) 0%, transparent 60%),
-                  radial-gradient(ellipse at 20% 80%, rgba(26,26,46,0.8) 0%, transparent 50%),
-                  linear-gradient(160deg, #0d0d1a 0%, #1a1a2e 50%, #0d0d1a 100%);
-      display: flex; align-items: center;
-      padding: 120px 5% 80px;
-      position: relative; overflow: hidden;
-    }
-
-    .hero-grid-bg {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-    }
-
-    .hero-content { position: relative; z-index: 1; max-width: 640px; }
-
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--glass); border: 1px solid var(--glass-border);
-      border-radius: 50px; padding: 6px 16px;
-      font-size: 0.8rem; font-weight: 600; color: var(--gold);
-      margin-bottom: 1.5rem;
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-tag i { color: var(--gold); }
-
-    h1 {
-      font-size: clamp(2.6rem, 5vw, 4.2rem);
-      font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -1.5px;
-      margin-bottom: 1.5rem;
-    }
-    h1 .accent { color: var(--accent); }
-    h1 .highlight {
-      background: linear-gradient(90deg, var(--gold), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-desc {
-      font-size: 1.1rem; line-height: 1.7;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 2.5rem; max-width: 520px;
-    }
-
-    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: linear-gradient(135deg, var(--accent), #c1121f);
-      color: #fff; font-weight: 700; font-size: 1rem;
-      padding: 15px 32px; border-radius: 14px; text-decoration: none;
-      border: none; cursor: pointer;
-      box-shadow: 0 8px 32px rgba(230,57,70,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(230,57,70,0.5); }
-
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--glass); border: 1px solid var(--glass-border);
-      color: #fff; font-weight: 600; font-size: 1rem;
-      padding: 15px 32px; border-radius: 14px; text-decoration: none;
-      cursor: pointer; transition: background 0.2s, transform 0.2s;
-      backdrop-filter: blur(10px);
-    }
-    .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-
-    .hero-stats {
-      display: flex; gap: 2.5rem; flex-wrap: wrap;
-    }
-    .stat { display: flex; flex-direction: column; }
-    .stat-num { font-size: 1.8rem; font-weight: 800; color: #fff; line-height: 1; }
-    .stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-
-    .hero-visual {
-      position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
-      width: 420px; pointer-events: none;
-    }
-    .hero-card-float {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 24px;
-      padding: 28px;
-      backdrop-filter: blur(20px);
-      animation: float 4s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-14px); }
-    }
-    .hero-card-float .icon-big {
-      font-size: 3.5rem; margin-bottom: 16px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-card-float h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
-    .hero-card-float p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-
-    .mini-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
-    .mini-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px; padding: 14px 12px;
-      text-align: center;
-    }
-    .mini-card i { font-size: 1.4rem; color: var(--gold); margin-bottom: 6px; }
-    .mini-card span { display: block; font-size: 0.78rem; color: var(--text-muted); }
-
-    /* ─── URGENCE STRIP ─── */
-    .urgence-strip {
-      background: linear-gradient(90deg, #c1121f, var(--accent), #e76f51);
-      padding: 18px 5%;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem;
-    }
-    .urgence-strip .left { display: flex; align-items: center; gap: 14px; }
-    .urgence-strip i { font-size: 1.6rem; }
-    .urgence-strip strong { font-size: 1.1rem; font-weight: 800; }
-    .urgence-strip span { font-size: 0.9rem; opacity: 0.9; }
-    .btn-call {
-      background: #fff; color: var(--accent);
-      font-weight: 800; font-size: 1.1rem;
-      padding: 12px 28px; border-radius: 12px; text-decoration: none;
-      display: flex; align-items: center; gap: 10px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-    .btn-call:hover { transform: scale(1.04); }
-
-    /* ─── SECTIONS COMMON ─── */
-    section { padding: 100px 5%; }
-
-    .section-tag {
-      display: inline-block;
-      background: rgba(230,57,70,0.12);
-      border: 1px solid rgba(230,57,70,0.3);
-      color: var(--accent);
-      font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 5px 14px; border-radius: 50px;
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 800; letter-spacing: -1px;
-      margin-bottom: 0.75rem; line-height: 1.15;
-    }
-    .section-sub {
-      color: var(--text-muted); font-size: 1rem; line-height: 1.7;
-      max-width: 560px; margin-bottom: 3.5rem;
-    }
-
-    /* ─── SERVICES ─── */
-    #services { background: linear-gradient(180deg, var(--dark) 0%, #111124 100%); }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .service-card {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px; padding: 32px 28px;
-      position: relative; overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      cursor: default;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .service-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(230,57,70,0.35);
-      box-shadow: 0 20px 60px rgba(230,57,70,0.12);
-    }
-    .service-card:hover::before { opacity: 1; }
-
-    .service-icon {
-      width: 56px; height: 56px;
-      background: rgba(230,57,70,0.12);
-      border: 1px solid rgba(230,57,70,0.25);
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; color: var(--accent);
-      margin-bottom: 20px;
-    }
-    .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
-    .service-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
-
-    .service-card.featured {
-      background: linear-gradient(135deg, rgba(230,57,70,0.18), rgba(193,18,31,0.1));
-      border-color: rgba(230,57,70,0.4);
-    }
-    .service-card.featured .service-icon {
-      background: rgba(230,57,70,0.2);
-    }
-
-    .badge-new {
-      position: absolute; top: 20px; right: 20px;
-      background: var(--gold); color: #000;
-      font-size: 0.68rem; font-weight: 800;
-      padding: 3px 10px; border-radius: 50px;
-      letter-spacing: 0.5px;
-    }
-
-    /* ─── PROCESSUS ─── */
-    #processus {
-      background: linear-gradient(180deg, #111124 0%, var(--primary) 100%);
-    }
-    .process-steps {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0; position: relative;
-    }
-    .process-step {
-      text-align: center; padding: 2rem 1.5rem; position: relative;
-    }
-    .step-num {
-      width: 64px; height: 64px;
-      background: linear-gradient(135deg, var(--accent), #c1121f);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; font-weight: 900;
-      margin: 0 auto 1.2rem;
-      box-shadow: 0 8px 24px rgba(230,57,70,0.4);
-    }
-    .process-step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-    .process-step p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; }
-    .step-arrow {
-      position: absolute; right: -16px; top: 50%;
-      transform: translateY(-50%);
-      color: var(--accent); font-size: 1.4rem; z-index: 2;
-    }
-
-    /* ─── ZONES ─── */
-    #zones { background: var(--primary); }
-    .zones-wrap { display: flex; gap: 4rem; align-items: flex-start; flex-wrap: wrap; }
-    .zones-map {
-      flex: 1; min-width: 280px;
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 24px; padding: 32px;
-      backdrop-filter: blur(10px);
-    }
-    .zones-map h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
-    .zones-list {
-      display: flex; flex-wrap: wrap; gap: 10px;
-    }
-    .zone-tag {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 50px; padding: 7px 16px;
-      font-size: 0.82rem; font-weight: 500;
-      transition: background 0.2s, border-color 0.2s;
-      cursor: default;
-    }
-    .zone-tag:hover {
-      background: rgba(230,57,70,0.15);
-      border-color: rgba(230,57,70,0.4);
-    }
-    .zones-info { flex: 1.2; min-width: 280px; }
-    .info-card {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px; padding: 28px;
-      margin-bottom: 1rem;
-      display: flex; gap: 18px; align-items: flex-start;
-    }
-    .info-icon {
-      width: 48px; height: 48px; flex-shrink: 0;
-      background: rgba(230,57,70,0.12);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; color: var(--accent);
-    }
-    .info-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
-    .info-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; }
-
-    /* ─── TARIFS ─── */
-    #tarifs { background: linear-gradient(180deg, var(--primary) 0%, var(--dark) 100%); }
-    .tarifs-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-    .tarif-card {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 24px; padding: 36px 28px;
-      text-align: center; position: relative;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .tarif-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-    .tarif-card.popular {
-      background: linear-gradient(135deg, rgba(230,57,70,0.2), rgba(193,18,31,0.1));
-      border-color: rgba(230,57,70,0.5);
-    }
-    .popular-label {
-      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      color: #fff; font-size: 0.72rem; font-weight: 800;
-      padding: 4px 18px; border-radius: 50px; white-space: nowrap;
-    }
-    .tarif-icon { font-size: 2.2rem; margin-bottom: 14px; }
-    .tarif-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: rgba(255,255,255,0.85); }
-    .tarif-price { font-size: 2.4rem; font-weight: 900; margin-bottom: 6px; }
-    .tarif-price span { font-size: 1rem; font-weight: 400; color: var(--text-muted); }
-    .tarif-note { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 20px; }
-    .tarif-features { list-style: none; text-align: left; margin-bottom: 24px; }
-    .tarif-features li {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 0.85rem; color: rgba(255,255,255,0.75);
-      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .tarif-features li i { color: var(--accent); font-size: 0.75rem; }
-    .btn-tarif {
-      display: block; width: 100%;
-      background: var(--glass); border: 1px solid var(--glass-border);
-      color: #fff; font-weight: 600; font-size: 0.9rem;
-      padding: 12px; border-radius: 12px; text-decoration: none;
-      transition: background 0.2s;
-    }
-    .btn-tarif:hover { background: rgba(255,255,255,0.12); }
-    .tarif-card.popular .btn-tarif {
-      background: linear-gradient(135deg, var(--accent), #c1121f);
-      border-color: transparent;
-      box-shadow: 0 6px 20px rgba(230,57,70,0.35);
-    }
-    .tarif-card.popular .btn-tarif:hover { opacity: 0.9; }
-
-    /* ─── AVIS ─── */
-    #avis { background: var(--dark); }
-    .avis-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .avis-card {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px; padding: 28px;
-      transition: transform 0.3s;
-    }
-    .avis-card:hover { transform: translateY(-4px); }
-    .avis-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 14px; }
-    .avis-card p { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
-    .avis-author { display: flex; align-items: center; gap: 12px; }
-    .avatar {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 1rem;
-    }
-    .avis-author strong { display: block; font-size: 0.9rem; }
-    .avis-author span { font-size: 0.78rem; color: var(--text-muted); }
-
-    /* ─── FAQ ─── */
-    #faq { background: linear-gradient(180deg, var(--dark), #111124); }
-    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .faq-item {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px; padding: 24px;
-      cursor: pointer;
-      transition: border-color 0.25s;
-    }
-    .faq-item:hover { border-color: rgba(230,57,70,0.35); }
-    .faq-q {
-      display: flex; justify-content: space-between; align-items: center;
-      font-weight: 600; font-size: 0.92rem; margin-bottom: 0;
-      gap: 10px;
-    }
-    .faq-q i { color: var(--accent); flex-shrink: 0; transition: transform 0.25s; }
-    .faq-a {
-      font-size: 0.85rem; color: var(--text-muted); line-height: 1.65;
-      margin-top: 12px; display: none;
-    }
-    .faq-item.open .faq-a { display: block; }
-    .faq-item.open .faq-q i { transform: rotate(45deg); }
-    .faq-item.open { border-color: rgba(230,57,70,0.4); }
-
-    /* ─── CONTACT ─── */
-    #contact {
-      background: linear-gradient(135deg, #111124 0%, var(--primary) 50%, #111124 100%);
-    }
-    .contact-wrap { display: flex; gap: 4rem; align-items: flex-start; flex-wrap: wrap; }
-    .contact-info { flex: 1; min-width: 260px; }
-    .contact-info h2 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
-    .contact-info p { color: var(--text-muted); margin-bottom: 2rem; line-height: 1.7; }
-    .contact-items { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-item {
-      display: flex; align-items: center; gap: 16px;
-      background: var(--glass); border: 1px solid var(--glass-border);
-      border-radius: 14px; padding: 16px 20px;
-    }
-    .contact-item i { font-size: 1.2rem; color: var(--accent); width: 20px; text-align: center; }
-    .contact-item strong { display: block; font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
-    .contact-item span { font-size: 0.95rem; font-weight: 500; }
-
-    .contact-form { flex: 1.2; min-width: 300px; }
-    .form-card {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 24px; padding: 36px;
-      backdrop-filter: blur(10px);
-    }
-    .form-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-group { margin-bottom: 14px; }
-    .form-group label {
-      display: block; font-size: 0.78rem; font-weight: 600;
-      color: var(--text-muted); margin-bottom: 6px;
-      text-transform: uppercase; letter-spacing: 0.5px;
-    }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px; padding: 12px 16px;
-      color: #fff; font-family: inherit; font-size: 0.9rem;
-      outline: none; resize: none;
-      transition: border-color 0.25s;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: rgba(230,57,70,0.5);
-    }
-    .form-group select option { background: #1a1a2e; }
-    .btn-submit {
-      width: 100%;
-      background: linear-gradient(135deg, var(--accent), #c1121f);
-      color: #fff; font-weight: 700; font-size: 1rem;
-      padding: 14px; border-radius: 12px; border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      box-shadow: 0 8px 28px rgba(230,57,70,0.35);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(230,57,70,0.45); }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: #080810;
-      padding: 60px 5% 30px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .footer-top {
-      display: flex; gap: 3rem; flex-wrap: wrap;
-      margin-bottom: 3rem;
-    }
-    .footer-brand { flex: 1.5; min-width: 240px; }
-    .footer-brand p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.7; margin-top: 14px; max-width: 300px; }
-    .footer-links { flex: 1; min-width: 140px; }
-    .footer-links h4 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; color: rgba(255,255,255,0.5); }
-    .footer-links a { display: block; color: rgba(255,255,255,0.55); font-size: 0.875rem; text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
-    .footer-links a:hover { color: #fff; }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 24px;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 1rem;
-    }
-    .footer-bottom p { font-size: 0.8rem; color: var(--text-muted); }
-    .socials { display: flex; gap: 12px; }
-    .social-btn {
-      width: 36px; height: 36px;
-      background: var(--glass); border: 1px solid var(--glass-border);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-muted); font-size: 0.85rem; text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-    .social-btn:hover { background: rgba(230,57,70,0.15); color: var(--accent); }
-
-    /* ─── FLOATING CTA ─── */
-    .floating-cta {
-      position: fixed; bottom: 28px; right: 28px; z-index: 999;
-      display: flex; flex-direction: column; gap: 10px; align-items: flex-end;
-    }
-    .float-btn {
-      display: flex; align-items: center; gap: 10px;
-      padding: 13px 22px; border-radius: 50px;
-      font-weight: 700; font-size: 0.9rem; text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      white-space: nowrap;
-    }
-    .float-call {
-      background: linear-gradient(135deg, var(--accent), #c1121f);
-      color: #fff;
-      box-shadow: 0 6px 24px rgba(230,57,70,0.5);
-    }
-    .float-call:hover { transform: scale(1.05); box-shadow: 0 10px 32px rgba(230,57,70,0.6); }
-    .float-ws {
-      background: #25D366; color: #fff;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
-    }
-    .float-ws:hover { transform: scale(1.05); }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 768px) {
-      nav { padding: 0 4%; }
-      .nav-links { display: none; }
-      .hero-visual { display: none; }
-      .faq-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .hero-stats { gap: 1.5rem; }
-      h1 { letter-spacing: -0.5px; }
-      .hero-buttons { flex-direction: column; }
-      .hero-buttons a, .hero-buttons button { width: 100%; justify-content: center; }
-    }
-
-    /* ─── SCROLL ANIMATIONS ─── */
-    .reveal {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-  </style>
+  <title>Serrurier Genève — Ouverture &amp; Sécurisation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
 </head>
 <body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">
-    <div class="logo-icon"><i class="fas fa-lock"></i></div>
-    <span>Secur<span>Lock</span></span>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#processus">Comment ça marche</a></li>
-    <li><a href="#zones">Zones</a></li>
-    <li><a href="#tarifs">Tarifs</a></li>
-    <li><a href="#avis">Avis</a></li>
-    <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
-  </ul>
-  <div class="urgence-badge">
-    <div class="dot"></div>
-    Urgence 24/7
-  </div>
-</nav>
+  <nav id="nav" class="scrolled">
+    <a href="#" class="logo">Serrurier<span>.</span>Genève</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-content">
-    <div class="hero-tag">
-      <i class="fas fa-shield-halved"></i>
-      Serrurier certifié à Genève
-    </div>
-    <h1>
-      Votre sécurité,<br/>
-      <span class="accent">notre urgence</span><br/>
-      <span class="highlight">24h/24 · 7j/7</span>
-    </h1>
-    <p class="hero-desc">
-      Intervention en moins de <strong>30 minutes</strong> dans tout le canton de Genève.
-      Dépannage, ouverture de porte, serrures connectées et installation anti-effraction.
-    </p>
-    <div class="hero-buttons">
-      <a href="tel:+41223000000" class="btn-primary">
-        <i class="fas fa-phone"></i>
-        Appel d'urgence
-      </a>
-      <a href="#contact" class="btn-secondary">
-        <i class="fas fa-file-invoice"></i>
-        Devis gratuit
-      </a>
+  <div class="mobile-nav" id="mobileNav">
+    <span class="mobile-nav-logo">Serrurier.Genève</span>
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#contact" class="mobile-link mob-cta">Devis gratuit</a>
+  </div>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Serrurier · Genève &amp; canton</div>
+      <h1 class="hero-title">
+        Porte bloquée<br />
+        <em>clé perdue</em><br />
+        <span class="outline">on arrive.</span>
+      </h1>
+      <p class="hero-subtitle">Ouverture de porte sans casse, remplacement de serrure et sécurisation de votre logement. Intervention rapide 24h/24 — devis clair avant chaque intervention.</p>
+      <div class="hero-btns">
+        <a href="tel:+33750225148" class="btn-primary">Appeler maintenant</a>
+        <a href="#contact" class="btn-secondary">
+          Demander un devis
+          <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 8h18M12 2l6 6-6 6" /></svg>
+        </a>
+      </div>
     </div>
     <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">30<span style="color:var(--accent)">min</span></span>
-        <span class="stat-label">Délai d'intervention</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">4.9<span style="color:var(--gold)">★</span></span>
-        <span class="stat-label">Note Google</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">+2k</span>
-        <span class="stat-label">Clients satisfaits</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">10+</span>
-        <span class="stat-label">Ans d'expérience</span>
-      </div>
+      <div class="stat"><div class="stat-num">24h</div><div class="stat-label">Sur appel</div></div>
+      <div class="stat"><div class="stat-num">30min</div><div class="stat-label">Arrivée moyenne</div></div>
     </div>
-  </div>
-  <div class="hero-visual">
-    <div class="hero-card-float">
-      <div class="icon-big"><i class="fas fa-key"></i></div>
-      <h3>Intervention Express</h3>
-      <p>Un serrurier qualifié chez vous en moins de 30 minutes, à toute heure du jour et de la nuit.</p>
-      <div class="mini-cards">
-        <div class="mini-card">
-          <i class="fas fa-moon"></i>
-          <span>Nuit & WE</span>
-        </div>
-        <div class="mini-card">
-          <i class="fas fa-car"></i>
-          <span>Mobile</span>
-        </div>
-        <div class="mini-card">
-          <i class="fas fa-receipt"></i>
-          <span>Devis clair</span>
-        </div>
-        <div class="mini-card">
-          <i class="fas fa-certificate"></i>
-          <span>Certifié</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- URGENCE STRIP -->
-<div class="urgence-strip">
-  <div class="left">
-    <i class="fas fa-bolt"></i>
-    <div>
-      <strong>Urgence serrurerie ? Appelez maintenant !</strong>
-      <span>Disponible 24h/24 — 7j/7 — Jours fériés inclus</span>
+  <section id="services">
+    <div class="services-header">
+      <div class="section-label">Nos prestations</div>
+      <h2>Serrurerie <em>d'urgence</em><br />et sécurisation à Genève</h2>
+      <p>Nous intervenons pour les ouvertures de portes, les serrures forcées, les clés perdues et la mise en sécurité après effraction.</p>
     </div>
-  </div>
-  <a href="tel:+41223000000" class="btn-call">
-    <i class="fas fa-phone-volume"></i>
-    +41 22 300 00 00
-  </a>
-</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M2 21v-3a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v3"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></div>
+        <div class="service-title">Ouverture de porte</div>
+        <div class="service-desc">Porte claquée ou verrouillée, nous l'ouvrons proprement, de préférence sans dégât sur la serrure.</div>
+        <div class="service-tags"><span class="tag">24h/24</span><span class="tag">Sans casse</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 11a4 4 0 1 1 8 0v3"/><path d="M10 17h4"/></svg></div>
+        <div class="service-title">Remplacement de serrure</div>
+        <div class="service-desc">Serrure abîmée, vétuste ou fracturée : remplacement rapide avec des modèles plus sûrs et certifiés.</div>
+        <div class="service-tags"><span class="tag">Sécurité</span><span class="tag">Normes</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M4 11V5a2 2 0 0 1 2-2h12l2 3v12a2 2 0 0 1-2 2H8"/><circle cx="8" cy="17" r="3"/><path d="M8 16v2l1 1"/></svg></div>
+        <div class="service-title">Mise en sécurité</div>
+        <div class="service-desc">Après une tentative d'effraction, nous consolidons portes et serrures pour vous permettre de dormir sereinement.</div>
+        <div class="service-tags"><span class="tag">Après effraction</span><span class="tag">Renforts</span></div>
+      </div>
+    </div>
+  </section>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="reveal">
-    <span class="section-tag">Nos prestations</span>
-    <h2 class="section-title">Services de serrurerie<br/>à Genève</h2>
-    <p class="section-sub">Du dépannage d'urgence à l'installation de systèmes high-tech, nous couvrons l'ensemble de vos besoins en sécurité.</p>
-  </div>
-  <div class="services-grid reveal">
-    <div class="service-card featured">
-      <div class="service-icon"><i class="fas fa-door-open"></i></div>
-      <h3>Ouverture de porte</h3>
-      <p>Clé perdue, porte claquée, serrure bloquée. Intervention sans dommage, résultat garanti en moins de 30 min.</p>
+  <section id="contact">
+    <div class="contact-wrap">
+      <div class="contact-intro">
+        <div class="section-label">Nous contacter</div>
+        <h2>Urgence ou <em>devis</em> ?<br />Appelez-nous.</h2>
+        <p>Disponibles 24h/24 et 7j/7 pour les urgences. Un devis clair vous est communiqué avant toute intervention.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.4 2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 17z"/></svg>
+            +33 7 50 22 51 48
+          </div>
+          <div class="contact-detail">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Genève &amp; canton
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group"><label>Prénom</label><input type="text" placeholder="Votre prénom" required /></div>
+          <div class="form-group"><label>Nom</label><input type="text" placeholder="Votre nom" required /></div>
+        </div>
+        <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="+33 7 50 22 51 48" required /></div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="votre@email.ch" /></div>
+        <div class="form-group">
+          <label>Type de demande</label>
+          <select>
+            <option value="">Sélectionner...</option>
+            <option>Ouverture de porte</option>
+            <option>Remplacement de serrure</option>
+            <option>Mise en sécurité</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Décrivez votre besoin..."></textarea></div>
+        <button type="submit" class="btn-submit">Envoyer la demande →</button>
+      </form>
     </div>
-    <div class="service-card">
-      <span class="badge-new">TENDANCE</span>
-      <div class="service-icon"><i class="fas fa-wifi"></i></div>
-      <h3>Serrures connectées</h3>
-      <p>SmartLocks, contrôle d'accès par smartphone, empreinte digitale ou code PIN. Domotique intégrée.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
-      <h3>Anti-effraction</h3>
-      <p>Cylindre de haute sécurité, serrure multipoints, protection anti-perçage pour une sécurité maximale.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><i class="fas fa-wrench"></i></div>
-      <h3>Remplacement & réparation</h3>
-      <p>Serrure endommagée, cylindre usé, mécanisme cassé. Réparation rapide avec pièces de qualité.</p>
-    </div>
-    <div class="service-card">
-      <span class="badge-new">NOUVEAU</span>
-      <div class="service-icon"><i class="fas fa-microchip"></i></div>
-      <h3>Contrôle d'accès</h3>
-      <p>Badge RFID, digicode, interphone vidéo. Solutions professionnelles pour immeubles et commerces.</p>
-    </div>
-    <div class="service-card">
-      <div class="service-icon"><i class="fas fa-building"></i></div>
-      <h3>Copropriété & entreprises</h3>
-      <p>Audit de sécurité, installation en lot, contrat de maintenance. Devis sur mesure pour professionnels.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- PROCESSUS -->
-<section id="processus">
-  <div class="reveal" style="text-align:center; margin-bottom:3.5rem;">
-    <span class="section-tag">Processus</span>
-    <h2 class="section-title">Intervention en 4 étapes</h2>
-    <p class="section-sub" style="margin:0 auto;">Simple, rapide et transparent — voici comment nous intervenons chez vous.</p>
-  </div>
-  <div class="process-steps reveal">
-    <div class="process-step">
-      <div class="step-num">1</div>
-      <h3>Vous appelez</h3>
-      <p>Disponible 24h/24 par téléphone. Nous qualifions votre demande en quelques secondes.</p>
-      <span class="step-arrow"><i class="fas fa-chevron-right"></i></span>
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">Serrurier<span>.</span>Genève</a>
+        <p>Serrurier à Genève pour les urgences et la sécurisation de votre logement. Intervention rapide, prestations transparentes.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+33750225148">+33 7 50 22 51 48</a></li>
+          <li><a href="#contact">Demander un devis</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="process-step">
-      <div class="step-num">2</div>
-      <h3>Devis immédiat</h3>
-      <p>Tarif annoncé par téléphone avant toute intervention. Aucune surprise à la facture.</p>
-      <span class="step-arrow"><i class="fas fa-chevron-right"></i></span>
+    <div class="footer-bottom">
+      <p>© 2025 Serrurier Genève · Exemple de réalisation <a href="../../index.html" style="color: var(--gold);">Léman Studio</a></p>
     </div>
-    <div class="process-step">
-      <div class="step-num">3</div>
-      <h3>Intervention rapide<
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>
+
