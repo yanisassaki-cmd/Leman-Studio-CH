@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://raw.githubusercontent.com/yanisassaki-cmd/Leman-Studio-CH/refs/heads/main/favicon.ico" type="image/x-icon" />
+  <title>Sécurité WordPress : vulnérabilités et solutions pour votre site | Léman Studio</title>
+  <meta name="description" content="Pourquoi WordPress est vulnérable et comment sécuriser votre site : mises à jour, sauvegardes, plugins de sécurité, hébergement. Guide pour les PME suisses." />
+  <link rel="canonical" href="https://lemanstudio.ch/blog/securite-wordpress-vulnerabilites-solutions.html" />
+  <meta property="og:title" content="Pourquoi votre site WordPress est une passoire à sécurité (et comment y remédier)" />
+  <meta property="og:description" content="43 % des sites WordPress contiennent des failles exploitées. Découvrez les vulnérabilités courantes et les 10 actions pour sécuriser votre site." />
+  <meta property="og:url" content="https://lemanstudio.ch/blog/securite-wordpress-vulnerabilites-solutions.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=630&fit=crop" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="fr_CH" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sécurité WordPress : vulnérabilités et solutions" />
+  <meta name="twitter:description" content="Guide complet pour sécuriser votre site WordPress : failles, solutions et bonnes pratiques." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=630&fit=crop" />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Pourquoi votre site WordPress est une passoire à sécurité (et comment y remédier)",
+    "description": "Les vulnérabilités WordPress les plus communes et 10 actions concrètes pour sécuriser votre site : mises à jour, sauvegardes, plugins, hébergement.",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=630&fit=crop",
+    "datePublished": "2025-03-19T09:00:00+01:00",
+    "dateModified": "2025-03-19T09:00:00+01:00",
+    "author": { "@type": "Organization", "name": "Léman Studio", "url": "https://lemanstudio.ch" },
+    "publisher": { "@type": "Organization", "name": "Léman Studio", "url": "https://lemanstudio.ch" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://lemanstudio.ch/blog/securite-wordpress-vulnerabilites-solutions.html" },
+    "wordCount": 1350,
+    "timeRequired": "PT8M",
+    "inLanguage": "fr-CH",
+    "keywords": "sécurité WordPress, WordPress hacké, plugins WordPress sécurité, malware WordPress, Wordfence, sauvegardes"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Comment savoir si mon site WordPress a été piraté ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Les signes d'un site WordPress compromis incluent : redirections vers des sites inconnus, nouveaux administrateurs inconnus dans WordPress, contenu spam (liens ou textes cachés), ralentissement soudain, alertes dans Google Search Console (contenu malveillant), ou blacklistage par Google (message d'avertissement dans les résultats). Utilisez des outils comme Sucuri SiteCheck ou le scanner Wordfence pour détecter les infections." }
+      },
+      {
+        "@type": "Question",
+        "name": "Faut-il mettre à jour WordPress régulièrement ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Oui, absolument. 97 % des infections WordPress proviennent de vulnerabilités dans des plugins, thèmes ou le core WordPress non mis à jour, selon Sucuri. Les mises à jour corrigent ces failles de sécurité. Activez les mises à jour automatiques pour le core WordPress et les plugins de sécurité, et planifiez des mises à jour manuelles régulières pour les plugins qui nécessitent des vérifications préalables." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle est la meilleure alternative à WordPress pour plus de sécurité ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Les CMS headless (sites statiques générés via Next.js, Astro, ou Hugo) offrent une surface d'attaque bien plus réduite car il n'y a pas de back-office exposé ni de base de données SQL accessible. Webflow est une autre option SaaS sécurisée. Pour les PME qui ne veulent pas gérer la sécurité WordPress, ces alternatives peuvent justifier l'investissement de migration." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav id="nav">
+    <a href="../index.html" class="logo">Léman<span>.</span>Studio</a>
+    <ul class="nav-links">
+      <li><a href="../services.html">Services</a></li>
+      <li><a href="../index.html#process">Méthode</a></li>
+      <li><a href="../portfolio.html">Réalisations</a></li>
+      <li><a href="../index.html#testimonials">Avis</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../tarifs.html">Tarifs</a></li>
+      <li><a href="../contact.html" class="nav-cta">Démarrer un projet</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <span class="mobile-nav-logo">Léman.Studio</span>
+    <a href="../services.html" class="mobile-link">Services</a>
+    <a href="../index.html#process" class="mobile-link">Méthode</a>
+    <a href="../portfolio.html" class="mobile-link">Réalisations</a>
+    <a href="../index.html#testimonials" class="mobile-link">Avis clients</a>
+    <a href="../blog.html" class="mobile-link">Blog</a>
+    <a href="../tarifs.html" class="mobile-link">Tarifs</a>
+    <a href="../contact.html" class="mobile-link mob-cta">Démarrer un projet</a>
+  </div>
+
+  <section class="page-hero">
+    <div class="hero-bg"></div>
+    <div class="section-label">Blog · Sécurité Web</div>
+    <h1>Pourquoi votre site WordPress est une <em>passoire à sécurité</em> (et comment y remédier)</h1>
+  </section>
+
+  <section class="article-section">
+    <div class="article-wrap">
+      <div class="article-meta">
+        <time datetime="2025-03-19">19 mars 2025</time>
+        <span>· Lecture 8 min</span>
+        <span>· Par <strong>Léman Studio</strong></span>
+      </div>
+      <div class="article-body">
+
+        <p>WordPress fait tourner plus de 43 % des sites web dans le monde. C'est son plus grand atout — et sa plus grande faiblesse. Cette popularité en fait la cible numéro 1 des pirates informatiques. Selon le rapport Sucuri 2023, <strong>96 % des sites web infectés par des malwares tournent sous WordPress</strong>. En Suisse, de nombreuses PME utilisent WordPress sans mesures de sécurité adéquates, exposant leurs données, leur réputation, et celles de leurs clients. Voici comment changer cela.</p>
+
+        <figure>
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=720&h=400&fit=crop" alt="Sécurité WordPress - protection contre les malwares et les pirates informatiques" width="720" height="400" loading="lazy" />
+          <figcaption class="article-img-caption">WordPress est la cible privilégiée des hackers : sa popularité le rend particulièrement exposé aux attaques automatisées et aux failles de plugins.</figcaption>
+        </figure>
+
+        <h2>Les 5 principales vulnérabilités WordPress</h2>
+
+        <h3>1. Plugins obsolètes ou abandonnés</h3>
+        <p>Les <strong>plugins WordPress</strong> sont la première porte d'entrée des hackers : 56 % des failles exploitées proviennent de plugins non mis à jour (WPScan Vulnerability Database, 2024). Les plugins avec des millions d'installations sont des cibles de choix. Un plugin sans mise à jour depuis 2 ans est potentiellement une faille ouverte. Règle d'or : si un plugin n'est plus maintenu par son développeur, remplacez-le ou supprimez-le.</p>
+
+        <h3>2. Thèmes nulled (piratés)</h3>
+        <p>Les thèmes WordPress « nulled » — versions piratées de thèmes premium disponibles gratuitement sur des sites douteux — contiennent presque systématiquement des backdoors (portes dérobées). Ces scripts malveillants permettent aux pirates d'accéder à votre site même après un changement de mot de passe. N'utilisez jamais de thèmes ou plugins piratés, même pour tester.</p>
+
+        <h3>3. Mots de passe faibles et accès admin non sécurisé</h3>
+        <p>L'URL <code>votre-site.com/wp-admin</code> est connue de tous les bots. Des attaques brute-force tentent des milliers de combinaisons identifiant/mot de passe par minute. Un mot de passe simple comme « admin123 » sera cracké en quelques secondes. Utilisez des mots de passe de 20 caractères minimum générés par un gestionnaire de mots de passe, et activez l'authentification à deux facteurs (2FA).</p>
+
+        <h3>4. Hébergement mutualisé bas de gamme</h3>
+        <p>Sur un hébergement mutualisé bas de gamme, des dizaines ou centaines de sites partagent le même serveur. Si un site voisin est infecté, le malware peut se propager à votre site via des répertoires partagés. Optez pour un hébergement WordPress managé ou un VPS isolé, idéalement avec un hébergeur suisse fiable comme Infomaniak ou Hostpoint.</p>
+
+        <h3>5. Absence de sauvegardes</h3>
+        <p>Ce n'est pas une vulnérabilité à proprement parler, mais l'absence de sauvegardes transforme n'importe quelle attaque en catastrophe. Sans sauvegarde récente, une infection peut signifier la perte totale de votre site et de ses contenus. Configurez des sauvegardes automatiques quotidiennes sur un stockage externe (cloud, S3, etc.).</p>
+
+        <figure>
+          <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=720&h=380&fit=crop" alt="Protection site WordPress - pare-feu WAF et sauvegardes automatiques" width="720" height="380" loading="lazy" />
+          <figcaption class="article-img-caption">Un pare-feu WAF, des mises à jour automatiques et des sauvegardes régulières constituent le socle de la sécurité WordPress.</figcaption>
+        </figure>
+
+        <h2>10 actions pour sécuriser votre WordPress dès aujourd'hui</h2>
+        <ol>
+          <li><strong>Installez Wordfence ou Solid Security</strong> : pare-feu WAF, scanner de malwares, protection brute-force. Wordfence est gratuit et bloque des millions de tentatives d'intrusion par mois.</li>
+          <li><strong>Activez les mises à jour automatiques</strong> du core WordPress et des plugins critiques (sécurité, SEO). Pour les plugins nécessitant des tests, planifiez des mises à jour hebdomadaires manuelles.</li>
+          <li><strong>Changez l'URL de connexion</strong> : remplacez <code>/wp-admin</code> par une URL personnalisée via WPS Hide Login. Cela élimine 99 % des attaques brute-force automatisées.</li>
+          <li><strong>Activez l'authentification à deux facteurs (2FA)</strong> pour tous les comptes admin via Google Authenticator ou Wordfence.</li>
+          <li><strong>Configurez des sauvegardes automatiques</strong> quotidiennes avec UpdraftPlus ou BlogVault vers un stockage externe (Google Drive, Amazon S3, Dropbox).</li>
+          <li><strong>Installez un certificat SSL</strong> (HTTPS) si ce n'est pas déjà fait — gratuit via Let's Encrypt chez la plupart des hébergeurs.</li>
+          <li><strong>Limitez les rôles utilisateurs</strong> : n'accordez les droits « Administrateur » qu'aux personnes qui en ont réellement besoin. Utilisez « Éditeur » ou « Auteur » pour les autres.</li>
+          <li><strong>Désactivez l'édition de fichiers</strong> dans le tableau de bord en ajoutant <code>define('DISALLOW_FILE_EDIT', true);</code> dans wp-config.php.</li>
+          <li><strong>Utilisez un hébergement de qualité</strong> avec isolation des comptes, logs d'accès et détection des malwares. Infomaniak et Hostpoint proposent des offres WordPress Premium adaptées au marché suisse.</li>
+          <li><strong>Auditez vos plugins</strong> : supprimez ceux que vous n'utilisez pas, remplacez les plugins abandonnés, et vérifiez régulièrement les vulnérabilités connues sur WPScan.com.</li>
+        </ol>
+
+        <p>Si vous préférez ne plus vous soucier de la maintenance et de la sécurité WordPress, explorez notre <a href="hebergement-web-suisse-ce-qu-il-faut-savoir.html">guide hébergement web Suisse</a> ou découvrez comment Léman Studio peut prendre en charge la maintenance complète de votre site. Notre <a href="../services.html">contrat de maintenance</a> inclut mises à jour, sauvegardes et monitoring de sécurité. Pour un devis, <a href="../contact.html">contactez-nous</a>.</p>
+
+        <div class="article-faq" id="faq">
+          <h2>FAQ : Sécurité WordPress</h2>
+          <div class="faq-item">
+            <h3>Comment savoir si mon site WordPress a été piraté ?</h3>
+            <p>Les signes incluent : redirections vers des sites inconnus, nouveaux administrateurs, contenu spam, ralentissement soudain, alertes dans Google Search Console, ou blacklistage par Google. Utilisez Sucuri SiteCheck ou le scanner Wordfence pour détecter les infections.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Faut-il mettre à jour WordPress régulièrement ?</h3>
+            <p>Oui. 97 % des infections WordPress proviennent de vulnérabilités dans des plugins, thèmes ou le core non mis à jour (Sucuri). Activez les mises à jour automatiques pour le core et les plugins de sécurité.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Quelle est la meilleure alternative à WordPress pour plus de sécurité ?</h3>
+            <p>Les CMS headless (Next.js, Astro, Hugo) offrent une surface d'attaque bien plus réduite. Webflow est une option SaaS sécurisée. Pour les PME qui ne veulent pas gérer la sécurité WordPress, ces alternatives peuvent justifier la migration.</p>
+          </div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,#f8f5ef,#fff8f0);border:1px solid rgba(200,169,110,.25);border-radius:12px;padding:2.5rem;margin:3rem 0;">
+          <p style="font-size:1.1rem;font-weight:600;color:#1a1209;margin-bottom:.75rem;">Vous en avez assez de gérer la sécurité WordPress ?</p>
+          <p style="color:#5a5248;margin-bottom:1.5rem;">Léman Studio propose des contrats de maintenance qui incluent mises à jour, sauvegardes quotidiennes et monitoring de sécurité. Ou nous pouvons reconstruire votre site sur une architecture plus sécurisée.</p>
+          <a href="../contact.html" style="display:inline-block;background:#c8a96e;color:#fff;padding:.85rem 2rem;border-radius:6px;text-decoration:none;font-weight:600;letter-spacing:.05em;">Obtenir un devis maintenance →</a>
+        </div>
+
+        <div style="margin:3rem 0 1rem;">
+          <p style="font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:#c8a96e;margin-bottom:1.25rem;font-weight:500;">Articles liés</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+            <a href="hebergement-web-suisse-ce-qu-il-faut-savoir.html" style="display:block;padding:1.25rem;border:1px solid rgba(0,0,0,.1);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.borderColor='#c8a96e'" onmouseout="this.style.borderColor='rgba(0,0,0,.1)'">
+              <p style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:#c8a96e;margin-bottom:.5rem;">Hébergement</p>
+              <p style="font-weight:600;font-size:.95rem;margin:0;line-height:1.4;">Hébergement web en Suisse</p>
+            </a>
+            <a href="vitesse-chargement-site-lent-cout.html" style="display:block;padding:1.25rem;border:1px solid rgba(0,0,0,.1);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.borderColor='#c8a96e'" onmouseout="this.style.borderColor='rgba(0,0,0,.1)'">
+              <p style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:#c8a96e;margin-bottom:.5rem;">Performance</p>
+              <p style="font-weight:600;font-size:.95rem;margin:0;line-height:1.4;">Un site lent vous coûte des milliers de francs</p>
+            </a>
+            <a href="accessibilite-web-suisse-obligations-legales.html" style="display:block;padding:1.25rem;border:1px solid rgba(0,0,0,.1);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.borderColor='#c8a96e'" onmouseout="this.style.borderColor='rgba(0,0,0,.1)'">
+              <p style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:#c8a96e;margin-bottom:.5rem;">Légal</p>
+              <p style="font-weight:600;font-size:.95rem;margin:0;line-height:1.4;">Accessibilité web en Suisse : obligations légales</p>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <a href="../blog.html" class="article-back">← Retour au blog</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="../services.html#creation">Création de site</a></li>
+          <li><a href="../services.html#refonte">Refonte</a></li>
+          <li><a href="../services.html">Maintenance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Agence</h4>
+        <ul>
+          <li><a href="../index.html#process">Notre méthode</a></li>
+          <li><a href="../portfolio.html">Réalisations</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../tarifs.html">Tarifs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@lemanstudio.ch">contact@lemanstudio.ch</a></li>
+          <li><a href="../contact.html">Demander un devis</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Léman Studio · <a href="../mentions-legales.html">Mentions légales</a> · <a href="../cgv.html">CGV</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
