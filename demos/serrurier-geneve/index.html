@@ -810,35 +810,169 @@
     }
 
     /* Floating CTA mobile */
-    .float-cta{
-      position: fixed;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      z-index: 1500;
-      display: none;
-      gap: 10px;
-    }
-    .float-cta a{
-      flex:1;
-      justify-content:center;
-      border-radius: 16px;
-      padding: 14px 14px;
-      font-weight: 900;
-    }
+    
 
+    /* ── Tablet ── */
     @media (max-width: 980px){
       .navlinks{ display:none; }
       .navcta{ min-width: 0; }
       .hotline{ display:none; }
       .hero-grid{ grid-template-columns: 1fr; }
-      .grid-3{ grid-template-columns: 1fr; }
+      .grid-3{ grid-template-columns: repeat(2, 1fr); }
       .grid-2{ grid-template-columns: 1fr; }
       .steps{ grid-template-columns: 1fr; }
-      .reviews{ grid-template-columns: 1fr; }
+      .reviews{ grid-template-columns: repeat(2, 1fr); }
       .stats-band{ grid-template-columns: repeat(2, 1fr); }
-      .hours-grid{ grid-template-columns: repeat(2, 1fr); }
-      .float-cta{ display:flex !important; }
+      .hours-grid{ grid-template-columns: repeat(4, 1fr); }
+
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 640px){
+      /* Nav */
+      .nav{ padding: 10px 0; gap: 8px; }
+      .brand strong{ font-size: 13px; }
+      .brand small{ display: none; }
+      .logo{ width: 34px; height: 34px; border-radius: 10px; }
+      .btn{ padding: 10px 12px; font-size: 13px; gap: 7px; }
+
+      /* Hero */
+      .hero{ padding: 20px 0 16px; }
+      .hero-left{ padding: 18px 16px; }
+      h1{ font-size: clamp(26px, 7vw, 36px); margin-bottom: 10px; }
+      .lead{ font-size: 14px; margin-bottom: 12px; }
+      .badge{ font-size: 11px; padding: 6px 10px; margin-bottom: 12px; }
+      .pulse{ width: 8px; height: 8px; }
+
+      /* Hero actions — stack vertically, full width */
+      .hero-actions{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .hero-actions .btn{
+        justify-content: center;
+        width: 100%;
+      }
+
+      /* Trust chips — 2 colonnes */
+      .trust{ gap: 6px; }
+      .chip{ font-size: 11px; padding: 8px 10px; }
+
+      /* Float CTA — bien espacé du contenu grâce à padding-bottom */
+
+
+
+      /* Sections */
+      section{ padding: 36px 0; }
+      .section-head{ flex-direction: column; align-items: flex-start; gap: 6px; }
+      h2{ font-size: clamp(20px, 5.5vw, 28px); }
+      .sub{ font-size: 13px; }
+
+      /* Grids */
+      .grid-3{ grid-template-columns: 1fr; }
+      .grid-2{ grid-template-columns: 1fr; }
+      .reviews{ grid-template-columns: 1fr; }
+      .stats-band{ grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .stat-num{ font-size: 22px; }
+
+      /* Hours */
+      .hours-grid{ grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .hour-card{ padding: 10px; }
+
+      /* Cards */
+      .card{ padding: 14px; }
+      .card .icon{ width: 36px; height: 36px; font-size: 16px; border-radius: 12px; }
+
+      /* Steps */
+      .steps{ grid-template-columns: 1fr; gap: 10px; }
+      .step{ padding: 12px; }
+      .num{ width: 34px; height: 34px; font-size: 13px; }
+
+      /* Mini form / Contact */
+      .mini-form{ padding: 14px; gap: 10px; }
+      input, select, textarea{ padding: 11px 10px; font-size: 14px; }
+      textarea{ min-height: 70px; }
+      label{ font-size: 11px; }
+
+      .form-actions{ flex-direction: column; align-items: stretch; }
+      .form-actions .btn{ justify-content: center; width: 100%; }
+      .form-actions a.btn{ justify-content: center; }
+
+      /* Footer */
+      .foot{ grid-template-columns: 1fr; }
+      .cols{ grid-template-columns: 1fr; }
+      .subline{ flex-direction: column; gap: 4px; text-align: center; }
+
+      /* Map */
+      .map iframe{ height: 240px; }
+
+      /* Modal */
+      .modal-card{ border-radius: 20px; }
+    }
+
+    /* ── CTA Urgence band ── */
+    .cta-urgence{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(220,38,38,.10) 0%, rgba(220,38,38,.05) 100%);
+      border: 1px solid rgba(220,38,38,.22);
+      cursor: pointer;
+      transition: background .18s, box-shadow .18s, transform .12s;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .cta-urgence:hover{
+      background: linear-gradient(135deg, rgba(220,38,38,.16) 0%, rgba(220,38,38,.08) 100%);
+      box-shadow: 0 8px 32px rgba(220,38,38,.15);
+      transform: translateY(-1px);
+    }
+    .dot-rouge{
+      width: 12px; height: 12px;
+      border-radius: 999px;
+      background: #dc2626;
+      box-shadow: 0 0 0 0 rgba(220,38,38,.4);
+      animation: pulse-rouge 1.5s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse-rouge{
+      0%{ box-shadow: 0 0 0 0 rgba(220,38,38,.4); }
+      60%{ box-shadow: 0 0 0 10px rgba(220,38,38,0); }
+      100%{ box-shadow: 0 0 0 0 rgba(220,38,38,0); }
+    }
+    .cta-urgence-text{
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+    }
+    .cta-urgence-text strong{
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+    .cta-urgence-text small{
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 650;
+    }
+    .cta-arrow{
+      font-size: 16px;
+      color: #dc2626;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 640px){
+      .cta-urgence{ padding: 12px 14px; border-radius: 14px; margin-top: 14px; }
+      .cta-urgence-text strong{ font-size: 13px; }
+      .cta-urgence-text small{ font-size: 11px; }
     }
   </style>
 </head>
@@ -894,10 +1028,6 @@
             </p>
 
             <div class="hero-actions">
-              <a class="btn btn-steel" href="tel:+41789765301">
-                <span class="pulse" aria-hidden="true"></span>
-                +41 78 976 53 01
-              </a>
               <a class="btn btn-blue" href="#contact">Devis gratuit →</a>
               <a class="btn" href="#services">Voir les services</a>
             </div>
@@ -908,6 +1038,15 @@
               <div class="chip"><i></i> Satigny → tout Genève</div>
               <div class="chip"><i></i> Artisan depuis 2019</div>
             </div>
+
+            <a class="cta-urgence" href="tel:+41789765301">
+              <span class="dot-rouge"></span>
+              <span class="cta-urgence-text">
+                <strong>Appel direct — +41 78 976 53 01</strong>
+                <small>Disponible maintenant • 7j/7 toute la journée</small>
+              </span>
+              <span class="cta-arrow">→</span>
+            </a>
           </div>
 
           <aside class="hero-card hero-right" aria-label="Demande de devis rapide">
@@ -1445,10 +1584,6 @@
     });
   </script>
 
-  <!-- Floating CTA mobile -->
-  <div class="float-cta" aria-hidden="true">
-    <a class="btn btn-urgent" href="tel:+41789765301"><span class="pulse"></span> Appel direct</a>
-    <a class="btn btn-blue" href="#contact">Devis gratuit</a>
-  </div>
+
 </body>
 </html>
