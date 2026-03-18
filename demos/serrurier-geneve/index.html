@@ -1045,6 +1045,36 @@
         font-weight: 700;
       }
     }
+
+    /* ── Contact section grids ── */
+    .contact-info-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .bigform-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .bf-full{
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 640px){
+      .contact-info-grid{
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .bigform-grid{
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .bf-full{
+        grid-column: 1;
+      }
+    }
   </style>
 </head>
 
@@ -1451,7 +1481,7 @@
         </div>
 
         <div class="hero-card" style="padding:18px;">
-          <div class="steps" style="grid-template-columns:1fr 1fr;">
+          <div class="contact-info-grid">
             <div class="step" style="align-items:flex-start;">
               <div class="num">📍</div>
               <div>
@@ -1470,7 +1500,7 @@
 
           <div style="height:12px;"></div>
 
-          <form id="bigForm" class="steps" style="grid-template-columns: 1fr 1fr; gap:14px;">
+          <form id="bigForm" class="bigform-grid">
             <div class="field">
               <label for="bf_service">Service</label>
               <select id="bf_service">
@@ -1503,12 +1533,12 @@
               <input id="bf_phone" placeholder="+41 7X XXX XX XX" />
             </div>
 
-            <div class="field" style="grid-column: 1 / -1;">
+            <div class="field bf-full">
               <label for="bf_msg">Description du projet</label>
               <textarea id="bf_msg" placeholder="Ex: portail coulissant motorisé 4m, clôture 50ml, dépannage urgent, garde-corps terrasse…"></textarea>
             </div>
 
-            <div class="form-actions" style="grid-column: 1 / -1;">
+            <div class="form-actions bf-full">
               <button class="btn btn-blue" type="submit" id="submitBtn">Envoyer la demande →</button>
               <a class="btn btn-urgent" href="tel:+41789765301"><span class="pulse"></span> Appel direct</a>
               <a class="btn" href="mailto:ventes@serrurerie-dias.ch">✉ Email</a>
