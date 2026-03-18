@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Serrurerie Atlas Genève — Dépannage Urgent 24/7</title>
-  <meta name="description" content="Serrurerie Atlas Genève — Dépannage urgent 24/7. Porte claquée, serrure bloquée, cylindre cassé. Intervention rapide sur Genève et communes." />
+  <title>Techno Serrurerie Dias — Portails, Clôtures & Serrurerie à Genève</title>
+  <meta name="description" content="Techno Serrurerie Dias Sàrl — Serrurerie, fabrication de portails et clôtures, soudure, forge et dépannage. Ouvert 7j/7 à Satigny, intervention sur tout le canton de Genève." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,10 @@
       --line: rgba(14,26,43,.12);
       --blue: #1f6fff;
       --blue2:#0b4fd6;
+      --steel: #2c3e50;
       --urgent: #e11d48;
       --urgent2:#be123c;
+      --gold: #d97706;
       --shadow: 0 18px 60px rgba(14,26,43,.12);
       --shadow2: 0 10px 30px rgba(14,26,43,.10);
       --radius: 18px;
@@ -35,8 +37,8 @@
       font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(900px 520px at 12% 8%, rgba(31,111,255,.10), transparent 60%),
-        radial-gradient(900px 520px at 88% 10%, rgba(225,29,72,.08), transparent 60%),
+        radial-gradient(900px 520px at 12% 8%, rgba(31,111,255,.08), transparent 60%),
+        radial-gradient(900px 520px at 88% 10%, rgba(44,62,80,.06), transparent 60%),
         linear-gradient(180deg, #f6f8fc 0%, #f2f6ff 45%, #f6f8fc 100%);
       overflow-x:hidden;
     }
@@ -73,14 +75,23 @@
     }
 
     .btn-urgent{
-      border-color: rgba(225,29,72,.30);
-      background: linear-gradient(180deg, rgba(225,29,72,.16), rgba(225,29,72,.10));
-      color: #1a0a10;
+      border-color: rgba(44,62,80,.28);
+      background: linear-gradient(180deg, rgba(44,62,80,.14), rgba(44,62,80,.07));
+      color: var(--ink);
     }
     .btn-urgent:hover{
-      border-color: rgba(225,29,72,.45);
-      background: linear-gradient(180deg, rgba(225,29,72,.22), rgba(225,29,72,.12));
-      box-shadow: 0 18px 45px rgba(225,29,72,.18);
+      border-color: rgba(44,62,80,.45);
+      background: linear-gradient(180deg, rgba(44,62,80,.20), rgba(44,62,80,.10));
+      box-shadow: 0 18px 45px rgba(44,62,80,.15);
+    }
+
+    .btn-steel{
+      border-color: rgba(44,62,80,.28);
+      background: linear-gradient(180deg, rgba(44,62,80,.12), rgba(44,62,80,.06));
+    }
+    .btn-steel:hover{
+      border-color: rgba(44,62,80,.42);
+      box-shadow: 0 18px 40px rgba(44,62,80,.15);
     }
 
     .badge{
@@ -99,15 +110,15 @@
     }
     .pulse{
       width:10px; height:10px; border-radius:999px;
-      background: var(--urgent);
-      box-shadow: 0 0 0 0 rgba(225,29,72,.35);
+      background: #1f6fff;
+      box-shadow: 0 0 0 0 rgba(31,111,255,.35);
       animation: pulse 1.6s infinite;
       flex-shrink: 0;
     }
     @keyframes pulse{
-      0%{ box-shadow: 0 0 0 0 rgba(225,29,72,.35); transform: scale(1); }
-      60%{ box-shadow: 0 0 0 14px rgba(225,29,72,0); transform: scale(1.03); }
-      100%{ box-shadow: 0 0 0 0 rgba(225,29,72,0); transform: scale(1); }
+      0%{ box-shadow: 0 0 0 0 rgba(31,111,255,.35); transform: scale(1); }
+      60%{ box-shadow: 0 0 0 14px rgba(31,111,255,0); transform: scale(1.03); }
+      100%{ box-shadow: 0 0 0 0 rgba(31,111,255,0); transform: scale(1); }
     }
 
     /* ── Navbar ── */
@@ -115,7 +126,7 @@
       position:sticky;
       top:0;
       z-index:1000;
-      background: rgba(246,248,252,.82);
+      background: rgba(246,248,252,.84);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(14,26,43,.10);
@@ -124,22 +135,24 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:14px;
-      padding: 14px 0;
+      gap:12px;
+      padding: 12px 0;
+      flex-wrap: nowrap;
     }
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
-      min-width: 240px;
+      min-width: 0;
+      flex-shrink: 0;
     }
     .logo{
       width:40px; height:40px;
       border-radius: 14px;
       background:
-        radial-gradient(circle at 30% 30%, rgba(31,111,255,.22), rgba(31,111,255,.10)),
+        radial-gradient(circle at 30% 30%, rgba(44,62,80,.28), rgba(31,111,255,.10)),
         linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.7));
-      border: 1px solid rgba(31,111,255,.20);
+      border: 1px solid rgba(44,62,80,.22);
       display:grid;
       place-items:center;
       box-shadow: var(--shadow2);
@@ -151,7 +164,7 @@
       content:"";
       position:absolute;
       inset:-60%;
-      background: linear-gradient(90deg, transparent, rgba(31,111,255,.25), transparent);
+      background: linear-gradient(90deg, transparent, rgba(44,62,80,.22), transparent);
       transform: rotate(25deg);
       animation: sheen 3.5s infinite;
     }
@@ -164,10 +177,11 @@
     .logo span{
       font-family: "Space Grotesk", sans-serif;
       font-weight: 700;
-      color: var(--blue2);
+      color: var(--steel);
       letter-spacing:-.02em;
       position: relative;
       z-index: 1;
+      font-size: 13px;
     }
     .brand .title{
       display:flex;
@@ -190,17 +204,19 @@
 
     .navlinks{
       display:flex;
-      gap: 8px;
-      flex-wrap:wrap;
+      gap: 4px;
+      flex-wrap:nowrap;
       justify-content:center;
+      overflow:hidden;
     }
     .navlinks a{
-      font-size: 13px;
+      font-size: 12.5px;
       color: rgba(14,26,43,.78);
-      padding: 10px 10px;
+      padding: 9px 9px;
       border-radius: 999px;
       transition: background .18s ease;
       font-weight: 700;
+      white-space: nowrap;
     }
     .navlinks a:hover{
       background: rgba(31,111,255,.08);
@@ -211,7 +227,8 @@
       align-items:center;
       gap:10px;
       justify-content:flex-end;
-      min-width: 290px;
+      min-width: 0;
+      flex-shrink: 0;
     }
     .hotline{
       display:flex;
@@ -219,10 +236,12 @@
       line-height:1.1;
       margin-right: 6px;
       text-align:right;
+      white-space: nowrap;
     }
     .hotline b{
       font-size: 14px;
       letter-spacing:-.01em;
+      white-space: nowrap;
     }
     .hotline span{
       font-size: 11px;
@@ -230,17 +249,18 @@
       font-weight: 700;
       letter-spacing:.10em;
       text-transform:uppercase;
+      white-space: nowrap;
     }
 
     /* ── Hero ── */
     .hero{
-      padding: 52px 0 32px; /* espace suffisant sous le header sticky */
+      padding: 52px 0 32px;
     }
     .hero-grid{
       display:grid;
       grid-template-columns: 1.1fr .9fr;
       gap: 18px;
-      align-items:start; /* start pour éviter l'étirement qui cause des superpositions */
+      align-items:start;
     }
     .hero-card{
       background: var(--surface);
@@ -260,14 +280,13 @@
       position:absolute;
       inset:-1px;
       background:
-        radial-gradient(900px 520px at 20% 0%, rgba(31,111,255,.16), transparent 60%),
-        radial-gradient(900px 520px at 100% 0%, rgba(225,29,72,.12), transparent 60%);
+        radial-gradient(900px 520px at 20% 0%, rgba(31,111,255,.14), transparent 60%),
+        radial-gradient(900px 520px at 100% 0%, rgba(44,62,80,.10), transparent 60%);
       pointer-events:none;
       opacity:.7;
     }
     .hero-left > *{ position:relative; z-index:1; }
 
-    /* Badge séparé du h1 */
     .hero-left .badge{
       display: inline-flex;
       margin-bottom: 16px;
@@ -275,9 +294,9 @@
 
     h1{
       font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(34px, 4vw, 54px);
+      font-size: clamp(32px, 4vw, 52px);
       line-height:1.02;
-      margin: 0 0 12px; /* supprimé margin-top pour éviter superposition avec badge */
+      margin: 0 0 12px;
       letter-spacing:-.03em;
     }
     .lead{
@@ -318,9 +337,9 @@
     .chip i{
       font-style:normal;
       width: 8px; height: 8px;
-      background: rgba(31,111,255,.9);
+      background: rgba(44,62,80,.85);
       border-radius: 999px;
-      box-shadow: 0 0 0 5px rgba(31,111,255,.14);
+      box-shadow: 0 0 0 5px rgba(44,62,80,.12);
       flex-shrink: 0;
     }
 
@@ -335,7 +354,7 @@
       align-items:center;
       justify-content:space-between;
       gap:12px;
-      background: linear-gradient(180deg, rgba(225,29,72,.08), rgba(225,29,72,.03));
+      background: linear-gradient(180deg, rgba(44,62,80,.08), rgba(44,62,80,.03));
     }
     .urgent-box strong{
       font-family:"Space Grotesk", sans-serif;
@@ -426,6 +445,11 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
+    .grid-2{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
     .card{
       background: var(--surface);
       border: 1px solid rgba(14,26,43,.10);
@@ -450,8 +474,8 @@
     .card .icon{
       width: 42px; height: 42px;
       border-radius: 16px;
-      background: rgba(31,111,255,.10);
-      border: 1px solid rgba(31,111,255,.18);
+      background: rgba(44,62,80,.08);
+      border: 1px solid rgba(44,62,80,.16);
       display:grid;
       place-items:center;
       font-size: 18px;
@@ -501,8 +525,8 @@
     .num{
       width: 40px; height: 40px;
       border-radius: 16px;
-      background: rgba(225,29,72,.08);
-      border: 1px solid rgba(225,29,72,.18);
+      background: rgba(44,62,80,.08);
+      border: 1px solid rgba(44,62,80,.18);
       color: rgba(14,26,43,.90);
       font-weight: 900;
       display:grid;
@@ -523,62 +547,6 @@
       font-size: 13px;
     }
 
-    /* Pricing */
-    .pricing{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      align-items:stretch;
-    }
-    .price-card{
-      background: var(--surface);
-      border: 1px solid rgba(14,26,43,.10);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      position:relative;
-      overflow:hidden;
-    }
-    .price-card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: radial-gradient(800px 420px at 20% 0%, rgba(31,111,255,.16), transparent 60%);
-      opacity:.7;
-      pointer-events:none;
-    }
-    .price-card > *{ position:relative; z-index:1; }
-    .price-card h3{
-      margin:0 0 6px;
-      font-family:"Space Grotesk", sans-serif;
-      letter-spacing:-.01em;
-    }
-    .price-card p{
-      margin:0 0 14px;
-      color: rgba(14,26,43,.72);
-      font-weight: 650;
-      line-height:1.7;
-      font-size: 13px;
-    }
-    .price-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .line{
-      padding: 12px;
-      border-radius: 16px;
-      background: rgba(14,26,43,.03);
-      border:1px solid rgba(14,26,43,.10);
-      display:flex;
-      justify-content:space-between;
-      gap: 12px;
-      font-weight: 750;
-      font-size: 13px;
-    }
-    .line i{ font-style:normal; color: rgba(14,26,43,.62); font-weight:800; }
-    .line b{ font-family:"Space Grotesk", sans-serif; letter-spacing:-.01em; }
-
     /* Reviews */
     .reviews{
       display:grid;
@@ -593,10 +561,10 @@
       padding: 16px;
     }
     .stars{
-      color: rgba(31,111,255,.95);
+      color: #d97706;
       letter-spacing:.12em;
       font-weight: 900;
-      font-size: 12px;
+      font-size: 14px;
       margin-bottom: 10px;
     }
     .review p{
@@ -615,6 +583,37 @@
       font-weight: 800;
     }
 
+    /* Stats band */
+    .stats-band{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .stat{
+      background: var(--surface);
+      border: 1px solid rgba(14,26,43,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      padding: 18px 16px;
+      text-align:center;
+    }
+    .stat-num{
+      font-family:"Space Grotesk", sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing:-.03em;
+      color: var(--steel);
+    }
+    .stat-label{
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-top: 4px;
+    }
+
     /* Map + footer */
     .map{
       border-radius: var(--radius2);
@@ -629,6 +628,48 @@
       border:0;
       filter: grayscale(.15) contrast(1.05) saturate(1.05);
     }
+
+    /* Hours table */
+    .hours-grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .hour-card{
+      background: var(--surface);
+      border: 1px solid rgba(14,26,43,.10);
+      border-radius: 18px;
+      padding: 14px 12px;
+      text-align:center;
+      box-shadow: var(--shadow2);
+    }
+    .hour-card .day{
+      font-size: 12px;
+      font-weight: 800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .hour-card .time{
+      font-family:"Space Grotesk", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .open-badge{
+      display:inline-block;
+      margin-top: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(16,185,129,.10);
+      border: 1px solid rgba(16,185,129,.25);
+      color: #065f46;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
     footer{
       padding: 34px 0 28px;
       border-top: 1px solid rgba(14,26,43,.10);
@@ -713,8 +754,8 @@
       position:absolute;
       inset:-1px;
       background:
-        radial-gradient(900px 520px at 15% 0%, rgba(31,111,255,.14), transparent 60%),
-        radial-gradient(900px 520px at 100% 0%, rgba(225,29,72,.12), transparent 60%);
+        radial-gradient(900px 520px at 15% 0%, rgba(31,111,255,.12), transparent 60%),
+        radial-gradient(900px 520px at 100% 0%, rgba(44,62,80,.10), transparent 60%);
       pointer-events:none;
       opacity:.9;
     }
@@ -768,14 +809,14 @@
       font-size: 13px;
     }
 
-    /* Floating urgent CTA (mobile) */
+    /* Floating CTA mobile */
     .float-cta{
       position: fixed;
       left: 12px;
       right: 12px;
       bottom: 12px;
       z-index: 1500;
-      display:none;
+      display: none;
       gap: 10px;
     }
     .float-cta a{
@@ -792,10 +833,12 @@
       .hotline{ display:none; }
       .hero-grid{ grid-template-columns: 1fr; }
       .grid-3{ grid-template-columns: 1fr; }
+      .grid-2{ grid-template-columns: 1fr; }
       .steps{ grid-template-columns: 1fr; }
-      .pricing{ grid-template-columns: 1fr; }
       .reviews{ grid-template-columns: 1fr; }
-      .float-cta{ display:flex; }
+      .stats-band{ grid-template-columns: repeat(2, 1fr); }
+      .hours-grid{ grid-template-columns: repeat(2, 1fr); }
+      .float-cta{ display:flex !important; }
     }
   </style>
 </head>
@@ -806,31 +849,31 @@
     <div class="wrap">
       <div class="nav">
         <a class="brand" href="#top" aria-label="Retour en haut">
-          <div class="logo" aria-hidden="true"><span>A</span></div>
+          <div class="logo" aria-hidden="true"><span>TD</span></div>
           <div class="title">
-            <strong>Serrurerie Atlas Genève</strong>
-            <small>Urgence 24/7 • Intervention rapide</small>
+            <strong>Techno Serrurerie Dias</strong>
+            <small>Satigny • Genève • 7j/7</small>
           </div>
         </a>
 
         <nav class="navlinks" aria-label="Navigation">
           <a href="#services">Services</a>
-          <a href="#process">Comment ça marche</a>
-          <a href="#tarifs">Tarifs</a>
+          <a href="#realisations">Réalisations</a>
+          <a href="#process">Processus</a>
           <a href="#avis">Avis</a>
-          <a href="#zone">Zone</a>
-          <a href="#devis">Devis</a>
+          <a href="#horaires">Horaires</a>
+          <a href="#contact">Contact</a>
         </nav>
 
         <div class="navcta">
           <div class="hotline">
-            <span>Urgence 24/7</span>
-            <b>+41 22 555 31 90</b>
+            <span>Disponible 7j/7</span>
+            <b>+41 78 976 53 01</b>
           </div>
-          <a class="btn btn-blue" href="#devis">Demander un devis</a>
-          <a class="btn btn-urgent" href="tel:+41225553190">
+          <a class="btn btn-blue" href="#contact">Demander un devis</a>
+          <a class="btn btn-urgent" href="tel:+41789765301">
             <span class="pulse" aria-hidden="true"></span>
-            Appel urgence
+            Appeler
           </a>
         </div>
       </div>
@@ -843,67 +886,64 @@
       <section class="hero">
         <div class="hero-grid">
           <div class="hero-card hero-left">
-            <div class="badge"><span class="pulse"></span> Dépannage 24/7 • Genève &amp; communes</div>
-            <h1>Porte claquée ? Serrure bloquée ? <span style="color:var(--urgent);">On intervient maintenant.</span></h1>
+            <div class="badge"><span class="pulse"></span> Ouvert 7j/7 • Satigny & tout le canton de Genève</div>
+            <h1>Portails, clôtures &amp; serrurerie. <span style="color:var(--steel);">Fait avec soin, livré dans les délais.</span></h1>
             <p class="lead">
-              Dépannage serrurier à Genève, 24h/24 et 7j/7. Ouverture de porte, remplacement de cylindre, sécurisation après effraction.
-              Devis clair avant intervention.
+              Fabrication et pose de portails sur mesure, clôtures métalliques, serrurerie, soudure et forge.
+              Depuis Satigny, on intervient sur tout le canton de Genève — particuliers et professionnels.
             </p>
 
             <div class="hero-actions">
-              <a class="btn btn-urgent" href="tel:+41225553190">
+              <a class="btn btn-steel" href="tel:+41789765301">
                 <span class="pulse" aria-hidden="true"></span>
-                Appeler maintenant • +41 22 555 31 90
+                +41 78 976 53 01
               </a>
-              <a class="btn btn-blue" href="#devis">Devis express en 30 sec →</a>
+              <a class="btn btn-blue" href="#contact">Devis gratuit →</a>
               <a class="btn" href="#services">Voir les services</a>
             </div>
 
             <div class="trust">
-              <div class="chip"><i></i> Intervention rapide • Genève centre</div>
-              <div class="chip"><i></i> Devis annoncé avant déplacement</div>
-              <div class="chip"><i></i> Paiement carte / TWINT</div>
-            </div>
-
-            <div style="margin-top:14px;" class="notice">
-              <b>Urgence :</b> si vous êtes bloqué dehors, gardez votre téléphone chargé et restez dans une zone éclairée.
-              Nous vous guidons au téléphone en attendant l'arrivée.
+              <div class="chip"><i></i> Fabrication sur mesure</div>
+              <div class="chip"><i></i> Ouvert 7j/7 — toute la journée</div>
+              <div class="chip"><i></i> Satigny → tout Genève</div>
+              <div class="chip"><i></i> Artisan depuis 2019</div>
             </div>
           </div>
 
-          <aside class="hero-card hero-right" aria-label="Devis rapide">
+          <aside class="hero-card hero-right" aria-label="Demande de devis rapide">
             <div class="urgent-box">
               <div>
-                <strong>Devis rapide</strong><br>
-                <span>Réponse immédiate + confirmation</span>
+                <strong>Devis gratuit et rapide</strong><br>
+                <span>Réponse sous 24h — Intervention sur Genève</span>
               </div>
-              <a class="btn btn-urgent" href="tel:+41225553190"><span class="pulse"></span> Appeler</a>
+              <a class="btn btn-steel" href="tel:+41789765301">📞 Appeler</a>
             </div>
 
             <div class="mini-form">
               <div class="field">
-                <label for="issue">Problème</label>
-                <select id="issue">
-                  <option value="Porte claquée">Porte claquée</option>
-                  <option value="Clé cassée">Clé cassée / coincée</option>
-                  <option value="Serrure bloquée">Serrure bloquée</option>
-                  <option value="Cylindre à remplacer">Cylindre à remplacer</option>
-                  <option value="Après effraction">Sécurisation après effraction</option>
+                <label for="service">Service souhaité</label>
+                <select id="service">
+                  <option>Portail sur mesure</option>
+                  <option>Clôture métallique</option>
+                  <option>Serrurerie / dépannage</option>
+                  <option>Soudure / forge</option>
+                  <option>Sécurisation après effraction</option>
+                  <option>Autre travail métallique</option>
                 </select>
               </div>
 
               <div class="field">
-                <label for="district">Zone (Genève)</label>
-                <select id="district">
-                  <option>Pâquis</option>
-                  <option>Plainpalais</option>
-                  <option>Eaux-Vives</option>
+                <label for="zone">Commune (Genève)</label>
+                <select id="zone">
+                  <option>Satigny</option>
+                  <option>Genève centre</option>
                   <option>Carouge</option>
-                  <option>Jonction</option>
-                  <option>Champel</option>
-                  <option>Chêne-Bourg</option>
                   <option>Vernier</option>
                   <option>Meyrin</option>
+                  <option>Lancy</option>
+                  <option>Chêne-Bourg</option>
+                  <option>Thônex</option>
+                  <option>Autre commune GE</option>
                 </select>
               </div>
 
@@ -918,16 +958,16 @@
               </div>
 
               <div class="field">
-                <label for="details">Détails</label>
-                <textarea id="details" placeholder="Ex: porte blindée, clé à l'intérieur, étage, interphone…"></textarea>
+                <label for="details">Description du projet</label>
+                <textarea id="details" placeholder="Ex: portail coulissant 4m, clôture jardin 30m, dépannage serrure…"></textarea>
               </div>
 
               <div class="form-actions">
-                <button class="btn btn-blue" id="quoteBtn" type="button">Calculer un devis →</button>
+                <button class="btn btn-blue" id="quoteBtn" type="button">Envoyer la demande →</button>
               </div>
 
               <div class="notice" id="quoteStatus">
-                <b>Info :</b> devis indicatif, confirmé au téléphone avant intervention.
+                <b>Info :</b> devis gratuit, sans engagement. Réponse rapide garantie.
               </div>
             </div>
           </aside>
@@ -935,69 +975,121 @@
       </section>
     </div>
 
-    <!-- SERVICES -->
+    <!-- STATS -->
     <div class="wrap">
+      <div class="stats-band">
+        <div class="stat">
+          <div class="stat-num">7j/7</div>
+          <div class="stat-label">Disponibilité</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2019</div>
+          <div class="stat-label">Fondé à Satigny</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Spécialités métier</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">GE</div>
+          <div class="stat-label">Canton couvert</div>
+        </div>
+      </div>
+
+      <!-- SERVICES -->
       <section id="services">
         <div class="section-head">
-          <h2>Services d'urgence &amp; sécurisation</h2>
-          <p class="sub">
-            Solutions rapides, propres et adaptées : ouverture sans dégâts quand c'est possible, remplacement immédiat si nécessaire.
-          </p>
+          <div>
+            <h2>Nos métiers & services</h2>
+            <p class="sub" style="margin-top:6px;">
+              Fabrication sur mesure, pose, dépannage et travaux métalliques — tout ce dont vous avez besoin sous un même toit.
+            </p>
+          </div>
         </div>
 
         <div class="grid-3">
           <div class="card">
             <div class="top">
-              <div class="icon">🔓</div>
-              <div class="tag">24/7</div>
+              <div class="icon">🚧</div>
+              <div class="tag">Sur mesure</div>
             </div>
-            <h3>Ouverture de porte</h3>
-            <p>Porte claquée, serrure bloquée, clé à l'intérieur. Intervention rapide avec méthode adaptée.</p>
+            <h3>Portails & portillons</h3>
+            <p>Fabrication et installation de portails coulissants, battants ou motorisés. Acier, métal galvanisé, sur mesure selon vos dimensions et style.</p>
           </div>
 
           <div class="card">
             <div class="top">
-              <div class="icon">🧩</div>
-              <div class="tag">Sur place</div>
+              <div class="icon">🏗️</div>
+              <div class="tag">Pose incluse</div>
             </div>
-            <h3>Remplacement cylindre</h3>
-            <p>Cylindre cassé, clé perdue, sécurisation. Large stock de cylindres standards &amp; sécurité.</p>
+            <h3>Clôtures métalliques</h3>
+            <p>Clôtures industrielles, résidentielles, grilles et panneaux rigides. Conception, fabrication et mise en place complète sur votre parcelle.</p>
+          </div>
+
+          <div class="card">
+            <div class="top">
+              <div class="icon">🔐</div>
+              <div class="tag">Urgence OK</div>
+            </div>
+            <h3>Serrurerie générale</h3>
+            <p>Remplacement, réparation et installation de serrures. Dépannage rapide en cas de porte claquée, serrure bloquée ou clé perdue.</p>
+          </div>
+
+          <div class="card">
+            <div class="top">
+              <div class="icon">🔥</div>
+              <div class="tag">Artisanat</div>
+            </div>
+            <h3>Soudure & assemblage</h3>
+            <p>Travaux de soudure MIG/TIG sur acier et métal. Réparation de structures, assemblage de pièces sur mesure, garde-corps, rampes.</p>
+          </div>
+
+          <div class="card">
+            <div class="top">
+              <div class="icon">⚒️</div>
+              <div class="tag">Sur commande</div>
+            </div>
+            <h3>Forge & pièces métal</h3>
+            <p>Pièces forgées artisanales, ferronnerie décorative, grilles ornementales. Fabrication de pièces uniques selon vos plans ou dessins.</p>
           </div>
 
           <div class="card">
             <div class="top">
               <div class="icon">🛡️</div>
-              <div class="tag">Après effraction</div>
+              <div class="tag">Pro & particuliers</div>
             </div>
-            <h3>Sécurisation immédiate</h3>
-            <p>Pose provisoire, renfort, remplacement serrure/cylindre. Priorité aux urgences sécurité.</p>
+            <h3>Sécurisation & renforts</h3>
+            <p>Sécurisation après effraction, blindage de porte, pose de cornières anti-pince, verrous supplémentaires. Intervention rapide sur Genève.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- REALISATIONS -->
+      <section id="realisations">
+        <div class="section-head">
+          <div>
+            <h2>Types de réalisations</h2>
+            <p class="sub" style="margin-top:6px;">Exemples de projets réalisés pour particuliers et professionnels dans le canton de Genève.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="top">
+              <div class="icon">🏠</div>
+              <div class="tag">Résidentiel</div>
+            </div>
+            <h3>Particuliers & villas</h3>
+            <p>Portails d'entrée sur mesure, clôtures de jardin, portillons piétons, garde-corps de terrasse, pergolas métalliques, serrurerie intérieure et extérieure.</p>
           </div>
 
           <div class="card">
             <div class="top">
-              <div class="icon">🚪</div>
-              <div class="tag">Options</div>
+              <div class="icon">🏭</div>
+              <div class="tag">Professionnel</div>
             </div>
-            <h3>Blindage &amp; renforts</h3>
-            <p>Renfort de porte, cornière anti-pince, serrure multipoints. Recommandations claires.</p>
-          </div>
-
-          <div class="card">
-            <div class="top">
-              <div class="icon">🏢</div>
-              <div class="tag">Pro</div>
-            </div>
-            <h3>Intervention commerces</h3>
-            <p>Rideaux métalliques, portes techniques, accès locaux. Interventions rapides en horaires étendus.</p>
-          </div>
-
-          <div class="card">
-            <div class="top">
-              <div class="icon">🔑</div>
-              <div class="tag">Prévention</div>
-            </div>
-            <h3>Changement préventif</h3>
-            <p>Clés qui tournent mal, cylindre usé, serrure ancienne. Remplacement avant la panne.</p>
+            <h3>Industries & commerces</h3>
+            <p>Grilles de sécurité, rideaux métalliques, portails industriels, clôtures de chantier, serrures haute sécurité, maintenance de fermetures.</p>
           </div>
         </div>
       </section>
@@ -1005,76 +1097,37 @@
       <!-- PROCESS -->
       <section id="process">
         <div class="section-head">
-          <h2>Comment ça marche</h2>
-          <p class="sub">Simple, rapide, sans surprise : on annonce le prix avant d'intervenir.</p>
+          <h2>Comment on travaille</h2>
+          <p class="sub">Simple, direct, sans mauvaise surprise.</p>
         </div>
 
         <div class="steps">
           <div class="step">
             <div class="num">1</div>
             <div>
-              <b>Appel / message</b>
-              <span>Vous décrivez la situation (porte, serrure, cylindre). On vous pose 2–3 questions utiles.</span>
+              <b>Prise de contact</b>
+              <span>Appelez ou envoyez un message. On écoute votre besoin et on pose les bonnes questions pour bien cadrer le projet.</span>
             </div>
           </div>
           <div class="step">
             <div class="num">2</div>
             <div>
-              <b>Devis clair</b>
-              <span>On annonce une fourchette et on confirme avant de commencer. Pas de surprise.</span>
+              <b>Devis gratuit</b>
+              <span>On se déplace si nécessaire pour mesurer et conseiller. Devis clair, détaillé et gratuit. Aucun engagement.</span>
             </div>
           </div>
           <div class="step">
             <div class="num">3</div>
             <div>
-              <b>Intervention</b>
-              <span>Ouverture propre si possible. Sinon remplacement immédiat du cylindre / serrure.</span>
+              <b>Fabrication & pose</b>
+              <span>Fabrication en atelier à Satigny, puis pose sur site. On soigne les finitions et on respecte les délais annoncés.</span>
             </div>
           </div>
           <div class="step">
             <div class="num">4</div>
             <div>
-              <b>Facture &amp; conseils</b>
-              <span>Facture détaillée et recommandations simples pour éviter que ça se reproduise.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PRICING -->
-      <section id="tarifs">
-        <div class="section-head">
-          <h2>Tarifs indicatifs (transparents)</h2>
-          <p class="sub">Exemples de fourchettes. Le tarif exact dépend du type de porte et de serrure.</p>
-        </div>
-
-        <div class="pricing">
-          <div class="price-card">
-            <h3>Dépannage urgence</h3>
-            <p>Ouverture de porte, extraction de clé, déblocage. Devis confirmé avant intervention.</p>
-            <div class="price-grid">
-              <div class="line"><i>Porte claquée</i><b>CHF 120–190</b></div>
-              <div class="line"><i>Serrure bloquée</i><b>CHF 160–260</b></div>
-              <div class="line"><i>Clé cassée</i><b>CHF 140–230</b></div>
-              <div class="line"><i>Nuit / week-end</i><b>Sur majoration</b></div>
-            </div>
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-              <a class="btn btn-urgent" href="tel:+41225553190"><span class="pulse"></span> Urgence : appeler</a>
-              <a class="btn btn-blue" href="#devis">Devis express</a>
-            </div>
-          </div>
-
-          <div class="price-card">
-            <h3>Sécurisation &amp; remplacement</h3>
-            <p>Remplacement cylindre, serrure, renforts anti-effraction. Stock sur place.</p>
-            <div class="price-grid">
-              <div class="line"><i>Cylindre standard</i><b>CHF 90–160</b></div>
-              <div class="line"><i>Cylindre sécurité</i><b>CHF 160–320</b></div>
-              <div class="line"><i>Serrure 1 point</i><b>CHF 180–360</b></div>
-              <div class="line"><i>Multipoints</i><b>Sur devis</b></div>
-            </div>
-            <div style="margin-top:12px;" class="note">
-              Astuce : après perte de clés, le changement de cylindre est souvent la solution la plus simple et efficace.
+              <b>Livraison & suivi</b>
+              <span>Vérification finale avec vous. On s'assure que tout fonctionne parfaitement avant de partir.</span>
             </div>
           </div>
         </div>
@@ -1083,73 +1136,124 @@
       <!-- REVIEWS -->
       <section id="avis">
         <div class="section-head">
-          <h2>Avis clients</h2>
-          <p class="sub">Rapidité, clarté, efficacité — c'est ce qu'on vise à chaque intervention.</p>
+          <h2>Ce que disent nos clients</h2>
+          <p class="sub">Fiabilité, qualité d'exécution et réactivité — nos engagements au quotidien.</p>
         </div>
 
         <div class="reviews">
           <div class="review">
             <div class="stars">★★★★★</div>
-            <p>"Porte claquée à 23h. Réponse immédiate, devis clair, intervention rapide. Très pro."</p>
-            <div class="who"><span><b>Claire B.</b> — Eaux-Vives</span><span>Nuit</span></div>
+            <p>"Portail coulissant fabriqué et posé en un temps record. Finitions impeccables, équipe sérieuse. Je recommande."</p>
+            <div class="who"><span><b>Marc D.</b> — Satigny</span><span>Portail</span></div>
           </div>
           <div class="review">
             <div class="stars">★★★★★</div>
-            <p>"Clé cassée dans la serrure. Extraction + cylindre changé sur place. Nickel."</p>
-            <div class="who"><span><b>Hugo M.</b> — Plainpalais</span><span>Urgence</span></div>
+            <p>"Clôture de jardin complète. Propre, solide, exactement comme demandé. Le devis a été respecté à la lettre."</p>
+            <div class="who"><span><b>Sophie R.</b> — Vernier</span><span>Clôture</span></div>
           </div>
           <div class="review">
             <div class="stars">★★★★★</div>
-            <p>"Après effraction, ils ont sécurisé immédiatement et expliqué les options sans pousser à l'achat."</p>
-            <div class="who"><span><b>Nora S.</b> — Carouge</span><span>Sécurisation</span></div>
+            <p>"Dépannage serrure un samedi matin, ils ont répondu en 20 min. Efficaces et honnêtes sur le prix."</p>
+            <div class="who"><span><b>Karim B.</b> — Meyrin</span><span>Serrurerie</span></div>
           </div>
         </div>
       </section>
 
-      <!-- ZONE -->
+      <!-- HORAIRES -->
+      <section id="horaires">
+        <div class="section-head">
+          <h2>Horaires d'ouverture</h2>
+          <p class="sub">Disponibles toute la semaine, y compris le week-end.</p>
+        </div>
+
+        <div class="hours-grid">
+          <div class="hour-card">
+            <div class="day">Lundi</div>
+            <div class="time">Toute la journée</div>
+            <div class="open-badge">✓ Ouvert</div>
+          </div>
+          <div class="hour-card">
+            <div class="day">Mardi</div>
+            <div class="time">Toute la journée</div>
+            <div class="open-badge">✓ Ouvert</div>
+          </div>
+          <div class="hour-card">
+            <div class="day">Mercredi</div>
+            <div class="time">Toute la journée</div>
+            <div class="open-badge">✓ Ouvert</div>
+          </div>
+          <div class="hour-card">
+            <div class="day">Jeudi</div>
+            <div class="time">Toute la journée</div>
+            <div class="open-badge">✓ Ouvert</div>
+          </div>
+          <div class="hour-card">
+            <div class="day">Vendredi</div>
+            <div class="time">Toute la journée</div>
+            <div class="open-badge">✓ Ouvert</div>
+          </div>
+          <div class="hour-card">
+            <div class="day">Samedi</div>
+            <div class="time">Toute la journée</div>
+            <div class="open-badge">✓ Ouvert</div>
+          </div>
+          <div class="hour-card">
+            <div class="day">Dimanche</div>
+            <div class="time">Toute la journée</div>
+            <div class="open-badge">✓ Ouvert</div>
+          </div>
+          <div class="hour-card" style="background: linear-gradient(180deg, rgba(44,62,80,.06), rgba(44,62,80,.02)); border-color: rgba(44,62,80,.16);">
+            <div class="day">Urgences</div>
+            <div class="time" style="color:var(--steel);">Sur appel</div>
+            <div class="open-badge" style="background:rgba(44,62,80,.08); border-color:rgba(44,62,80,.20); color:var(--steel);">📞 7j/7</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ZONE + MAP -->
       <section id="zone">
         <div class="section-head">
           <h2>Zone d'intervention</h2>
-          <p class="sub">Genève + communes : centre, rive gauche, rive droite, zones résidentielles et axes principaux.</p>
+          <p class="sub">Basés à Satigny, on couvre l'ensemble du canton de Genève.</p>
         </div>
 
         <div class="map">
           <iframe
-            title="Carte — Zone d'intervention Serrurerie Atlas Genève"
+            title="Techno Serrurerie Dias — Rue du Pré-Bouvier 7, 1242 Satigny"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Gen%C3%A8ve%20Suisse&output=embed">
+            src="https://www.google.com/maps?q=Rue+du+Pr%C3%A9-Bouvier+7+1242+Satigny&output=embed">
           </iframe>
         </div>
 
         <div style="margin-top:14px;" class="grid-3">
-          <div class="card"><h3>Genève centre</h3><p>Pâquis, Cornavin, Jonction, Eaux-Vives, Champel, Plainpalais.</p></div>
-          <div class="card"><h3>Communes</h3><p>Carouge, Lancy, Vernier, Meyrin, Chêne-Bourg, Thônex.</p></div>
-          <div class="card"><h3>Pro &amp; commerces</h3><p>Accès locaux, portes techniques, dépannages en horaires étendus.</p></div>
+          <div class="card"><h3>Satigny & Meyrin</h3><p>Zone principale d'atelier. Fabrication et interventions locales rapides.</p></div>
+          <div class="card"><h3>Genève & communes</h3><p>Carouge, Lancy, Vernier, Chêne-Bourg, Thônex, Onex et tout Genève.</p></div>
+          <div class="card"><h3>Projets sur mesure</h3><p>Pour les projets importants (industrie, chantiers), déplacement possible hors canton sur devis.</p></div>
         </div>
       </section>
 
-      <!-- DEVIS -->
-      <section id="devis">
+      <!-- CONTACT / DEVIS -->
+      <section id="contact">
         <div class="section-head">
-          <h2>Devis express</h2>
-          <p class="sub">Remplissez le formulaire, obtenez une estimation immédiate. Un technicien vous rappelle pour confirmer.</p>
+          <h2>Contact & devis gratuit</h2>
+          <p class="sub">Décrivez votre projet, on vous rappelle rapidement avec une estimation.</p>
         </div>
 
         <div class="hero-card" style="padding:18px;">
           <div class="steps" style="grid-template-columns:1fr 1fr;">
             <div class="step" style="align-items:flex-start;">
-              <div class="num">⚡</div>
+              <div class="num">📍</div>
               <div>
-                <b>Estimation instantanée</b>
-                <span>Fourchette de prix calculée selon votre situation, confirmée avant intervention.</span>
+                <b>Rue du Pré-Bouvier 7 — 1242 Satigny</b>
+                <span>Atelier et siège social. Passage possible sur rendez-vous ou directement.</span>
               </div>
             </div>
             <div class="step" style="align-items:flex-start;">
-              <div class="num">📍</div>
+              <div class="num">✉️</div>
               <div>
-                <b>Priorité aux urgences</b>
-                <span>Si vous êtes bloqué dehors, le bouton rouge vous met en contact direct.</span>
+                <b>ventes@serrurerie-dias.ch</b>
+                <span>Pour les devis, demandes commerciales et suivis de projets.</span>
               </div>
             </div>
           </div>
@@ -1158,29 +1262,30 @@
 
           <form id="bigForm" class="steps" style="grid-template-columns: 1fr 1fr; gap:14px;">
             <div class="field">
-              <label for="bf_issue">Problème</label>
-              <select id="bf_issue">
-                <option>Porte claquée</option>
-                <option>Clé perdue</option>
-                <option>Clé cassée / coincée</option>
-                <option>Serrure bloquée</option>
-                <option>Après effraction</option>
+              <label for="bf_service">Service</label>
+              <select id="bf_service">
+                <option>Portail sur mesure</option>
+                <option>Clôture métallique</option>
+                <option>Serrurerie / dépannage</option>
+                <option>Soudure / forge</option>
+                <option>Sécurisation</option>
+                <option>Autre</option>
               </select>
             </div>
 
             <div class="field">
-              <label for="bf_time">Quand ?</label>
+              <label for="bf_time">Délai souhaité</label>
               <select id="bf_time">
-                <option>Tout de suite</option>
-                <option>Dans l'heure</option>
-                <option>Ce soir</option>
-                <option>Demain</option>
+                <option>Le plus tôt possible</option>
+                <option>Dans la semaine</option>
+                <option>Dans le mois</option>
+                <option>Pas urgent — planification</option>
               </select>
             </div>
 
             <div class="field">
-              <label for="bf_area">Quartier</label>
-              <input id="bf_area" placeholder="Ex: Pâquis / Carouge / Meyrin…" />
+              <label for="bf_name">Nom</label>
+              <input id="bf_name" placeholder="Votre nom / entreprise" />
             </div>
 
             <div class="field">
@@ -1189,13 +1294,14 @@
             </div>
 
             <div class="field" style="grid-column: 1 / -1;">
-              <label for="bf_msg">Message</label>
-              <textarea id="bf_msg" placeholder="Ex: porte blindée, clé à l'intérieur, interphone…"></textarea>
+              <label for="bf_msg">Description du projet</label>
+              <textarea id="bf_msg" placeholder="Ex: portail coulissant motorisé 4m, clôture 50ml, dépannage urgent, garde-corps terrasse…"></textarea>
             </div>
 
             <div class="form-actions" style="grid-column: 1 / -1;">
-              <button class="btn btn-blue" type="submit" id="submitBtn">Envoyer &amp; obtenir l'estimation →</button>
-              <button class="btn btn-urgent" type="button" id="urgentBtn"><span class="pulse"></span> Urgence : appeler</button>
+              <button class="btn btn-blue" type="submit" id="submitBtn">Envoyer la demande →</button>
+              <a class="btn btn-urgent" href="tel:+41789765301"><span class="pulse"></span> Appel direct</a>
+              <a class="btn" href="mailto:ventes@serrurerie-dias.ch">✉ Email</a>
               <span class="notice" id="formStatus"></span>
             </div>
           </form>
@@ -1210,39 +1316,44 @@
       <div class="foot">
         <div>
           <div class="brand" style="min-width:auto;">
-            <div class="logo" aria-hidden="true"><span>A</span></div>
+            <div class="logo" aria-hidden="true"><span>TD</span></div>
             <div class="title">
-              <strong>Serrurerie Atlas Genève</strong>
-              <small>Urgence 24/7 • Dépannage • Sécurisation</small>
+              <strong>Techno Serrurerie Dias Sàrl</strong>
+              <small>Portails • Clôtures • Serrurerie • Forge</small>
             </div>
           </div>
           <p>
-            Serrurier à Genève : ouverture de porte, remplacement de cylindre, sécurisation après effraction.
-            Devis clair avant intervention.
+            Fabrication et pose de portails, clôtures, serrurerie, soudure et forge à Satigny.
+            Artisan genevois disponible 7j/7 pour particuliers et professionnels sur tout le canton de Genève.
+          </p>
+          <p style="margin-top:8px;">
+            <b>CHE-164.486.663</b> — Registre du commerce du canton de Genève
           </p>
         </div>
 
         <div class="cols">
           <div class="col">
             <strong>Contact</strong>
-            <div>Rue du Rhône 35, 1204 Genève</div>
-            <a href="tel:+41225553190">+41 22 555 31 90</a>
-            <a href="mailto:contact@serrurerie-atlas-geneve.ch">contact@serrurerie-atlas-geneve.ch</a>
-            <div>Disponible 24h/24 • 7j/7</div>
+            <div>Rue du Pré-Bouvier 7</div>
+            <div>1242 Satigny, GE</div>
+            <a href="tel:+41789765301">+41 78 976 53 01</a>
+            <a href="mailto:ventes@serrurerie-dias.ch">ventes@serrurerie-dias.ch</a>
+            <div>Ouvert 7j/7 — toute la journée</div>
           </div>
           <div class="col">
             <strong>Services</strong>
-            <a href="#services">Ouverture de porte</a>
-            <a href="#services">Cylindre &amp; serrure</a>
-            <a href="#services">Après effraction</a>
-            <a href="#tarifs">Tarifs indicatifs</a>
+            <a href="#services">Portails sur mesure</a>
+            <a href="#services">Clôtures métalliques</a>
+            <a href="#services">Serrurerie & dépannage</a>
+            <a href="#services">Soudure & forge</a>
+            <a href="#services">Sécurisation</a>
           </div>
         </div>
       </div>
 
       <div class="subline">
-        <span>© <span id="year"></span> Serrurerie Atlas Genève. Tous droits réservés.</span>
-        <span>Conditions • Confidentialité • Mentions légales</span>
+        <span>© <span id="year"></span> Techno Serrurerie Dias Sàrl. Tous droits réservés.</span>
+        <span>Satigny, Canton de Genève, Suisse</span>
       </div>
     </div>
   </footer>
@@ -1251,17 +1362,17 @@
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
     <div class="modal-card">
       <div class="m-top">
-        <strong>Confirmation</strong>
+        <strong>Demande envoyée</strong>
         <button class="x" id="closeModal" aria-label="Fermer">✕</button>
       </div>
       <div class="m-body">
-        <h3 id="mTitle">Demande prise en charge.</h3>
-        <p>Votre demande a été enregistrée. Un technicien vous recontacte rapidement pour confirmer l'intervention.</p>
+        <h3 id="mTitle">Votre demande a bien été prise en charge.</h3>
+        <p>Notre équipe va analyser votre projet et vous recontacte rapidement avec une estimation gratuite.</p>
         <div class="note" id="modalDetails">—</div>
 
         <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="btn btn-blue" id="modalOk">OK →</button>
-          <a class="btn btn-urgent" href="tel:+41225553190"><span class="pulse"></span> Appeler en urgence</a>
+          <button class="btn btn-blue" id="modalOk">Fermer →</button>
+          <a class="btn btn-urgent" href="tel:+41789765301"><span class="pulse"></span> Appel direct</a>
         </div>
       </div>
     </div>
@@ -1272,28 +1383,11 @@
 
     const quoteBtn = document.getElementById('quoteBtn');
     const quoteStatus = document.getElementById('quoteStatus');
-    const issue = document.getElementById('issue');
-    const district = document.getElementById('district');
 
-    function rand(min, max){ return Math.floor(Math.random() * (max - min + 1)) + min; }
-
-    function estimate(issueValue){
-      const base = {
-        "Porte claquée": [120, 190],
-        "Clé cassée": [140, 230],
-        "Serrure bloquée": [160, 260],
-        "Cylindre à remplacer": [220, 420],
-        "Après effraction": [280, 650]
-      }[issueValue] || [140, 260];
-      const low = base[0] + rand(0, 20);
-      const high = base[1] + rand(10, 30);
-      return [Math.round(low/10)*10, Math.round(high/10)*10];
-    }
-
-    function fakeLoading(el, ms=1400){
+    function fakeLoading(el, ms=1200){
       el.disabled = true;
       const old = el.textContent;
-      el.textContent = "Calcul en cours…";
+      el.textContent = "Envoi en cours…";
       return new Promise(res => setTimeout(() => {
         el.disabled = false;
         el.textContent = old;
@@ -1302,9 +1396,12 @@
     }
 
     quoteBtn.addEventListener('click', async () => {
-      await fakeLoading(quoteBtn, 1100);
-      const [a,b] = estimate(issue.value);
-      quoteStatus.innerHTML = `<b>Estimation :</b> CHF ${a}–${b} • <b>${issue.value}</b> • ${district.value} — Devis confirmé au téléphone.`;
+      const svc = document.getElementById('service').value;
+      const z = document.getElementById('zone').value;
+      const n = document.getElementById('name').value;
+      const p = document.getElementById('phone').value;
+      await fakeLoading(quoteBtn, 1000);
+      quoteStatus.innerHTML = `<b>Demande envoyée !</b> Projet : ${svc} — ${z}. On vous rappelle au plus vite${p ? ' au ' + p : ''}.`;
     });
 
     const bigForm = document.getElementById('bigForm');
@@ -1312,15 +1409,8 @@
     const closeModal = document.getElementById('closeModal');
     const modalOk = document.getElementById('modalOk');
     const modalDetails = document.getElementById('modalDetails');
-    const urgentBtn = document.getElementById('urgentBtn');
     const formStatus = document.getElementById('formStatus');
     const submitBtn = document.getElementById('submitBtn');
-
-    const bf_issue = document.getElementById('bf_issue');
-    const bf_time = document.getElementById('bf_time');
-    const bf_area = document.getElementById('bf_area');
-    const bf_phone = document.getElementById('bf_phone');
-    const bf_msg = document.getElementById('bf_msg');
 
     function openModal(text){
       modalDetails.textContent = text;
@@ -1342,35 +1432,23 @@
       e.preventDefault();
       await fakeLoading(submitBtn, 1300);
 
-      const [a,b] = estimate(
-        bf_issue.value.includes("Porte") ? "Porte claquée"
-        : bf_issue.value.includes("effraction") ? "Après effraction"
-        : bf_issue.value.includes("cassée") ? "Clé cassée"
-        : "Serrure bloquée"
-      );
-
       const detailsText = [
-        `Problème : ${bf_issue.value}`,
-        `Quand : ${bf_time.value}`,
-        `Quartier : ${bf_area.value || "Genève"}`,
-        `Téléphone : ${bf_phone.value || "—"}`,
-        `Estimation : CHF ${a}–${b}`,
-        `Message : ${bf_msg.value || "—"}`
+        `Service : ${document.getElementById('bf_service').value}`,
+        `Délai : ${document.getElementById('bf_time').value}`,
+        `Nom : ${document.getElementById('bf_name').value || "—"}`,
+        `Téléphone : ${document.getElementById('bf_phone').value || "—"}`,
+        `Message : ${document.getElementById('bf_msg').value || "—"}`
       ].join(" • ");
 
-      formStatus.innerHTML = `<b>Envoyé :</b> estimation CHF ${a}–${b}. Un technicien vous recontacte.`;
+      formStatus.innerHTML = `<b>Envoyé ✓</b> — On vous recontacte sous 24h.`;
       openModal(detailsText);
-    });
-
-    urgentBtn.addEventListener('click', () => {
-      openModal("Urgence : appelez le +41 22 555 31 90. Un technicien vous guide immédiatement et confirme l'intervention.");
     });
   </script>
 
-  <!-- Floating urgent CTA for mobile -->
-  <div class="float-cta" aria-hidden="false">
-    <a class="btn btn-urgent" href="tel:+41225553190"><span class="pulse"></span> Appel urgence</a>
-    <a class="btn btn-blue" href="#devis">Devis express</a>
+  <!-- Floating CTA mobile -->
+  <div class="float-cta" aria-hidden="true">
+    <a class="btn btn-urgent" href="tel:+41789765301"><span class="pulse"></span> Appel direct</a>
+    <a class="btn btn-blue" href="#contact">Devis gratuit</a>
   </div>
 </body>
 </html>
