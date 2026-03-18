@@ -1,1454 +1,221 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Techno Serrurerie Dias — Portails, Clôtures & Serrurerie à Genève</title>
-  <meta name="description" content="Techno Serrurerie Dias Sàrl — Serrurerie, fabrication de portails et clôtures, soudure, forge et dépannage. Ouvert 7j/7 à Satigny, intervention sur tout le canton de Genève." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg: #f6f8fc;
-      --surface: #ffffff;
-      --ink: #0e1a2b;
-      --muted: rgba(14,26,43,.72);
-      --line: rgba(14,26,43,.12);
-      --blue: #1f6fff;
-      --blue2:#0b4fd6;
-      --steel: #2c3e50;
-      --urgent: #e11d48;
-      --urgent2:#be123c;
-      --gold: #d97706;
-      --shadow: 0 18px 60px rgba(14,26,43,.12);
-      --shadow2: 0 10px 30px rgba(14,26,43,.10);
-      --radius: 18px;
-      --radius2: 26px;
-      --max: 1180px;
-    }
-
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(900px 520px at 12% 8%, rgba(31,111,255,.08), transparent 60%),
-        radial-gradient(900px 520px at 88% 10%, rgba(44,62,80,.06), transparent 60%),
-        linear-gradient(180deg, #f6f8fc 0%, #f2f6ff 45%, #f6f8fc 100%);
-      overflow-x:hidden;
-    }
-
-    a{ color:inherit; text-decoration:none; }
-    button, input, select{ font:inherit; }
-    img{ max-width:100%; display:block; }
-
-    .wrap{ max-width: var(--max); margin:0 auto; padding: 0 18px; }
-    .btn{
-      border: 1px solid var(--line);
-      background: var(--surface);
-      color: var(--ink);
-      padding: 12px 16px;
-      border-radius: 14px;
-      cursor:pointer;
-      transition: transform .12s ease, box-shadow .18s ease, background .18s ease, border .18s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      box-shadow: 0 0 0 rgba(0,0,0,0);
-      white-space:nowrap;
-    }
-    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow2); border-color: rgba(14,26,43,.18); }
-    .btn:active{ transform: translateY(0px); }
-
-    .btn-blue{
-      border-color: rgba(31,111,255,.30);
-      background: linear-gradient(180deg, rgba(31,111,255,.12), rgba(31,111,255,.06));
-    }
-    .btn-blue:hover{
-      border-color: rgba(31,111,255,.42);
-      background: linear-gradient(180deg, rgba(31,111,255,.16), rgba(31,111,255,.08));
-    }
-
-    .btn-urgent{
-      border-color: rgba(44,62,80,.28);
-      background: linear-gradient(180deg, rgba(44,62,80,.14), rgba(44,62,80,.07));
-      color: var(--ink);
-    }
-    .btn-urgent:hover{
-      border-color: rgba(44,62,80,.45);
-      background: linear-gradient(180deg, rgba(44,62,80,.20), rgba(44,62,80,.10));
-      box-shadow: 0 18px 45px rgba(44,62,80,.15);
-    }
-
-    .btn-steel{
-      border-color: rgba(44,62,80,.28);
-      background: linear-gradient(180deg, rgba(44,62,80,.12), rgba(44,62,80,.06));
-    }
-    .btn-steel:hover{
-      border-color: rgba(44,62,80,.42);
-      box-shadow: 0 18px 40px rgba(44,62,80,.15);
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(31,111,255,.08);
-      border: 1px solid rgba(31,111,255,.18);
-      color: rgba(14,26,43,.84);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .pulse{
-      width:10px; height:10px; border-radius:999px;
-      background: #1f6fff;
-      box-shadow: 0 0 0 0 rgba(31,111,255,.35);
-      animation: pulse 1.6s infinite;
-      flex-shrink: 0;
-    }
-    @keyframes pulse{
-      0%{ box-shadow: 0 0 0 0 rgba(31,111,255,.35); transform: scale(1); }
-      60%{ box-shadow: 0 0 0 14px rgba(31,111,255,0); transform: scale(1.03); }
-      100%{ box-shadow: 0 0 0 0 rgba(31,111,255,0); transform: scale(1); }
-    }
-
-    /* ── Navbar ── */
-    header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background: rgba(246,248,252,.84);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(14,26,43,.10);
-    }
-    .nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      padding: 12px 0;
-      flex-wrap: nowrap;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 0;
-      flex-shrink: 0;
-    }
-    .logo{
-      width:40px; height:40px;
-      border-radius: 14px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(44,62,80,.28), rgba(31,111,255,.10)),
-        linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.7));
-      border: 1px solid rgba(44,62,80,.22);
-      display:grid;
-      place-items:center;
-      box-shadow: var(--shadow2);
-      position:relative;
-      overflow:hidden;
-      flex-shrink: 0;
-    }
-    .logo::after{
-      content:"";
-      position:absolute;
-      inset:-60%;
-      background: linear-gradient(90deg, transparent, rgba(44,62,80,.22), transparent);
-      transform: rotate(25deg);
-      animation: sheen 3.5s infinite;
-    }
-    @keyframes sheen{
-      0%{ transform: translateX(-40%) rotate(25deg); opacity:0; }
-      20%{ opacity:1; }
-      55%{ transform: translateX(55%) rotate(25deg); opacity:.9; }
-      100%{ transform: translateX(80%) rotate(25deg); opacity:0; }
-    }
-    .logo span{
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      color: var(--steel);
-      letter-spacing:-.02em;
-      position: relative;
-      z-index: 1;
-      font-size: 13px;
-    }
-    .brand .title{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-    .brand strong{
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: -.01em;
-    }
-    .brand small{
-      color: var(--muted);
-      font-weight: 700;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      font-size: 11px;
-    }
-
-    .navlinks{
-      display:flex;
-      gap: 4px;
-      flex-wrap:nowrap;
-      justify-content:center;
-      overflow:hidden;
-    }
-    .navlinks a{
-      font-size: 12.5px;
-      color: rgba(14,26,43,.78);
-      padding: 9px 9px;
-      border-radius: 999px;
-      transition: background .18s ease;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-    .navlinks a:hover{
-      background: rgba(31,111,255,.08);
-    }
-
-    .navcta{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      justify-content:flex-end;
-      min-width: 0;
-      flex-shrink: 0;
-    }
-    .hotline{
-      display:flex;
-      flex-direction:column;
-      line-height:1.1;
-      margin-right: 6px;
-      text-align:right;
-      white-space: nowrap;
-    }
-    .hotline b{
-      font-size: 14px;
-      letter-spacing:-.01em;
-      white-space: nowrap;
-    }
-    .hotline span{
-      font-size: 11px;
-      color: var(--muted);
-      font-weight: 700;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      white-space: nowrap;
-    }
-
-    /* ── Hero ── */
-    .hero{
-      padding: 52px 0 32px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 18px;
-      align-items:start;
-    }
-    .hero-card{
-      background: var(--surface);
-      border: 1px solid rgba(14,26,43,.10);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .hero-left{
-      padding: 28px 28px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-left::before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background:
-        radial-gradient(900px 520px at 20% 0%, rgba(31,111,255,.14), transparent 60%),
-        radial-gradient(900px 520px at 100% 0%, rgba(44,62,80,.10), transparent 60%);
-      pointer-events:none;
-      opacity:.7;
-    }
-    .hero-left > *{ position:relative; z-index:1; }
-
-    .hero-left .badge{
-      display: inline-flex;
-      margin-bottom: 16px;
-    }
-
-    h1{
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(32px, 4vw, 52px);
-      line-height:1.02;
-      margin: 0 0 12px;
-      letter-spacing:-.03em;
-    }
-    .lead{
-      margin: 0 0 16px;
-      color: rgba(14,26,43,.74);
-      font-size: 15px;
-      line-height:1.7;
-      max-width: 58ch;
-      font-weight: 600;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      margin-top: 10px;
-      align-items:center;
-    }
-
-    .trust{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      margin-top: 14px;
-    }
-    .chip{
-      background: rgba(14,26,43,.03);
-      border: 1px solid rgba(14,26,43,.10);
-      border-radius: 999px;
-      padding: 10px 12px;
-      font-size: 12px;
-      color: rgba(14,26,43,.78);
-      font-weight: 700;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-    .chip i{
-      font-style:normal;
-      width: 8px; height: 8px;
-      background: rgba(44,62,80,.85);
-      border-radius: 999px;
-      box-shadow: 0 0 0 5px rgba(44,62,80,.12);
-      flex-shrink: 0;
-    }
-
-    .hero-right{
-      display:grid;
-      grid-template-rows: auto 1fr;
-    }
-    .urgent-box{
-      padding: 18px 18px;
-      border-bottom: 1px solid rgba(14,26,43,.10);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      background: linear-gradient(180deg, rgba(44,62,80,.08), rgba(44,62,80,.03));
-    }
-    .urgent-box strong{
-      font-family:"Space Grotesk", sans-serif;
-      font-size: 15px;
-      letter-spacing:-.01em;
-    }
-    .urgent-box span{
-      color: rgba(14,26,43,.70);
-      font-size: 12px;
-      font-weight: 700;
-    }
-    .mini-form{
-      padding: 18px;
-      display:grid;
-      gap: 12px;
-    }
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-    label{
-      font-size: 12px;
-      color: rgba(14,26,43,.70);
-      font-weight: 800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    input, select, textarea{
-      border-radius: 14px;
-      border: 1px solid rgba(14,26,43,.14);
-      padding: 12px 12px;
-      outline:none;
-      background: #fff;
-      color: var(--ink);
-      font-weight: 650;
-      transition: border .18s ease, box-shadow .18s ease;
-    }
-    textarea{ min-height: 88px; resize: vertical; font-weight:600; }
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(31,111,255,.45);
-      box-shadow: 0 0 0 4px rgba(31,111,255,.12);
-    }
-
-    .form-actions{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      align-items:center;
-      margin-top: 2px;
-    }
-
-    .notice{
-      font-size: 12px;
-      color: rgba(14,26,43,.66);
-      line-height:1.55;
-      font-weight: 650;
-    }
-    .notice b{ color: rgba(14,26,43,.86); }
-
-    /* Sections */
-    section{ padding: 54px 0; }
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:14px;
-      margin-bottom: 16px;
-    }
-    h2{
-      font-family:"Space Grotesk", sans-serif;
-      margin:0;
-      font-size: clamp(22px, 2.4vw, 34px);
-      letter-spacing:-.02em;
-      line-height:1.1;
-    }
-    .sub{
-      margin:0;
-      color: rgba(14,26,43,.72);
-      max-width: 70ch;
-      line-height:1.7;
-      font-weight: 650;
-      font-size: 14px;
-    }
-
-    .grid-3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    .grid-2{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-    .card{
-      background: var(--surface);
-      border: 1px solid rgba(14,26,43,.10);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow2);
-      padding: 16px 16px;
-      position:relative;
-      overflow:hidden;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-      transition: transform .14s ease;
-      box-shadow: var(--shadow);
-    }
-    .card .top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom: 10px;
-    }
-    .card .icon{
-      width: 42px; height: 42px;
-      border-radius: 16px;
-      background: rgba(44,62,80,.08);
-      border: 1px solid rgba(44,62,80,.16);
-      display:grid;
-      place-items:center;
-      font-size: 18px;
-    }
-    .card h3{
-      margin: 0 0 6px;
-      font-size: 16px;
-      letter-spacing:-.01em;
-      font-family:"Space Grotesk", sans-serif;
-    }
-    .card p{
-      margin:0;
-      color: rgba(14,26,43,.72);
-      line-height:1.7;
-      font-weight: 600;
-      font-size: 13px;
-    }
-    .card .tag{
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color: rgba(14,26,43,.62);
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(14,26,43,.04);
-      border:1px solid rgba(14,26,43,.10);
-      white-space:nowrap;
-    }
-
-    /* Steps */
-    .steps{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      align-items:start;
-    }
-    .step{
-      display:flex;
-      gap: 12px;
-      padding: 16px;
-      border-radius: var(--radius2);
-      background: var(--surface);
-      border:1px solid rgba(14,26,43,.10);
-      box-shadow: var(--shadow2);
-    }
-    .num{
-      width: 40px; height: 40px;
-      border-radius: 16px;
-      background: rgba(44,62,80,.08);
-      border: 1px solid rgba(44,62,80,.18);
-      color: rgba(14,26,43,.90);
-      font-weight: 900;
-      display:grid;
-      place-items:center;
-      font-family:"Space Grotesk", sans-serif;
-      flex-shrink: 0;
-    }
-    .step b{
-      display:block;
-      margin-bottom: 6px;
-      font-family:"Space Grotesk", sans-serif;
-    }
-    .step span{
-      display:block;
-      color: rgba(14,26,43,.72);
-      line-height:1.7;
-      font-weight: 600;
-      font-size: 13px;
-    }
-
-    /* Reviews */
-    .reviews{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    .review{
-      background: var(--surface);
-      border: 1px solid rgba(14,26,43,.10);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow2);
-      padding: 16px;
-    }
-    .stars{
-      color: #d97706;
-      letter-spacing:.12em;
-      font-weight: 900;
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-    .review p{
-      margin:0 0 12px;
-      color: rgba(14,26,43,.74);
-      line-height:1.7;
-      font-weight: 650;
-      font-size: 13px;
-    }
-    .review .who{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      font-size: 12px;
-      color: rgba(14,26,43,.62);
-      font-weight: 800;
-    }
-
-    /* Stats band */
-    .stats-band{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin: 24px 0;
-    }
-    .stat{
-      background: var(--surface);
-      border: 1px solid rgba(14,26,43,.10);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow2);
-      padding: 18px 16px;
-      text-align:center;
-    }
-    .stat-num{
-      font-family:"Space Grotesk", sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing:-.03em;
-      color: var(--steel);
-    }
-    .stat-label{
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--muted);
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-top: 4px;
-    }
-
-    /* Map + footer */
-    .map{
-      border-radius: var(--radius2);
-      border: 1px solid rgba(14,26,43,.10);
-      overflow:hidden;
-      box-shadow: var(--shadow);
-      background: var(--surface);
-    }
-    .map iframe{
-      width:100%;
-      height: 340px;
-      border:0;
-      filter: grayscale(.15) contrast(1.05) saturate(1.05);
-    }
-
-    /* Hours table */
-    .hours-grid{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .hour-card{
-      background: var(--surface);
-      border: 1px solid rgba(14,26,43,.10);
-      border-radius: 18px;
-      padding: 14px 12px;
-      text-align:center;
-      box-shadow: var(--shadow2);
-    }
-    .hour-card .day{
-      font-size: 12px;
-      font-weight: 800;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-    .hour-card .time{
-      font-family:"Space Grotesk", sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-    .open-badge{
-      display:inline-block;
-      margin-top: 6px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(16,185,129,.10);
-      border: 1px solid rgba(16,185,129,.25);
-      color: #065f46;
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    footer{
-      padding: 34px 0 28px;
-      border-top: 1px solid rgba(14,26,43,.10);
-      background: rgba(255,255,255,.65);
-      backdrop-filter: blur(12px);
-    }
-    .foot{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 14px;
-      align-items:start;
-    }
-    .foot p{
-      margin: 10px 0 0;
-      color: rgba(14,26,43,.72);
-      line-height:1.7;
-      font-weight: 650;
-      font-size: 13px;
-    }
-    .cols{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .col{
-      background: var(--surface);
-      border: 1px solid rgba(14,26,43,.10);
-      border-radius: 22px;
-      padding: 14px;
-      box-shadow: var(--shadow2);
-    }
-    .col strong{
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color: rgba(14,26,43,.72);
-      display:block;
-      margin-bottom: 10px;
-    }
-    .col a, .col div{
-      display:block;
-      margin: 8px 0;
-      color: rgba(14,26,43,.76);
-      font-weight: 750;
-      font-size: 13px;
-    }
-    .subline{
-      margin-top: 14px;
-      display:flex;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap:wrap;
-      color: rgba(14,26,43,.58);
-      font-size: 12px;
-      font-weight: 750;
-    }
-
-    /* Modal */
-    .modal{
-      position:fixed;
-      inset:0;
-      display:none;
-      place-items:center;
-      z-index:2000;
-      background: rgba(14,26,43,.55);
-      backdrop-filter: blur(10px);
-      padding: 18px;
-    }
-    .modal.open{ display:grid; }
-    .modal-card{
-      width:min(720px, 100%);
-      background: #fff;
-      border-radius: 28px;
-      border: 1px solid rgba(14,26,43,.12);
-      box-shadow: 0 30px 120px rgba(0,0,0,.25);
-      overflow:hidden;
-      position:relative;
-    }
-    .modal-card::before{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background:
-        radial-gradient(900px 520px at 15% 0%, rgba(31,111,255,.12), transparent 60%),
-        radial-gradient(900px 520px at 100% 0%, rgba(44,62,80,.10), transparent 60%);
-      pointer-events:none;
-      opacity:.9;
-    }
-    .modal-card > *{ position:relative; z-index:1; }
-    .m-top{
-      padding: 14px 16px;
-      border-bottom: 1px solid rgba(14,26,43,.10);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .m-top strong{
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color: rgba(14,26,43,.72);
-    }
-    .x{
-      width: 40px; height: 40px;
-      border-radius: 14px;
-      border: 1px solid rgba(14,26,43,.12);
-      background: rgba(14,26,43,.03);
-      cursor:pointer;
-      font-weight: 900;
-    }
-    .m-body{
-      padding: 16px;
-    }
-    .m-body h3{
-      margin: 0 0 8px;
-      font-family:"Space Grotesk", sans-serif;
-      letter-spacing:-.02em;
-    }
-    .m-body p{
-      margin:0 0 12px;
-      color: rgba(14,26,43,.72);
-      line-height:1.7;
-      font-weight: 650;
-      font-size: 13px;
-    }
-    .note{
-      padding: 12px;
-      border-radius: 18px;
-      border: 1px solid rgba(14,26,43,.10);
-      background: rgba(14,26,43,.03);
-      color: rgba(14,26,43,.72);
-      line-height:1.65;
-      font-weight: 650;
-      font-size: 13px;
-    }
-
-    /* Floating CTA mobile */
-    .float-cta{
-      position: fixed;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      z-index: 1500;
-      display: none;
-      gap: 10px;
-    }
-    .float-cta a{
-      flex:1;
-      justify-content:center;
-      border-radius: 16px;
-      padding: 14px 14px;
-      font-weight: 900;
-    }
-
-    @media (max-width: 980px){
-      .navlinks{ display:none; }
-      .navcta{ min-width: 0; }
-      .hotline{ display:none; }
-      .hero-grid{ grid-template-columns: 1fr; }
-      .grid-3{ grid-template-columns: 1fr; }
-      .grid-2{ grid-template-columns: 1fr; }
-      .steps{ grid-template-columns: 1fr; }
-      .reviews{ grid-template-columns: 1fr; }
-      .stats-band{ grid-template-columns: repeat(2, 1fr); }
-      .hours-grid{ grid-template-columns: repeat(2, 1fr); }
-      .float-cta{ display:flex !important; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Agence web à Genève spécialisée dans la création et refonte de sites web qui convertissent. Accompagnement sur-mesure pour les entreprises genevoises. Demandez un devis." />
+  <meta name="keywords" content="création site web Genève, agence web Genève, refonte site web Genève, développeur web Genève, site web PME Genève" />
+  <meta name="geo.region" content="CH-GE" />
+  <meta name="geo.placename" content="Genève" />
+  <link rel="icon" href="https://raw.githubusercontent.com/yanisassaki-cmd/Leman-Studio-CH/refs/heads/main/favicon.ico" type="image/x-icon" />
+  <title>Léman Studio — Création de Sites Web à Genève | Agence Web Genève</title>
+  <meta property="og:title" content="Léman Studio — Agence Web à Genève" />
+  <meta property="og:description" content="Création et refonte de sites web à Genève. Accompagnement sur-mesure pour entreprises genevoises." />
+  <meta property="og:url" content="https://www.lemanstudio.ch" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Léman Studio",
+    "url": "https://www.lemanstudio.ch",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Genève",
+      "addressRegion": "GE",
+      "addressCountry": "CH"
+    },
+    "areaServed": "Genève",
+    "description": "Agence web à Genève spécialisée dans la création et refonte de sites web"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="wrap">
-      <div class="nav">
-        <a class="brand" href="#top" aria-label="Retour en haut">
-          <div class="logo" aria-hidden="true"><span>TD</span></div>
-          <div class="title">
-            <strong>Techno Serrurerie Dias</strong>
-            <small>Satigny • Genève • 7j/7</small>
-          </div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav id="nav">
+    <a href="index.html" class="logo">Léman<span>.</span>Studio</a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="index.html#process">Méthode</a></li>
+      <li><a href="portfolio.html">Réalisations</a></li>
+      <li><a href="index.html#testimonials">Avis</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="tarifs.html">Tarifs</a></li>
+      <li><a href="contact.html" class="nav-cta">Démarrer un projet</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <span class="mobile-nav-logo">Léman.Studio</span>
+    <a href="services.html" class="mobile-link">Services</a>
+    <a href="index.html#process" class="mobile-link">Méthode</a>
+    <a href="portfolio.html" class="mobile-link">Réalisations</a>
+    <a href="index.html#testimonials" class="mobile-link">Avis clients</a>
+    <a href="blog.html" class="mobile-link">Blog</a>
+    <a href="tarifs.html" class="mobile-link">Tarifs</a>
+    <a href="contact.html" class="mobile-link mob-cta">Démarrer un projet</a>
+  </div>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Agence Web · Genève</div>
+      <h1 class="hero-title">
+        Votre agence web<br />
+        <em>à Genève</em><br />
+        <span class="outline">réinventée.</span>
+      </h1>
+      <p class="hero-subtitle">Nous créons des sites web qui convertissent pour les entreprises genevoises. De la conception à la mise en ligne, un accompagnement sur-mesure à Genève.</p>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn-primary">Démarrer votre projet</a>
+        <a href="portfolio.html" class="btn-secondary">
+          Voir nos réalisations
+          <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 8h18M12 2l6 6-6 6" /></svg>
         </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">48+</div><div class="stat-label">Sites livrés</div></div>
+      <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Clients satisfaits</div></div>
+      <div class="stat"><div class="stat-num">5j</div><div class="stat-label">Délai moyen</div></div>
+    </div>
+    <div class="hero-scroll">Défiler<div class="scroll-line"></div></div>
+  </section>
 
-        <nav class="navlinks" aria-label="Navigation">
-          <a href="#services">Services</a>
-          <a href="#realisations">Réalisations</a>
-          <a href="#process">Processus</a>
-          <a href="#avis">Avis</a>
-          <a href="#horaires">Horaires</a>
-          <a href="#contact">Contact</a>
-        </nav>
-
-        <div class="navcta">
-          <div class="hotline">
-            <span>Disponible 7j/7</span>
-            <b>+41 78 976 53 01</b>
-          </div>
-          <a class="btn btn-blue" href="#contact">Demander un devis</a>
-          <a class="btn btn-urgent" href="tel:+41789765301">
-            <span class="pulse" aria-hidden="true"></span>
-            Appeler
-          </a>
+  <section id="process">
+    <div class="section-label">Notre approche</div>
+    <h2>Une méthode éprouvée à Genève,<br /><em>des résultats garantis</em></h2>
+    <div class="process-container">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Découverte &amp; Stratégie</h3>
+          <p>Un appel de 45 minutes pour comprendre votre activité, vos objectifs et votre cible. On définit ensemble la stratégie digitale la plus adaptée à vos besoins et votre budget.</p>
+          <span class="step-badge">Appel gratuit</span>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Conception UX/UI</h3>
+          <p>Maquettes sur Figma, parcours utilisateur pensé pour convertir, design validé avec vous avant de coder une seule ligne. Vous voyez le résultat avant la réalisation.</p>
+          <span class="step-badge">2–3 jours</span>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Développement</h3>
+          <p>Code propre, rapide et sécurisé. Optimisé pour tous les écrans, tous les navigateurs. Chaque détail est soigné pour une expérience utilisateur irréprochable.</p>
+          <span class="step-badge">5–10 jours</span>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Recette &amp; Ajustements</h3>
+          <p>Phase de tests et de retours. Deux cycles de révisions inclus pour que tout soit parfait. Votre satisfaction n'est pas négociable.</p>
+          <span class="step-badge">2 révisions incluses</span>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <h3>Mise en ligne &amp; Formation</h3>
+          <p>Déploiement, configuration du nom de domaine, et une formation pour gérer votre contenu en toute autonomie. On ne vous abandonne pas après la livraison.</p>
+          <span class="step-badge">Formation offerte</span>
         </div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <!-- HERO -->
-  <main id="top">
-    <div class="wrap">
-      <section class="hero">
-        <div class="hero-grid">
-          <div class="hero-card hero-left">
-            <div class="badge"><span class="pulse"></span> Ouvert 7j/7 • Satigny & tout le canton de Genève</div>
-            <h1>Portails, clôtures &amp; serrurerie. <span style="color:var(--steel);">Fait avec soin, livré dans les délais.</span></h1>
-            <p class="lead">
-              Fabrication et pose de portails sur mesure, clôtures métalliques, serrurerie, soudure et forge.
-              Depuis Satigny, on intervient sur tout le canton de Genève — particuliers et professionnels.
-            </p>
-
-            <div class="hero-actions">
-              <a class="btn btn-steel" href="tel:+41789765301">
-                <span class="pulse" aria-hidden="true"></span>
-                +41 78 976 53 01
-              </a>
-              <a class="btn btn-blue" href="#contact">Devis gratuit →</a>
-              <a class="btn" href="#services">Voir les services</a>
-            </div>
-
-            <div class="trust">
-              <div class="chip"><i></i> Fabrication sur mesure</div>
-              <div class="chip"><i></i> Ouvert 7j/7 — toute la journée</div>
-              <div class="chip"><i></i> Satigny → tout Genève</div>
-              <div class="chip"><i></i> Artisan depuis 2019</div>
-            </div>
-          </div>
-
-          <aside class="hero-card hero-right" aria-label="Demande de devis rapide">
-            <div class="urgent-box">
-              <div>
-                <strong>Devis gratuit et rapide</strong><br>
-                <span>Réponse sous 24h — Intervention sur Genève</span>
-              </div>
-              <a class="btn btn-steel" href="tel:+41789765301">📞 Appeler</a>
-            </div>
-
-            <div class="mini-form">
-              <div class="field">
-                <label for="service">Service souhaité</label>
-                <select id="service">
-                  <option>Portail sur mesure</option>
-                  <option>Clôture métallique</option>
-                  <option>Serrurerie / dépannage</option>
-                  <option>Soudure / forge</option>
-                  <option>Sécurisation après effraction</option>
-                  <option>Autre travail métallique</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="zone">Commune (Genève)</label>
-                <select id="zone">
-                  <option>Satigny</option>
-                  <option>Genève centre</option>
-                  <option>Carouge</option>
-                  <option>Vernier</option>
-                  <option>Meyrin</option>
-                  <option>Lancy</option>
-                  <option>Chêne-Bourg</option>
-                  <option>Thônex</option>
-                  <option>Autre commune GE</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="name">Nom</label>
-                <input id="name" placeholder="Votre nom" />
-              </div>
-
-              <div class="field">
-                <label for="phone">Téléphone</label>
-                <input id="phone" placeholder="+41 7X XXX XX XX" />
-              </div>
-
-              <div class="field">
-                <label for="details">Description du projet</label>
-                <textarea id="details" placeholder="Ex: portail coulissant 4m, clôture jardin 30m, dépannage serrure…"></textarea>
-              </div>
-
-              <div class="form-actions">
-                <button class="btn btn-blue" id="quoteBtn" type="button">Envoyer la demande →</button>
-              </div>
-
-              <div class="notice" id="quoteStatus">
-                <b>Info :</b> devis gratuit, sans engagement. Réponse rapide garantie.
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
+  <section id="testimonials">
+    <div class="testi-intro">
+      <div class="section-label">Ils nous font confiance</div>
+      <h2>Ce que disent<br />nos <em>clients</em></h2>
+      <p>Plus de 48 projets livrés à Genève, en Suisse romande et en France. Voici ce qu'ils en pensent.</p>
     </div>
-
-    <!-- STATS -->
-    <div class="wrap">
-      <div class="stats-band">
-        <div class="stat">
-          <div class="stat-num">7j/7</div>
-          <div class="stat-label">Disponibilité</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">2019</div>
-          <div class="stat-label">Fondé à Satigny</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">6+</div>
-          <div class="stat-label">Spécialités métier</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">GE</div>
-          <div class="stat-label">Canton couvert</div>
-        </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">« Léman Studio a transformé notre site vieillissant en une vitrine moderne qui nous amène désormais des clients chaque semaine. Résultat au-delà de nos attentes. »</p>
+        <div class="testi-author"><div class="testi-avatar av1">SL</div><div><div class="testi-name">Sophie Laurent</div><div class="testi-role">Gérante, Boutique Flore — Genève</div></div></div>
       </div>
-
-      <!-- SERVICES -->
-      <section id="services">
-        <div class="section-head">
-          <div>
-            <h2>Nos métiers & services</h2>
-            <p class="sub" style="margin-top:6px;">
-              Fabrication sur mesure, pose, dépannage et travaux métalliques — tout ce dont vous avez besoin sous un même toit.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid-3">
-          <div class="card">
-            <div class="top">
-              <div class="icon">🚧</div>
-              <div class="tag">Sur mesure</div>
-            </div>
-            <h3>Portails & portillons</h3>
-            <p>Fabrication et installation de portails coulissants, battants ou motorisés. Acier, métal galvanisé, sur mesure selon vos dimensions et style.</p>
-          </div>
-
-          <div class="card">
-            <div class="top">
-              <div class="icon">🏗️</div>
-              <div class="tag">Pose incluse</div>
-            </div>
-            <h3>Clôtures métalliques</h3>
-            <p>Clôtures industrielles, résidentielles, grilles et panneaux rigides. Conception, fabrication et mise en place complète sur votre parcelle.</p>
-          </div>
-
-          <div class="card">
-            <div class="top">
-              <div class="icon">🔐</div>
-              <div class="tag">Urgence OK</div>
-            </div>
-            <h3>Serrurerie générale</h3>
-            <p>Remplacement, réparation et installation de serrures. Dépannage rapide en cas de porte claquée, serrure bloquée ou clé perdue.</p>
-          </div>
-
-          <div class="card">
-            <div class="top">
-              <div class="icon">🔥</div>
-              <div class="tag">Artisanat</div>
-            </div>
-            <h3>Soudure & assemblage</h3>
-            <p>Travaux de soudure MIG/TIG sur acier et métal. Réparation de structures, assemblage de pièces sur mesure, garde-corps, rampes.</p>
-          </div>
-
-          <div class="card">
-            <div class="top">
-              <div class="icon">⚒️</div>
-              <div class="tag">Sur commande</div>
-            </div>
-            <h3>Forge & pièces métal</h3>
-            <p>Pièces forgées artisanales, ferronnerie décorative, grilles ornementales. Fabrication de pièces uniques selon vos plans ou dessins.</p>
-          </div>
-
-          <div class="card">
-            <div class="top">
-              <div class="icon">🛡️</div>
-              <div class="tag">Pro & particuliers</div>
-            </div>
-            <h3>Sécurisation & renforts</h3>
-            <p>Sécurisation après effraction, blindage de porte, pose de cornières anti-pince, verrous supplémentaires. Intervention rapide sur Genève.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- REALISATIONS -->
-      <section id="realisations">
-        <div class="section-head">
-          <div>
-            <h2>Types de réalisations</h2>
-            <p class="sub" style="margin-top:6px;">Exemples de projets réalisés pour particuliers et professionnels dans le canton de Genève.</p>
-          </div>
-        </div>
-
-        <div class="grid-2">
-          <div class="card">
-            <div class="top">
-              <div class="icon">🏠</div>
-              <div class="tag">Résidentiel</div>
-            </div>
-            <h3>Particuliers & villas</h3>
-            <p>Portails d'entrée sur mesure, clôtures de jardin, portillons piétons, garde-corps de terrasse, pergolas métalliques, serrurerie intérieure et extérieure.</p>
-          </div>
-
-          <div class="card">
-            <div class="top">
-              <div class="icon">🏭</div>
-              <div class="tag">Professionnel</div>
-            </div>
-            <h3>Industries & commerces</h3>
-            <p>Grilles de sécurité, rideaux métalliques, portails industriels, clôtures de chantier, serrures haute sécurité, maintenance de fermetures.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROCESS -->
-      <section id="process">
-        <div class="section-head">
-          <h2>Comment on travaille</h2>
-          <p class="sub">Simple, direct, sans mauvaise surprise.</p>
-        </div>
-
-        <div class="steps">
-          <div class="step">
-            <div class="num">1</div>
-            <div>
-              <b>Prise de contact</b>
-              <span>Appelez ou envoyez un message. On écoute votre besoin et on pose les bonnes questions pour bien cadrer le projet.</span>
-            </div>
-          </div>
-          <div class="step">
-            <div class="num">2</div>
-            <div>
-              <b>Devis gratuit</b>
-              <span>On se déplace si nécessaire pour mesurer et conseiller. Devis clair, détaillé et gratuit. Aucun engagement.</span>
-            </div>
-          </div>
-          <div class="step">
-            <div class="num">3</div>
-            <div>
-              <b>Fabrication & pose</b>
-              <span>Fabrication en atelier à Satigny, puis pose sur site. On soigne les finitions et on respecte les délais annoncés.</span>
-            </div>
-          </div>
-          <div class="step">
-            <div class="num">4</div>
-            <div>
-              <b>Livraison & suivi</b>
-              <span>Vérification finale avec vous. On s'assure que tout fonctionne parfaitement avant de partir.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- REVIEWS -->
-      <section id="avis">
-        <div class="section-head">
-          <h2>Ce que disent nos clients</h2>
-          <p class="sub">Fiabilité, qualité d'exécution et réactivité — nos engagements au quotidien.</p>
-        </div>
-
-        <div class="reviews">
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <p>"Portail coulissant fabriqué et posé en un temps record. Finitions impeccables, équipe sérieuse. Je recommande."</p>
-            <div class="who"><span><b>Marc D.</b> — Satigny</span><span>Portail</span></div>
-          </div>
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <p>"Clôture de jardin complète. Propre, solide, exactement comme demandé. Le devis a été respecté à la lettre."</p>
-            <div class="who"><span><b>Sophie R.</b> — Vernier</span><span>Clôture</span></div>
-          </div>
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <p>"Dépannage serrure un samedi matin, ils ont répondu en 20 min. Efficaces et honnêtes sur le prix."</p>
-            <div class="who"><span><b>Karim B.</b> — Meyrin</span><span>Serrurerie</span></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- HORAIRES -->
-      <section id="horaires">
-        <div class="section-head">
-          <h2>Horaires d'ouverture</h2>
-          <p class="sub">Disponibles toute la semaine, y compris le week-end.</p>
-        </div>
-
-        <div class="hours-grid">
-          <div class="hour-card">
-            <div class="day">Lundi</div>
-            <div class="time">Toute la journée</div>
-            <div class="open-badge">✓ Ouvert</div>
-          </div>
-          <div class="hour-card">
-            <div class="day">Mardi</div>
-            <div class="time">Toute la journée</div>
-            <div class="open-badge">✓ Ouvert</div>
-          </div>
-          <div class="hour-card">
-            <div class="day">Mercredi</div>
-            <div class="time">Toute la journée</div>
-            <div class="open-badge">✓ Ouvert</div>
-          </div>
-          <div class="hour-card">
-            <div class="day">Jeudi</div>
-            <div class="time">Toute la journée</div>
-            <div class="open-badge">✓ Ouvert</div>
-          </div>
-          <div class="hour-card">
-            <div class="day">Vendredi</div>
-            <div class="time">Toute la journée</div>
-            <div class="open-badge">✓ Ouvert</div>
-          </div>
-          <div class="hour-card">
-            <div class="day">Samedi</div>
-            <div class="time">Toute la journée</div>
-            <div class="open-badge">✓ Ouvert</div>
-          </div>
-          <div class="hour-card">
-            <div class="day">Dimanche</div>
-            <div class="time">Toute la journée</div>
-            <div class="open-badge">✓ Ouvert</div>
-          </div>
-          <div class="hour-card" style="background: linear-gradient(180deg, rgba(44,62,80,.06), rgba(44,62,80,.02)); border-color: rgba(44,62,80,.16);">
-            <div class="day">Urgences</div>
-            <div class="time" style="color:var(--steel);">Sur appel</div>
-            <div class="open-badge" style="background:rgba(44,62,80,.08); border-color:rgba(44,62,80,.20); color:var(--steel);">📞 7j/7</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ZONE + MAP -->
-      <section id="zone">
-        <div class="section-head">
-          <h2>Zone d'intervention</h2>
-          <p class="sub">Basés à Satigny, on couvre l'ensemble du canton de Genève.</p>
-        </div>
-
-        <div class="map">
-          <iframe
-            title="Techno Serrurerie Dias — Rue du Pré-Bouvier 7, 1242 Satigny"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Rue+du+Pr%C3%A9-Bouvier+7+1242+Satigny&output=embed">
-          </iframe>
-        </div>
-
-        <div style="margin-top:14px;" class="grid-3">
-          <div class="card"><h3>Satigny & Meyrin</h3><p>Zone principale d'atelier. Fabrication et interventions locales rapides.</p></div>
-          <div class="card"><h3>Genève & communes</h3><p>Carouge, Lancy, Vernier, Chêne-Bourg, Thônex, Onex et tout Genève.</p></div>
-          <div class="card"><h3>Projets sur mesure</h3><p>Pour les projets importants (industrie, chantiers), déplacement possible hors canton sur devis.</p></div>
-        </div>
-      </section>
-
-      <!-- CONTACT / DEVIS -->
-      <section id="contact">
-        <div class="section-head">
-          <h2>Contact & devis gratuit</h2>
-          <p class="sub">Décrivez votre projet, on vous rappelle rapidement avec une estimation.</p>
-        </div>
-
-        <div class="hero-card" style="padding:18px;">
-          <div class="steps" style="grid-template-columns:1fr 1fr;">
-            <div class="step" style="align-items:flex-start;">
-              <div class="num">📍</div>
-              <div>
-                <b>Rue du Pré-Bouvier 7 — 1242 Satigny</b>
-                <span>Atelier et siège social. Passage possible sur rendez-vous ou directement.</span>
-              </div>
-            </div>
-            <div class="step" style="align-items:flex-start;">
-              <div class="num">✉️</div>
-              <div>
-                <b>ventes@serrurerie-dias.ch</b>
-                <span>Pour les devis, demandes commerciales et suivis de projets.</span>
-              </div>
-            </div>
-          </div>
-
-          <div style="height:12px;"></div>
-
-          <form id="bigForm" class="steps" style="grid-template-columns: 1fr 1fr; gap:14px;">
-            <div class="field">
-              <label for="bf_service">Service</label>
-              <select id="bf_service">
-                <option>Portail sur mesure</option>
-                <option>Clôture métallique</option>
-                <option>Serrurerie / dépannage</option>
-                <option>Soudure / forge</option>
-                <option>Sécurisation</option>
-                <option>Autre</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="bf_time">Délai souhaité</label>
-              <select id="bf_time">
-                <option>Le plus tôt possible</option>
-                <option>Dans la semaine</option>
-                <option>Dans le mois</option>
-                <option>Pas urgent — planification</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="bf_name">Nom</label>
-              <input id="bf_name" placeholder="Votre nom / entreprise" />
-            </div>
-
-            <div class="field">
-              <label for="bf_phone">Téléphone</label>
-              <input id="bf_phone" placeholder="+41 7X XXX XX XX" />
-            </div>
-
-            <div class="field" style="grid-column: 1 / -1;">
-              <label for="bf_msg">Description du projet</label>
-              <textarea id="bf_msg" placeholder="Ex: portail coulissant motorisé 4m, clôture 50ml, dépannage urgent, garde-corps terrasse…"></textarea>
-            </div>
-
-            <div class="form-actions" style="grid-column: 1 / -1;">
-              <button class="btn btn-blue" type="submit" id="submitBtn">Envoyer la demande →</button>
-              <a class="btn btn-urgent" href="tel:+41789765301"><span class="pulse"></span> Appel direct</a>
-              <a class="btn" href="mailto:ventes@serrurerie-dias.ch">✉ Email</a>
-              <span class="notice" id="formStatus"></span>
-            </div>
-          </form>
-        </div>
-      </section>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">« Réactifs, créatifs et professionnels. Notre e-shop a vu ses ventes augmenter de 40% dès le premier mois. Je recommande sans hésitation. »</p>
+        <div class="testi-author"><div class="testi-avatar av2">MR</div><div><div class="testi-name">Marc Revillard</div><div class="testi-role">Fondateur, Watches &amp; Co — Lausanne</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">« Un accompagnement humain et une vraie écoute de nos besoins. Le site est magnifique, livré dans les délais et exactement comme on l'avait imaginé. »</p>
+        <div class="testi-author"><div class="testi-avatar av3">AC</div><div><div class="testi-name">Ambre Chevalier</div><div class="testi-role">Directrice, Cabinet Médical Rive — Évian</div></div></div>
+      </div>
     </div>
-  </main>
+    <div class="testi-summary">
+      <div class="summary-item"><div class="summary-num">4.9/5</div><div class="summary-label">Note moyenne</div></div>
+      <div class="summary-item"><div class="summary-num">48+</div><div class="summary-label">Projets livrés</div></div>
+      <div class="summary-item"><div class="summary-num">100%</div><div class="summary-label">Recommandent</div></div>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="wrap">
-      <div class="foot">
-        <div>
-          <div class="brand" style="min-width:auto;">
-            <div class="logo" aria-hidden="true"><span>TD</span></div>
-            <div class="title">
-              <strong>Techno Serrurerie Dias Sàrl</strong>
-              <small>Portails • Clôtures • Serrurerie • Forge</small>
-            </div>
-          </div>
-          <p>
-            Fabrication et pose de portails, clôtures, serrurerie, soudure et forge à Satigny.
-            Artisan genevois disponible 7j/7 pour particuliers et professionnels sur tout le canton de Genève.
-          </p>
-          <p style="margin-top:8px;">
-            <b>CHE-164.486.663</b> — Registre du commerce du canton de Genève
-          </p>
-        </div>
-
-        <div class="cols">
-          <div class="col">
-            <strong>Contact</strong>
-            <div>Rue du Pré-Bouvier 7</div>
-            <div>1242 Satigny, GE</div>
-            <a href="tel:+41789765301">+41 78 976 53 01</a>
-            <a href="mailto:ventes@serrurerie-dias.ch">ventes@serrurerie-dias.ch</a>
-            <div>Ouvert 7j/7 — toute la journée</div>
-          </div>
-          <div class="col">
-            <strong>Services</strong>
-            <a href="#services">Portails sur mesure</a>
-            <a href="#services">Clôtures métalliques</a>
-            <a href="#services">Serrurerie & dépannage</a>
-            <a href="#services">Soudure & forge</a>
-            <a href="#services">Sécurisation</a>
-          </div>
-        </div>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Léman<span>.</span>Studio</a>
+        <p>Agence web à Genève spécialisée en création et refonte de sites internet. Basés à Genève, nous accompagnons les entreprises genevoises et de Suisse romande.</p>
       </div>
-
-      <div class="subline">
-        <span>© <span id="year"></span> Techno Serrurerie Dias Sàrl. Tous droits réservés.</span>
-        <span>Satigny, Canton de Genève, Suisse</span>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Site vitrine</a></li>
+          <li><a href="services.html">Refonte web</a></li>
+          <li><a href="services.html">E-commerce</a></li>
+          <li><a href="services.html">SEO</a></li>
+          <li><a href="services.html">Maintenance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Agence</h4>
+        <ul>
+          <li><a href="index.html#process">Notre méthode</a></li>
+          <li><a href="portfolio.html">Réalisations</a></li>
+          <li><a href="index.html#testimonials">Avis clients</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="tarifs.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@lemanstudio.ch">contact@lemanstudio.ch</a></li>
+          <li><a href="contact.html">Demander un devis</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© Léman Studio — Agence web basée à Genève, Suisse · <a href="mentions-legales.html">Mentions légales</a> · <a href="cgv.html">CGV</a></p>
+      <div class="social-links">
+        <a href="#" class="social-link">in</a>
+        <a href="#" class="social-link">ig</a>
+        <a href="#" class="social-link">fb</a>
       </div>
     </div>
   </footer>
 
-  <!-- MODAL -->
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
-    <div class="modal-card">
-      <div class="m-top">
-        <strong>Demande envoyée</strong>
-        <button class="x" id="closeModal" aria-label="Fermer">✕</button>
-      </div>
-      <div class="m-body">
-        <h3 id="mTitle">Votre demande a bien été prise en charge.</h3>
-        <p>Notre équipe va analyser votre projet et vous recontacte rapidement avec une estimation gratuite.</p>
-        <div class="note" id="modalDetails">—</div>
+  <a href="contact.html" class="floating-cta" id="floatingCta">Devis gratuit</a>
 
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="btn btn-blue" id="modalOk">Fermer →</button>
-          <a class="btn btn-urgent" href="tel:+41789765301"><span class="pulse"></span> Appel direct</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const quoteBtn = document.getElementById('quoteBtn');
-    const quoteStatus = document.getElementById('quoteStatus');
-
-    function fakeLoading(el, ms=1200){
-      el.disabled = true;
-      const old = el.textContent;
-      el.textContent = "Envoi en cours…";
-      return new Promise(res => setTimeout(() => {
-        el.disabled = false;
-        el.textContent = old;
-        res();
-      }, ms));
-    }
-
-    quoteBtn.addEventListener('click', async () => {
-      const svc = document.getElementById('service').value;
-      const z = document.getElementById('zone').value;
-      const n = document.getElementById('name').value;
-      const p = document.getElementById('phone').value;
-      await fakeLoading(quoteBtn, 1000);
-      quoteStatus.innerHTML = `<b>Demande envoyée !</b> Projet : ${svc} — ${z}. On vous rappelle au plus vite${p ? ' au ' + p : ''}.`;
-    });
-
-    const bigForm = document.getElementById('bigForm');
-    const modal = document.getElementById('modal');
-    const closeModal = document.getElementById('closeModal');
-    const modalOk = document.getElementById('modalOk');
-    const modalDetails = document.getElementById('modalDetails');
-    const formStatus = document.getElementById('formStatus');
-    const submitBtn = document.getElementById('submitBtn');
-
-    function openModal(text){
-      modalDetails.textContent = text;
-      modal.classList.add('open');
-      document.body.style.overflow = "hidden";
-    }
-    function close(){
-      modal.classList.remove('open');
-      document.body.style.overflow = "";
-    }
-    closeModal.addEventListener('click', close);
-    modalOk.addEventListener('click', close);
-    modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === "Escape" && modal.classList.contains('open')) close();
-    });
-
-    bigForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      await fakeLoading(submitBtn, 1300);
-
-      const detailsText = [
-        `Service : ${document.getElementById('bf_service').value}`,
-        `Délai : ${document.getElementById('bf_time').value}`,
-        `Nom : ${document.getElementById('bf_name').value || "—"}`,
-        `Téléphone : ${document.getElementById('bf_phone').value || "—"}`,
-        `Message : ${document.getElementById('bf_msg').value || "—"}`
-      ].join(" • ");
-
-      formStatus.innerHTML = `<b>Envoyé ✓</b> — On vous recontacte sous 24h.`;
-      openModal(detailsText);
-    });
-  </script>
-
-  <!-- Floating CTA mobile -->
-  <div class="float-cta" aria-hidden="true">
-    <a class="btn btn-urgent" href="tel:+41789765301"><span class="pulse"></span> Appel direct</a>
-    <a class="btn btn-blue" href="#contact">Devis gratuit</a>
-  </div>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
+
